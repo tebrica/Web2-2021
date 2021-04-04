@@ -1,4 +1,4 @@
-<div class="ui raised very padded text container segment" style="margin-top: 18px;padding: 30px;">
+<div class="ui raised very padded text container segment" style="margin-top: 0px; padding: 30px;">
 
     <!-- HEADER OF LOGIN SEGMENT -->
     <div class="ui sizer vertical segment">
@@ -29,7 +29,7 @@
         </div>
 
         <div style="float: left; margin-left: 50px;">
-            <app-login-form></app-login-form>
+            <app-login-form (userLogInEvent)="onLogInEvent($event)"></app-login-form>
         </div>
 
     </div>
