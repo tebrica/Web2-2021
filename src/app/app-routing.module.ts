@@ -4,19 +4,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LogInComponent } from './log-in/log-in.component';
 
 const routes: Routes = [
-  {
-    path: "",
-    redirectTo: "/logIn",
-    pathMatch: 'full'
-  },
-  { 
-    path: 'logIn', 
-    component: LogInComponent 
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent
-  }
+  {path: "", redirectTo: "/logIn",pathMatch: 'full'},
+  { path: 'logIn', component: LogInComponent },
+  {path: "dashboard", component: DashboardComponent },
 ];
 
 @NgModule({

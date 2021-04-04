@@ -8,6 +8,7 @@ import { LogInComponent } from './log-in/log-in.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     LogInComponent,
     LoginFormComponent,
     DashboardComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,4 +27,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule {
+
+  
+
+}
