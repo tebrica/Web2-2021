@@ -1,0 +1,27 @@
+<div style="background-color: LightGreen; width: 282px; height: 500px;">
+  <form class="ui form" style="padding: 20px;" (submit)="onRegisterSubmit()">
+
+      <div class="field">
+          <label for="email"> Email address: </label>
+          <input type="email" name="username" placeholder="E-mail address.." [(ngModel)]="username" />
+      </div>
+
+      <div class="field">
+          <label for="pass"> Password: </label>
+          <input type="password" name="pass" placeholder="Password.." [(ngModel)]="password"/>
+      </div>
+
+      <div class="field">
+        <label for="name"> Name: </label>
+        <input type="password" name="name" placeholder="Name.." [(ngModel)]="name"/>
+      </div>
+
+      <div class="field">
+        <label for="lastName"> Last Name: </label>
+        <input type="password" name="lastName" placeholder="Last Name.." [(ngModel)]="lastName"/>
+      </div>
+
+      <button class="ui primary button"> Register </button>
+
+  </form>
+</div>
