@@ -1,0 +1,47 @@
+<div style="background-color: LightGreen; width: 282px; height: 500px;">
+    <form class="ui form" style="padding: 20px;" (submit)="onLogInFormSubmit()">
+
+        <div class="field">
+            <label for="email"> Email address: </label>
+            <input type="email" name="username" placeholder="E-mail address.." [(ngModel)]="username" />
+        </div>
+
+        <div class="field">
+            <label for="pass"> Password: </label>
+            <input type="password" name="pass" placeholder="Password.." [(ngModel)]="password"/>
+        </div>
+
+        <button class="ui secondary button small"> Log In </button>
+
+        <p> Forgot your password? </p>
+        <p> Create an account </p>
+
+        <div>
+            <button class="ui facebook button" style="margin-bottom: 5px; width: 100%;" type="button">
+                <i class="facebook icon"></i>
+                Continue with Facebook
+            </button>
+
+            <button class="ui twitter button" style="margin-bottom: 5px; width: 100%;" type="button">
+                <i class="twitter icon"></i>
+                Continue with Twitter
+            </button>
+
+            <button class="ui google plus button" style="margin-bottom: 5px; width: 100%;" type="button">
+                <i class="google plus icon"></i>
+                Continue with Google
+            </button> <br/>
+
+            <button class="ui linkedin button" style="margin-bottom: 5px; width: 100%;" type="button">
+                <i class="linkedin icon"></i>
+                Continue with LinkedIn
+            </button>
+
+            <button class="ui instagram button" style="margin-bottom: 5px; width: 100%;" type="button">
+                <i class="instagram icon"></i>
+                Continue with Instagram
+            </button>
+        </div>
+
+    </form>
+</div>
