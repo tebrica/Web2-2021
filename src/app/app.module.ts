@@ -19,6 +19,7 @@ import { TorbaComponent } from './torba/torba.component';
 import { DvaCovekaComponent } from './dva-coveka/dva-coveka.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AlertsComponent } from './alerts/alerts.component';
+import { UserInfoComponent } from './user-info/user-info.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AlertsComponent } from './alerts/alerts.component';
     DvaCovekaComponent,
     SettingsComponent,
     AlertsComponent,
+    UserInfoComponent,
   ],
   imports: [
     BrowserModule,

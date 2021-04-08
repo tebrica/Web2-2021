@@ -1,0 +1,84 @@
+<!-- NASLOVI -->
+<div style="margin-left: 70px; margin-top: 60px;">
+  <div style="overflow: hidden">
+    <div style="width: 200px; float: left">
+      <h3 class="ui block header">New user details</h3>
+    </div>
+
+    <div style="width: 200px; float: left; margin-left: 260px">
+      <h3 class="ui block header">Profile picture</h3>
+    </div>
+  </div>
+
+  <br />
+
+  <!-- FORMA ZA REGISTRACIJU -->
+  <form class="ui form" style="overflow: hidden">
+    <div style="float: left">
+      <div class="fields">
+        <div class="field">
+          <label>Username</label>
+          <input type="text" placeholder="Username.." />
+        </div>
+
+        <div class="field">
+          <label>Email</label>
+          <input type="text" placeholder="Email.." />
+        </div>
+      </div>
+
+      <div class="fields">
+        <div class="field">
+          <label>First name</label>
+          <input type="text" placeholder="First Name" />
+        </div>
+
+        <div class="field">
+          <label>Last name</label>
+          <input type="text" placeholder="Last Name" />
+        </div>
+      </div>
+
+      <div class="fields">
+        <div class="field">
+          <label> Vrsta korisnika: </label>
+          <input list="lst" placeholder="Vrsta korisnika.." />
+          <datalist id="lst">
+            <option>Član ekipe</option>
+            <option>Dispečer</option>
+            <option>Radnik</option>
+            <option>Potrošač</option>
+            <option>Administrator</option>
+          </datalist>
+        </div>
+      </div>
+
+      <br />
+      <hr />
+      <br />
+
+      <button class="ui primary button">Register</button>
+      <button class="ui secondary button">Cancel</button>
+    </div>
+
+    <!-- DESNA STRANA EKRANA -->
+    <div style="float: left">
+      <div class="field" style="margin-left: 80px; float: left">
+        <img
+          class="ui small circular image"
+          style="margin-left: 20px"
+          src="https://i.insider.com/5484d9d1eab8ea3017b17e29?width=600&format=jpeg&auto=webp"
+        />
+        <input
+          type="file"
+          id="img"
+          name="img"
+          accept="image/*"
+          style="margin-top: 20px; width: 210px"
+        />
+      </div>
+    </div>
+
+    <div></div>
+  </form>
+</div>
