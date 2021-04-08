@@ -17,6 +17,8 @@ import { DocumentsComponent } from './documents/documents.component';
 import { CallsComponent } from './calls/calls.component';
 import { TorbaComponent } from './torba/torba.component';
 import { DvaCovekaComponent } from './dva-coveka/dva-coveka.component';
+import { SettingsComponent } from './settings/settings.component';
+import { AlertsComponent } from './alerts/alerts.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { DvaCovekaComponent } from './dva-coveka/dva-coveka.component';
     CallsComponent,
     TorbaComponent,
     DvaCovekaComponent,
+    SettingsComponent,
+    AlertsComponent,
   ],
   imports: [
     BrowserModule,

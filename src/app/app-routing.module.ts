@@ -9,6 +9,8 @@ import {DvaCovekaComponent} from './dva-coveka/dva-coveka.component';
 import {IncidentsComponent} from './incidents/incidents.component';
 import {SearchComponent} from './search/search.component';
 import {TorbaComponent} from './torba/torba.component';
+import {SettingsComponent} from './settings/settings.component';
+import { AlertsComponent } from './alerts/alerts.component';
 
 const routes: Routes = [
   {path: "", redirectTo: "/logIn",pathMatch: 'full'},
@@ -20,6 +22,8 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent },
   { path: 'torba', component: TorbaComponent },
   {path: "dashboard", component: DashboardComponent },
+  { path: 'alerts', component: AlertsComponent },
+  {path: "settings", component: SettingsComponent },
 ];
 
 @NgModule({

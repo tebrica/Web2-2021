@@ -41,4 +41,10 @@ export class AppComponent {
   onTorba(){
     this.router.navigateByUrl('/torba');
   }
+  onSettings(){
+    this.router.navigateByUrl('/settings');
+  }
+  onAlerts(){
+    this.router.navigateByUrl('/alerts');
+  }
 }
