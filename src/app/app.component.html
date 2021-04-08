@@ -305,10 +305,10 @@
   }
 </style>
 
-<div  style="height: 90px; overflow: hidden; width: auto ; position: relative; background-color:DimGrey;">
+<div class="header" id="header1" style="height: 90px; overflow: hidden; width: 100% ; top:0; position: fixed; background-color:DimGrey;">
 
   <div style="float: left;">
-    <i class="angle double down icon" style="float: left;"></i>
+    <i class="angle double up icon" style="float: left;"></i>
     <div style="margin-right: 5px;  width: 200px; ">
       <p style="font-size: 24pt;"> <b>DashBoard</b></p>
     </div>
@@ -316,7 +316,7 @@
 
   <div>
 
-    <div style="float: left; margin-top: 15px; position: fixed; right: 70px; margin-left: 200px;">
+    <div style="float: left; margin-top:  15px; position: fixed; right: 70px; margin-left: 200px;">
       <p style="font-size: 14pt; color: black;">USERNAME</p>
       <a style="color: black;">Acc setings</a>
     </div>
@@ -326,6 +326,11 @@
       <div class="ui placeholder" style="float: right; margin-right: 10px; margin-top: 20px; height: 30px; width: 40px;">   
           <div style="height: 30px;" class="image"></div>
       </div>
+
+
+
+</div>
+
 
   <!-- OVO JA RADIM ISPOD -->
 <div>
@@ -361,7 +366,6 @@
   </div>
 </div>
 
-</div>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
@@ -370,7 +374,7 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<div style="background-color: black;">
+<div style=" background-color: black;">
 
   <router-outlet></router-outlet>
 </div>
