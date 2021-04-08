@@ -286,7 +286,7 @@
       margin: 8px 0;
     }
 
- 
+
     .card.highlight-card span {
       margin-left: 72px;
     }
@@ -305,10 +305,10 @@
   }
 </style>
 
-<div  style="height: 90px; overflow: hidden; width: auto ; position: relative; background-color:DimGrey;">
+<div class="header" id="header1" style="height: 90px; overflow: hidden; width: 100% ; top:0; position: fixed; background-color:DimGrey;">
 
   <div style="float: left;">
-    <i class="angle double down icon" style="float: left;"></i>
+    <i class="angle double up icon" style="float: left;"></i>
     <div style="margin-right: 5px;  width: 200px; ">
       <p style="font-size: 24pt;"> <b>DashBoard</b></p>
     </div>
@@ -316,52 +316,91 @@
 
   <div>
 
-    <div style="float: left; margin-top: 15px; position: fixed; right: 70px; margin-left: 200px;">
+    <div style="float: left; margin-top:  15px; position: fixed; right: 70px; margin-left: 200px;">
       <p style="font-size: 14pt; color: black;">USERNAME</p>
       <a style="color: black;">Acc setings</a>
     </div>
 
   </div>
-  
-      <div class="ui placeholder" style="float: right; margin-right: 10px; margin-top: 20px; height: 30px; width: 40px;">   
+
+      <div class="ui placeholder" style="float: right; margin-right: 10px; margin-top: 20px; height: 30px; width: 40px;">
           <div style="height: 30px;" class="image"></div>
       </div>
+
+
+
+</div>
+
 
   <!-- OVO JA RADIM ISPOD -->
 <div>
   <div style="width: 150px; top: 90px;" class="ui visible inverted left vertical sidebar menu">
-    <a class="item">
-      <i class="search icon"></i>
-      Serch
+    <a class="item"  (click) = "onSearch()">
+      <i class="search icon" ></i>
+      Search
     </a>
-    <a class="item">
-      <i class="home icon"></i>
+    <a class="item" (click) = "onHome()">
+      <i class="home icon"  ></i>
       Home
     </a>
-    <a class="item">
+    <a class="item"  (click) = "onIncidents()">
       <i class="chart bar outline icon"></i>
       Incidents
     </a>
-    <a class="item">
+    <a class="item"  (click) = "onDocuments()">
       <i class="file icon"></i>
       Documents
     </a>
-    <a class="item">
-      <i class="phone icon"></i>
+    <a class="item" (click) = "onCalls()">
+      <i class="phone icon"  ></i>
       Calls
     </a>
-    <a class="item">
-      <i class="briefcase icon"></i>
+    <a class="item" (click) = "onTorba()">
+      <i class="briefcase icon"  ></i>
       Torba
     </a>
-    <a class="item">
-      <i class="users icon"></i>
+    <a class="item" (click) = "onDvaCoveka()">
+      <i class="users icon" ></i>
       Dva coveka
+    </a>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <a class="item" (click) = "onSettings()">
+      <i class="wrench icon" ></i>
+      Settings
+    </a>
+    <a class="item" (click) = "onAlerts()">
+      <i class="bell icon" ></i>
+      Alerts
+    </a>
+    <a class="item" (click) = "onUserLogOut()">
+      <i class="logout icon" ></i>
+      Log Out
     </a>
   </div>
 </div>
 
-</div>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
@@ -370,7 +409,7 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<div style="background-color: black;">
+<div style=" background-color: black;">
 
   <router-outlet></router-outlet>
 </div>
