@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,17 +7,38 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
+
   title = 'angular-essentials';
   loggedUser = null;
+
+  constructor(private router: Router) { }
 
   onUserLogin(user: object) {
     alert('EEEE');
      console.log(user);
   }
-
-  onUserLogOut() {
-
+  onHome(){
+    this.router.navigateByUrl('dashboard')
   }
-
+  onUserLogOut() {
+    this.router.navigateByUrl('/logIn');
+  }
+  onCalls(){
+    this.router.navigateByUrl('/calls');
+  }
+  onDocuments(){
+    this.router.navigateByUrl('/documents');
+  }
+  onDvaCoveka(){
+    this.router.navigateByUrl('/dvaCoveka');
+  }
+  onIncidents(){
+    this.router.navigateByUrl('/incidents');
+  }
+  onSearch(){
+    this.router.navigateByUrl('/search');
+  }
+  onTorba(){
+    this.router.navigateByUrl('/torba');
+  }
 }
