@@ -1,19 +1,11 @@
-<div class="ui raised very padded text container segment" style="margin-top: 90px; padding: 30px;">
-
     <!-- HEADER OF LOGIN SEGMENT -->
     <div class="ui sizer vertical segment">
-        <hr/>
-            <div>
-                <h1 class="center ui huge header" style="margin-left: 160px;"> Work in progress.. :D </h1>
-            </div>
-        <hr/>
-
         <div style="background-color: rgb(106, 218, 106); height: 40px; padding: 10px;">
-            <h3 class="center ui small header" style="margin-left: 200px;"> Electricity for the future </h3>
+            <h3 class="center ui small header" style="margin-left: 300px;"> Electricity for the future </h3>
         </div>
     </div>
 
-    <div style="overflow: hidden; margin-top: 20px;">
+    <div style="overflow: hidden; margin-top: 0px; margin-left: 40px;">
 
         <div style="float: left; margin-right: 20px; margin-top: 25px; margin-left: 18px;">
             <img style="width: 250px; height: 200px;" src="https://www.glas-javnosti.rs/uploads/images/0/2020_06_11/Nikola-Tesla-WIKI.png">
@@ -25,17 +17,16 @@
 
             <br/>
 
+            <button type="button" class="ui primary button" (click) = "registerLogin()"> {{buttonTitle}} </button>
             <button class="ui button green"> <i class="phone icon"></i> Report a problem </button>
         </div>
 
-        <div style="float: left; margin-left: 50px;">
+        <div style="float: left; margin-left: 140px;">
             <app-login-form *ngIf="login" (userLogInEvent)="onLogInEvent($event)"></app-login-form>
         </div>
 
-        <div style="float: left; margin-left: 50px;">
+        <div style="float: left; margin-left: 140px;">
           <app-register-form *ngIf="!login"></app-register-form>
         </div>
-        <button type="button" class="ui primary button" (click) = "registerLogin()"> {{buttonTitle}} </button>
+       
     </div>
-
-</div>
