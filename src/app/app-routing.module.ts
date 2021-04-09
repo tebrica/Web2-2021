@@ -12,6 +12,7 @@ import {TorbaComponent} from './torba/torba.component';
 import {SettingsComponent} from './settings/settings.component';
 import { AlertsComponent } from './alerts/alerts.component';
 import { UserInfoComponent } from './user-info/user-info.component';
+import { NewIncidentComponent } from './new-incident/new-incident.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/logIn",pathMatch: 'full'},
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: "dashboard", component: DashboardComponent },
   { path: 'alerts', component: AlertsComponent },
   { path: "settings", component: SettingsComponent },
-  { path: "userinfo", component: UserInfoComponent }
+  { path: "userinfo", component: UserInfoComponent },
+  { path: "newincident", component: NewIncidentComponent },
 ];
 
 @NgModule({
