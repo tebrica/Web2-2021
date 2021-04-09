@@ -20,6 +20,8 @@ import { DvaCovekaComponent } from './dva-coveka/dva-coveka.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AlertsComponent } from './alerts/alerts.component';
 import { UserInfoComponent } from './user-info/user-info.component';
+import { NewIncidentComponent } from './new-incident/new-incident.component';
+import { SidebarNewincidentComponent } from './sidebar-newincident/sidebar-newincident.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { UserInfoComponent } from './user-info/user-info.component';
     SettingsComponent,
     AlertsComponent,
     UserInfoComponent,
+    NewIncidentComponent,
+    SidebarNewincidentComponent,
   ],
   imports: [
     BrowserModule,
