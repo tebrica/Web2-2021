@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar-newincident',
@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarNewincidentComponent implements OnInit {
 
+  @Output() onItemSelected = new EventEmitter<string>();
+
   constructor() { }
 
+  onSidebarItemSelect(value: string) {
+    this.onItemSelected.emit(value);
+  }
+
   ngOnInit(): void {
+
   }
 
 }

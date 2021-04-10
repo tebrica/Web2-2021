@@ -1,10 +1,10 @@
 <div style="overflow: hidden">
-  <div style="float: left">
-    <app-sidebar-newincident></app-sidebar-newincident>
+  <div style="float: left;margin-top: 20px;">
+    <app-sidebar-newincident (onItemSelected)="logThisShit($event)" ></app-sidebar-newincident>
   </div>
 
   <!-- NEW INCIDENT/ BASIC INFORMATION -->
-  <div style="float: left; margin-left: 45px;">
+  <div *ngIf="currentlySelected == 'BasicInfo'" style="float: left; margin-left: 45px; margin-top: 20px;">
     <form>
       <table class="ui inverted green table">
         <tr>
@@ -70,7 +70,7 @@
 
         <tr>
             <td> Description: </td>
-            <td colspan="5"> <input type="text" style="width: 400px; height: 50px;"/>  </td>
+            <td colspan="5"> <input type="text" style="width: 400px; height: 50px; padding: 0px;"/>  </td>
         </tr>
 
         <tr>
@@ -90,7 +90,10 @@
 
       <hr/>
       <button class="ui primary button" type="submit"> Save </button>
-      <button class="ui secondary button" type="button"> Cancel </button>
+      <button class="ui secondary button" type="reset"> Clear form </button>
+
+      <button class="ui red button"> Cancel </button>
+
     </form>
   </div>
 
