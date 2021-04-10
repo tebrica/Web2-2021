@@ -3,16 +3,100 @@
     <app-sidebar-newincident></app-sidebar-newincident>
   </div>
 
+  <!-- NEW INCIDENT/ BASIC INFORMATION -->
   <div style="float: left; margin-left: 45px;">
     <form>
       <table class="ui inverted green table">
         <tr>
           <td>Incident ID:</td>
           <td>INC00015</td>
+
+          <td> &nbsp; </td>
+
           <td>Affected customers:</td>
-          <input type="number" placeholder="Affected customers.."/>
+          <td><input type="number" placeholder="Affected customers.." style="width: 150px;"/></td>
         </tr>
+
+        <tr>
+            <td> Type: </td>
+            <td>
+                <input list="lst" style="width: 150px;" />
+                <datalist id="lst">
+                    <option> Planned work </option>
+                    <option> Non planned work </option>
+                </datalist>
+            </td>
+            <td> &nbsp; </td>
+            <td> Outage time: </td>
+            <td> <input type="date"/> </td>
+        </tr>
+
+        <tr>
+            <td> Priority: </td>
+            <td>
+                <input list="lst2" style="width: 150px;"/>
+                <datalist id="lst2">
+                    <option> 1 </option>
+                    <option> 2 </option>
+                    <option> 3 </option>
+                    <option> 4 </option>
+                </datalist>
+            </td>
+            <td> &nbsp; </td>
+            <td> ETR: </td>
+            <td> <input type="date"/> </td>
+        </tr>
+
+        <tr>
+            <td> Confirmed: </td>
+            <td> 
+                <div class="ui toggle checkbox">
+                <input type="checkbox" name="public">
+                <label></label>
+              </div> 
+            </td>
+            <td> &nbsp; </td>
+            <td> Calls: </td>
+            <td> <input type="number" style="width: 150px;"/> </td>
+        </tr>
+
+        <tr>
+            <td> Status: </td>
+            <td> Dispatched </td>
+            <td> &nbsp; </td>
+            <td> Voltage: </td>
+            <td> <input type="number" style="width: 150px;"/> </td>
+        </tr>
+
+        <tr>
+            <td> Description: </td>
+            <td colspan="5"> <input type="text" style="width: 400px; height: 50px;"/>  </td>
+        </tr>
+
+        <tr>
+            <td> ETA: </td>
+            <td> <input type="date"/> </td>
+            <td> &nbsp; </td>
+            <td> Sheduled time: </td>
+            <td> <input type="date"/> </td>
+        </tr>
+
+        <tr>
+            <td> ATA: </td>
+            <td> <input type="date"/> </td>
+        </tr>
+
       </table>
+
+      <hr/>
+      <button class="ui primary button" type="submit"> Save </button>
+      <button class="ui secondary button" type="button"> Cancel </button>
     </form>
   </div>
+
+  <!-- DEVICES -->
+  <div style="float: left; margin-left: 45px;">
+
+  </div>
+
 </div>
