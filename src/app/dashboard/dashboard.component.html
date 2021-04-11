@@ -1,25 +1,63 @@
-<div class="ui raised padded text segment" style="margin-top: 90px; position: fixed; margin-left: 180px; width: 1000px; height: 600px;">
+<div class="ui raised padded text segment" style="margin-top: 90px; position: fixed; margin-left: 180px; width: 90%; height: 90%;">
 
-<div style="overflow: hidden; width: 200px;">
-    
-    <div class="ui grid container" style="float: left;">
-        <div class="four wide column">
-           
-        </div>
-        <br/>
+  <div class="ui raised padded text segment" *ngIf="myself$ | async as myself" (click) = "onIncidents()"
+  style="background-color:#ddfbfc;
+  width:15%;
+  height: 30%;
+  margin: auto;
+  position: fixed;
+  text-align:left;
+  float: left;" >
+    <p><span style="font-weight: bold;">{{ myself.name }}</span></p>
+    <p>Drafts: <span>{{ myself.drafts }}</span></p>
+    <p>Executing: <span>{{ myself.executing }}</span></p>
+    <p>Canceled: <span>{{ myself.canceled }}</span></p>
+    <p>Completed: <span>{{ myself.completed }}</span></p>
+  </div>
 
-        <div style="margin-bottom: 10px; margin-left: 20px; margin-top: 0px;">
-           
-        </div>
+  <div class="ui raised padded text segment" *ngIf="myself1$ | async as myself" (click) = "onPlans()"
+  style="background-color:#ddfbfc;
+  width:15%;
+  height: 30%;
+  margin: 0 0 0 15.25%;
+  position: fixed;
+  text-align:left;
+  float:left" >
+    <p><span style="font-weight: bold;">{{ myself.name }}</span></p>
+    <p>Drafts: <span>{{ myself.drafts }}</span></p>
+    <p>Executing: <span>{{ myself.executing }}</span></p>
+    <p>Canceled: <span>{{ myself.canceled }}</span></p>
+    <p>Completed: <span>{{ myself.completed }}</span></p>
+  </div>
 
+  <div class="ui raised padded text segment" *ngIf="myself2$ | async as myself" (click) = "onDocuments()"
+  style="background-color:#ddfbfc;
+  width:15%;
+  height: 30%;
+  margin: 15% 0 0 0;
+  position: fixed;
+  text-align:left;
+  float: left;" >
+    <p><span style="font-weight: bold;">{{ myself.name }}</span></p>
+    <p>Drafts: <span>{{ myself.drafts }}</span></p>
+    <p>Executing: <span>{{ myself.executing }}</span></p>
+    <p>Canceled: <span>{{ myself.canceled }}</span></p>
+    <p>Completed: <span>{{ myself.completed }}</span></p>
+  </div>
 
-    </div>
-
-    <div style="float: left;">
-
-    </div>
-
-</div>
-
-
+  <div class="ui raised padded text segment" *ngIf="myself3$ | async as myself" (click) = "onWorkLoads()"
+  style="background-color:#ddfbfc;
+  width:15%;
+  height: 30%;
+  margin: 15% 0 0 15.25%;
+  position: fixed;
+  text-align:left;
+  float:left" >
+    <p><span style="font-weight: bold;">{{ myself.name }}</span></p>
+    <p>Drafts: <span>{{ myself.drafts }}</span></p>
+    <p>Executing: <span>{{ myself.executing }}</span></p>
+    <p>Canceled: <span>{{ myself.canceled }}</span></p>
+    <p>Completed: <span>{{ myself.completed }}</span></p>
+  </div>
+    <app-chart style="height: 50;"></app-chart>>
 </div>

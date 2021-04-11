@@ -19,6 +19,9 @@ import { TorbaComponent } from './torba/torba.component';
 import { DvaCovekaComponent } from './dva-coveka/dva-coveka.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AlertsComponent } from './alerts/alerts.component';
+import { DashboardViewComponent } from './dashboard-view/dashboard-view.component';
+import { ChartComponent } from './chart/chart.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -38,11 +41,15 @@ import { AlertsComponent } from './alerts/alerts.component';
     DvaCovekaComponent,
     SettingsComponent,
     AlertsComponent,
+    DashboardViewComponent,
+    ChartComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

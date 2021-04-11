@@ -11,6 +11,7 @@ import {SearchComponent} from './search/search.component';
 import {TorbaComponent} from './torba/torba.component';
 import {SettingsComponent} from './settings/settings.component';
 import { AlertsComponent } from './alerts/alerts.component';
+import { ChartComponent } from './chart/chart.component';
 
 const routes: Routes = [
   {path: "", redirectTo: "/logIn",pathMatch: 'full'},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: "dashboard", component: DashboardComponent },
   { path: 'alerts', component: AlertsComponent },
   {path: "settings", component: SettingsComponent },
+  {path: "chart", component: ChartComponent },
 ];
 
 @NgModule({
