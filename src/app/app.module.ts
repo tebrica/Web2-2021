@@ -19,9 +19,15 @@ import { TorbaComponent } from './torba/torba.component';
 import { DvaCovekaComponent } from './dva-coveka/dva-coveka.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AlertsComponent } from './alerts/alerts.component';
+//<<<<<<< develop
 import { DashboardViewComponent } from './dashboard-view/dashboard-view.component';
 import { ChartComponent } from './chart/chart.component';
 import { ChartsModule } from 'ng2-charts';
+//=======
+import { UserInfoComponent } from './user-info/user-info.component';
+import { NewIncidentComponent } from './new-incident/new-incident.component';
+import { SidebarNewincidentComponent } from './sidebar-newincident/sidebar-newincident.component';
+//>>>>>>> master
 
 @NgModule({
   declarations: [
@@ -41,9 +47,15 @@ import { ChartsModule } from 'ng2-charts';
     DvaCovekaComponent,
     SettingsComponent,
     AlertsComponent,
+//<<<<<<< develop
     DashboardViewComponent,
     ChartComponent,
 
+//=======
+    UserInfoComponent,
+    NewIncidentComponent,
+    SidebarNewincidentComponent,
+//>>>>>>> master
   ],
   imports: [
     BrowserModule,

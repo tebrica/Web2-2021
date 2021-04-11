@@ -1,0 +1,209 @@
+<div style="overflow: hidden">
+  <div style="float: left; margin-top: 20px">
+    <app-sidebar-newincident
+      (onItemSelected)="logThisShit($event)"
+    ></app-sidebar-newincident>
+  </div>
+
+  <!-- NEW INCIDENT/ BASIC INFORMATION -->
+  <div *ngIf="currentlySelected == 'BasicInfo'" style="float: left; margin-left: 45px; margin-top: 20px">
+    <form>
+      <table class="ui inverted green table">
+        <tr>
+          <td>Incident ID:</td>
+          <td>INC00015</td>
+
+          <td>&nbsp;</td>
+
+          <td>Affected customers:</td>
+          <td>
+            <input type="number" placeholder="Affected customers.." style="width: 150px" />
+          </td>
+        </tr>
+
+        <tr>
+          <td>Type:</td>
+          <td>
+            <input list="lst" style="width: 150px" />
+            <datalist id="lst">
+              <option>Planned work</option>
+              <option>Non planned work</option>
+            </datalist>
+          </td>
+          <td>&nbsp;</td>
+          <td>Outage time:</td>
+          <td><input type="date" /></td>
+        </tr>
+
+        <tr>
+          <td>Priority:</td>
+          <td>
+            <input list="lst2" style="width: 150px" />
+            <datalist id="lst2">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </datalist>
+          </td>
+          <td>&nbsp;</td>
+          <td>ETR:</td>
+          <td><input type="date" /></td>
+        </tr>
+
+        <tr>
+          <td>Confirmed:</td>
+          <td>
+            <div class="ui toggle checkbox">
+              <input type="checkbox" name="public" />
+              <label></label>
+            </div>
+          </td>
+          <td>&nbsp;</td>
+          <td>Calls:</td>
+          <td><input type="number" style="width: 150px" /></td>
+        </tr>
+
+        <tr>
+          <td>Status:</td>
+          <td>Dispatched</td>
+          <td>&nbsp;</td>
+          <td>Voltage:</td>
+          <td><input type="number" style="width: 150px" /></td>
+        </tr>
+
+        <tr>
+          <td>Description:</td>
+          <td colspan="5">
+            <input type="text" style="width: 400px; height: 50px; padding: 0px" />
+          </td>
+        </tr>
+
+        <tr>
+          <td>ETA:</td>
+          <td><input type="date" /></td>
+          <td>&nbsp;</td>
+          <td>Sheduled time:</td>
+          <td><input type="date" /></td>
+        </tr>
+
+        <tr>
+          <td>ATA:</td>
+          <td><input type="date" /></td>
+        </tr>
+      </table>
+
+      <!-- FORM SUBMIT BUTTONS -->
+      <div style="margin-top: 40px; margin-left: 20px">
+        <button class="ui primary button" type="submit">Save</button>
+        <button class="ui secondary button" type="reset">Clear form</button>
+        <button class="ui red button">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- DEVICES -->
+  <div *ngIf="currentlySelected == 'Devices'" style="float: left; margin-left: 45px; margin-top: 20px">
+    <h1>DEVICES</h1>
+  </div>
+
+  <!-- RESOLUTION -->
+  <div *ngIf="currentlySelected == 'Resolution'" style="float: left; margin-left: 45px; margin-top: 20px">
+    <form>
+      <table>
+        <tr>
+          <td>Cause:</td>
+          <td>
+            <select
+              class="ui search dropdown"
+              name="cause"
+              style="margin-left: 40px">
+              <option value="Weather">Weather</option>
+              <option value="HumanFactor">Human Factor</option>
+              <option value="Faliure">Faliure</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Subcause:</td>
+          <td>
+            <select
+              class="ui search dropdown"
+              name="cause"
+              style="margin-left: 40px">
+              <option value="Weather">Weather</option>
+              <option value="HumanFactor">Human Factor</option>
+              <option value="Faliure">Faliure</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Construction type:</td>
+          <td>
+            <select
+              class="ui search dropdown"
+              name="cause"
+              style="margin-left: 40px; width: 127px">
+              <option value="Podzemni">Podzemni</option>
+              <option value="Nadzemni">Nadzemni</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Material:</td>
+          <td>
+            <select
+              class="ui search dropdown"
+              name="cause"
+              style="margin-left: 40px; width: 127px">
+              <option value="Metal">Metal</option>
+              <option value="Plastika">Plastika</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+
+      <!-- FORM SUBMIT BUTTONS -->
+      <div style="margin-top: 40px; margin-left: 20px">
+        <button class="ui primary button" type="submit">Save</button>
+        <button class="ui secondary button" type="reset">Clear form</button>
+        <button class="ui red button">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- CALLS -->
+  <div
+    *ngIf="currentlySelected == 'Calls'"
+    style="float: left; margin-left: 45px; margin-top: 20px"
+  >
+    <h1>CALLS</h1>
+  </div>
+
+  <!-- CREW -->
+  <div
+    *ngIf="currentlySelected == 'Crew'"
+    style="float: left; margin-left: 45px; margin-top: 20px"
+  >
+    <h1>CREW</h1>
+  </div>
+
+  <!-- MULTIMEDIA ATTACHMENTS -->
+  <div
+    *ngIf="currentlySelected == 'MultimediaAttachments'"
+    style="float: left; margin-left: 45px; margin-top: 20px"
+  >
+    <h1>MULTIMEDIA ATTACHMENTS</h1>
+  </div>
+
+  <!-- EQUIPMENT -->
+  <div
+    *ngIf="currentlySelected == 'Equipment'"
+    style="float: left; margin-left: 45px; margin-top: 20px"
+  >
+    <h1>EQUIPMENT</h1>
+  </div>
+</div>

@@ -305,7 +305,7 @@
   }
 </style>
 
-<div class="header" id="header1" style="height: 90px; overflow: hidden; width: 100% ; top:0; position: fixed; background-color:DimGrey;">
+<div class="header" id="header1" style="height: 70px; overflow: hidden; width: 100% ; top:0; position: fixed; background-color:DimGrey;">
 
   <div style="float: left;">
     <i class="angle double up icon" style="float: left;"></i>
@@ -316,16 +316,20 @@
 
   <div>
 
-    <div style="float: left; margin-top:  15px; position: fixed; right: 70px; margin-left: 200px;">
+    <div style="float: left; margin-top:  8px; position: fixed; right: 70px; margin-left: 200px;">
       <p style="font-size: 14pt; color: black;">USERNAME</p>
-      <a style="color: black;">Acc setings</a>
+      
+
+      <button>
+        <a class="item" href="/userinfo"> Account info </a>
+      </button>
     </div>
 
   </div>
 
-      <div class="ui placeholder" style="float: right; margin-right: 10px; margin-top: 20px; height: 30px; width: 40px;">
-          <div style="height: 30px;" class="image"></div>
-      </div>
+    <div class="ui placeholder" style="float: right; margin-right: 15px; margin-top: 20px; height: 30px; width: 40px;">
+      <div style="height: 30px;" class="image"></div>
+    </div>
 
 
 
@@ -334,7 +338,7 @@
 
   <!-- OVO JA RADIM ISPOD -->
 <div>
-  <div style="width: 150px; top: 90px;" class="ui visible inverted left vertical sidebar menu">
+  <div style="width: 150px; top: 70px;" class="ui visible inverted left vertical sidebar menu">
     <a class="item"  (click) = "onSearch()">
       <i class="search icon" ></i>
       Search
@@ -363,41 +367,22 @@
       <i class="users icon" ></i>
       Dva coveka
     </a>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
 
-    <a class="item" (click) = "onSettings()">
-      <i class="wrench icon" ></i>
-      Settings
-    </a>
-    <a class="item" (click) = "onAlerts()">
-      <i class="bell icon" ></i>
-      Alerts
-    </a>
-    <a class="item" (click) = "onUserLogOut()">
-      <i class="logout icon" ></i>
-      Log Out
-    </a>
+    <div style="margin-top: 125px;">
+      <a class="item" (click) = "onSettings()">
+        <i class="wrench icon" ></i>
+        Settings
+      </a>
+      <a class="item" (click) = "onAlerts()">
+        <i class="bell icon" ></i>
+        Alerts
+      </a>
+      <a class="item" (click) = "onUserLogOut()">
+        <i class="logout icon" ></i>
+        Log Out
+      </a>
+    </div>
+    
   </div>
 </div>
 
@@ -409,6 +394,9 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<div>
-  <router-outlet></router-outlet>
+
+<div style=" background-color: black;">
+  <div class="ui raised text segment" style="margin-top: 70px; position: fixed; margin-left: 230px; width: 900px; height: 600px; padding-top: 5px; position: fixed;">
+    <router-outlet></router-outlet>
+  </div>
 </div>
