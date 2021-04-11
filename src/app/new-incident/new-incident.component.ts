@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewIncidentComponent implements OnInit {
 
+  currentlySelected:string = "BasicInfo";
+
   constructor() { }
 
+  public logThisShit(value:string) {
+    console.log(value);
+    this.currentlySelected = value;
+  }
+
   ngOnInit(): void {
+
   }
 
 }
