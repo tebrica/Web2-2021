@@ -27,6 +27,9 @@ import { ChartsModule } from 'ng2-charts';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { NewIncidentComponent } from './new-incident/new-incident.component';
 import { SidebarNewincidentComponent } from './sidebar-newincident/sidebar-newincident.component';
+import { WorkWarrantComponent } from './work-warrant/work-warrant.component';
+import { NewWorkWarrantComponent } from './new-work-warrant/new-work-warrant.component';
+import { SidebarNewWorkWarrantComponent } from './sidebar-new-work-warrant/sidebar-new-work-warrant.component';
 //>>>>>>> master
 
 @NgModule({
@@ -55,6 +58,9 @@ import { SidebarNewincidentComponent } from './sidebar-newincident/sidebar-newin
     UserInfoComponent,
     NewIncidentComponent,
     SidebarNewincidentComponent,
+    WorkWarrantComponent,
+    NewWorkWarrantComponent,
+    SidebarNewWorkWarrantComponent,
 //>>>>>>> master
   ],
   imports: [

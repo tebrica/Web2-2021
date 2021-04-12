@@ -1,0 +1,204 @@
+<div style="overflow: hidden">
+    <div style="float: left; margin-top: 20px">
+      <app-sidebar-new-work-warrant (onItemSelected)="logedValue($event)"></app-sidebar-new-work-warrant>
+    </div>
+  
+    <!-- NEW INCIDENT/ BASIC INFORMATION -->
+    <div *ngIf="currentlySelected == 'BasicInfo'" style="float: left; margin-left: 45px; margin-top: 20px">
+      <form>
+        <table class="ui inverted table">
+  
+          <tr>
+            <td>Type:</td>
+            <td>
+              <input list="typelist" style="width: 150px" />
+              <datalist id="typelist">
+                <option>Planned work</option>
+                <option>Non planned work</option>
+              </datalist>
+            </td>
+            <td>Status:</td>
+            <td>
+              DRAFT
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+  
+          <tr>
+  
+          </tr>
+  
+          <tr>
+            <td>Incident:</td>
+            <td><a href="/incidents">INC1</a></td>
+            <td>Emergency :</td>
+            <td>
+              <div class="ui toggle checkbox">
+                <input type="checkbox" name="public" />
+                <label></label>
+              </div>
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+  
+          <tr>
+            <td>Company:</td>
+            <td><input type="text" style="width: 150px" /></td>
+            <td>&nbsp;</td>
+            <td>Address:</td>
+            <td><input type="text" style="width: 150px" /></td>
+          </tr>
+  
+          <tr>
+            <td>Phone No.</td>
+            <td><input type="number" style="width: 150px" /></td>
+            <td>&nbsp;</td>
+          </tr>
+  
+          <tr>
+            <td>Start:</td>
+            <td><input type="date" /></td>
+            <td>&nbsp;</td>
+            <td>Finish:</td>
+            <td><input type="date" /></td>
+          </tr>
+  
+          <tr>
+            <td>Created on:</td>
+            <td><input type="date" /></td>
+            <td>&nbsp;</td>
+  
+            <td>Created by:</td>
+            <td>{{username}}</td>
+          </tr>
+  
+          <tr>
+            <td>Description:</td>
+            <td colspan="5">
+              <input type="text" style="width: 100%; height: 40px; padding: 0px" />
+            </td>
+          </tr>
+          <tr>
+            <td>Purpose:</td>
+            <td colspan="5">
+              <input type="text" style="width: 100%; height: 40px; padding: 0px" />
+            </td>
+          </tr>
+        </table>
+  
+        <!-- FORM SUBMIT BUTTONS -->
+        <div style="margin-top: 40px; margin-left: 20px">
+          <button class="ui primary button" type="submit">Save</button>
+          <button class="ui secondary button" type="reset">Clear form</button>
+          <button class="ui red button">Cancel</button>
+        </div>
+      </form>
+    </div>
+  
+    <!-- HISTORY OF STATE CHANGES -->
+    <div *ngIf="currentlySelected == 'HistoryOfStateChanges'" style="float: left; margin-left: 45px; margin-top: 20px">
+      <h3>Change history</h3>
+      <div style="overflow: scroll; margin-bottom: 15px; height: 170px; width: 100%;">
+  
+        <table class="ui inverted table">
+          <thead>
+            <tr>
+              <th>Changed by</th>
+              <th>Changed on</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{username}}</td>
+              <td>date</td>
+            </tr>
+            <tr>
+              <td>{{username}}</td>
+              <td>date</td>
+            </tr>
+            <tr>
+              <td>{{username}}</td>
+              <td>date</td>
+            </tr>
+            <tr>
+              <td>{{username}}</td>
+              <td>date</td>
+            </tr>
+            <tr>
+              <td>{{username}}</td>
+              <td>date</td>
+            </tr>
+            <tr>
+              <td>{{username}}</td>
+              <td>date</td>
+            </tr>
+          </tbody>
+        </table>
+  
+  
+      </div>
+  
+      <form>
+        <table class="ui inverted table">
+  
+          <tr>
+            <td>Change status of document:</td>
+            <td>
+              <select class="ui search dropdown" name="cause" style="margin-left: 40px">
+                <option value="Approve">Approve</option>
+                <option value="Deny">Deny</option>
+                <option value="Cancel">Cancel</option>
+              </select>
+            </td>
+          </tr>
+  
+         
+        </table>
+  
+        <!-- FORM SUBMIT BUTTONS -->
+        <div style="margin-top: 40px; margin-left: 20px">
+          <button class="ui primary button" type="submit">Save</button>
+          <button class="ui secondary button" type="reset">Clear form</button>
+          <button class="ui red button">Cancel</button>
+        </div>
+      </form>
+  
+    </div>
+  
+  
+    <!-- MULTIMEDIA ATTACHMENTS -->
+    <div *ngIf="currentlySelected == 'MultimediaAttachments'" style="float: left; margin-left: 45px; margin-top: 20px">
+     
+  
+      <div style="float: left">
+        <div style="margin-left: 20px; float: left">
+          
+          <label for="myimage"><b>Choose picture: </b></label>
+          <br>
+          <input
+            type="file"
+            id="myimage"
+            name="myimage"
+            accept="image/*"
+            
+            style="margin-top: 20px; width: 210px"
+          />
+          <img
+            id="myimagetag"
+            class="ui small circular image"
+            style="margin-left: 20px"
+            src="https://i.insider.com/5484d9d1eab8ea3017b17e29?width=600&format=jpeg&auto=webp"
+          />
+  
+  
+        </div>
+  
+      </div>
+  
+    </div>
+  
+    <!-- EQUIPMENT -->
+    <div *ngIf="currentlySelected == 'Equipment'" style="float: left; margin-left: 45px; margin-top: 20px">
+      <h1>EQUIPMENT</h1>
+    </div>
+  </div>
