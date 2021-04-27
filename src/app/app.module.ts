@@ -19,9 +19,18 @@ import { TorbaComponent } from './torba/torba.component';
 import { DvaCovekaComponent } from './dva-coveka/dva-coveka.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AlertsComponent } from './alerts/alerts.component';
+//<<<<<<< develop
+import { DashboardViewComponent } from './dashboard-view/dashboard-view.component';
+import { ChartComponent } from './chart/chart.component';
+import { ChartsModule } from 'ng2-charts';
+//=======
 import { UserInfoComponent } from './user-info/user-info.component';
 import { NewIncidentComponent } from './new-incident/new-incident.component';
 import { SidebarNewincidentComponent } from './sidebar-newincident/sidebar-newincident.component';
+import { WorkWarrantComponent } from './work-warrant/work-warrant.component';
+import { NewWorkWarrantComponent } from './new-work-warrant/new-work-warrant.component';
+import { SidebarNewWorkWarrantComponent } from './sidebar-new-work-warrant/sidebar-new-work-warrant.component';
+//>>>>>>> master
 
 @NgModule({
   declarations: [
@@ -41,14 +50,24 @@ import { SidebarNewincidentComponent } from './sidebar-newincident/sidebar-newin
     DvaCovekaComponent,
     SettingsComponent,
     AlertsComponent,
+//<<<<<<< develop
+    DashboardViewComponent,
+    ChartComponent,
+
+//=======
     UserInfoComponent,
     NewIncidentComponent,
     SidebarNewincidentComponent,
+    WorkWarrantComponent,
+    NewWorkWarrantComponent,
+    SidebarNewWorkWarrantComponent,
+//>>>>>>> master
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

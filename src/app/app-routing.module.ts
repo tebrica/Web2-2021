@@ -11,8 +11,12 @@ import {SearchComponent} from './search/search.component';
 import {TorbaComponent} from './torba/torba.component';
 import {SettingsComponent} from './settings/settings.component';
 import { AlertsComponent } from './alerts/alerts.component';
+import { ChartComponent } from './chart/chart.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { NewIncidentComponent } from './new-incident/new-incident.component';
+import { WorkWarrantComponent } from './work-warrant/work-warrant.component';
+import { NewWorkWarrantComponent } from './new-work-warrant/new-work-warrant.component';
+
 
 const routes: Routes = [
   { path: "", redirectTo: "/logIn",pathMatch: 'full'},
@@ -25,9 +29,14 @@ const routes: Routes = [
   { path: 'torba', component: TorbaComponent },
   { path: "dashboard", component: DashboardComponent },
   { path: 'alerts', component: AlertsComponent },
+  {path: "settings", component: SettingsComponent },
+  {path: "chart", component: ChartComponent },
   { path: "settings", component: SettingsComponent },
   { path: "userinfo", component: UserInfoComponent },
   { path: "newincident", component: NewIncidentComponent },
+  { path: "workwarrant", component: WorkWarrantComponent },
+  { path: "newworkwarrant", component: NewWorkWarrantComponent }
+
 ];
 
 @NgModule({
