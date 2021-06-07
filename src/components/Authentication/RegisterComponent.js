@@ -31,7 +31,7 @@ const RegisterComponent = () => {
 
                         <td>
                             <div>
-                                <Field name="date" as={DatePicker} />
+                                {/* <Field name="date" as={DatePicker} /> */}
                             </div>
                         </td>
                     </tr>
