@@ -1,16 +1,33 @@
-import { Form, Formik, ErrorMessage,Field } from 'formik';
 import React from 'react';
+import { Form, Formik, ErrorMessage,Field } from 'formik';
+import * as yup from 'yup'
+
+const validationSheme = yup.object().shape({
+    email: yup.string().required("Required!"),
+    date: yup.string().required('Required!'),
+    ime: yup.string().required('Required!'),
+    prz: yup.string().required('Required!'),
+    pass: yup.string().required("Required!"),
+    pass2: yup.string().required("Required!"),
+});
 
 const RegisterComponent = () => {
 
     const onRegisterSubmit = (values,{resetForm}) => {
         resetForm();
+        values.date = document.getElementById('date').value
+        if (values.date === '') { return }
+        if (values.pass !== values.pass2) { alert('Passwords dont match!'); return; }
+        console.log(values)
     }
 
     return (<div>
         <h3 style={{marginTop: 25}}> Register new account </h3>
 
-        <Formik onSubmit={onRegisterSubmit}>
+        <Formik 
+            onSubmit={onRegisterSubmit}
+            initialValues={{email : '', date: Date.now(), ime: '', prz: '', pass: '', pass2: ''}}
+            validationSchema={validationSheme}>
             <Form className="ui form">
                 <table>
                     <tr>
@@ -23,15 +40,16 @@ const RegisterComponent = () => {
 
                                 <div style={{ float: "left" }}>
                                     <ErrorMessage name="email">
-                                        {(msg) => <div style={{ color: "red", marginLeft: 80 }}> {msg} </div>}
+                                        {(msg) => <div style={{ color: "red", marginLeft: 30 }}> {msg} </div>}
                                     </ErrorMessage>
                                 </div>
                             </div>
                         </td>
 
                         <td>
-                            <div>
-                                {/* <Field name="date" as={DatePicker} /> */}
+                            <div style={{marginLeft: 0, marginTop: 8}}>
+                                <label htmlFor="date"> Datum rodjenja </label>
+                                <input id="date" type="date" name="date" style={{ width: 150, marginLeft: 0, height: 38 }} />
                             </div>
                         </td>
                     </tr>
@@ -45,7 +63,7 @@ const RegisterComponent = () => {
 
                                 <div style={{ float: "left", marginLeft: 35 }}>
                                     <ErrorMessage name="ime">
-                                        {(msg) => <div style={{ color: "red", marginLeft: 80 }}> {msg} </div>}
+                                        {(msg) => <div style={{ color: "red", marginLeft: 0 }}> {msg} </div>}
                                     </ErrorMessage>
                                 </div>
                             </div>
@@ -60,7 +78,7 @@ const RegisterComponent = () => {
 
                                 <div style={{ float: "left", marginLeft: 35 }}>
                                     <ErrorMessage name="prz">
-                                        {(msg) => <div style={{ color: "red", marginLeft: 80 }}> {msg} </div>}
+                                        {(msg) => <div style={{ color: "red", marginLeft: 0 }}> {msg} </div>}
                                     </ErrorMessage>
                                 </div>
                             </div>
@@ -76,7 +94,7 @@ const RegisterComponent = () => {
             
                                 <div style={{ float: "left", marginLeft: 35 }}>
                                     <ErrorMessage name="pass">
-                                        {(msg) => <div style={{ color: "red", marginLeft: 80 }}> {msg} </div>}
+                                        {(msg) => <div style={{ color: "red", marginLeft: 0 }}> {msg} </div>}
                                     </ErrorMessage>
                                 </div>
                             </div>
@@ -91,7 +109,7 @@ const RegisterComponent = () => {
                 
                                 <div style={{ float: "left", marginLeft: 35 }}>
                                     <ErrorMessage name="pass2">
-                                        {(msg) => <div style={{ color: "red", marginLeft: 80 }}> {msg} </div>}
+                                        {(msg) => <div style={{ color: "red", marginLeft: 0 }}> {msg} </div>}
                                     </ErrorMessage>
                                 </div>
                             </div>

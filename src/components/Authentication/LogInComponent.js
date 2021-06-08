@@ -11,6 +11,7 @@ const LogInComponent = () => {
 
     const onFormSubmit = (values,{resetForm}) => {
         resetForm();
+        console.log(values)
     };
 
     return (

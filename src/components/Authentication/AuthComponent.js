@@ -13,7 +13,9 @@ const AuthComponent = () => {
             <hr/>
 
             <table>
-                <tr>
+                <thead></thead>
+                <tbody>
+                    <tr>
                     <td>
                         <div style={{float: 'left',marginTop: 10, marginLeft: 65}}>
                             <img src="https://www.glas-javnosti.rs/uploads/images/0/2020_06_11/Nikola-Tesla-WIKI.png" style={{width: 250, height: 200}} alt="NoPic"/>
@@ -39,7 +41,8 @@ const AuthComponent = () => {
                     <td>
                         <SocialNetworks/>
                     </td>
-                </tr>
+                    </tr>
+                </tbody>
             </table>
         </div>
     );
