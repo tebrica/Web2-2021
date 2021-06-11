@@ -28,6 +28,11 @@ const RegisterComponent = () => {
             onSubmit={onRegisterSubmit}
             initialValues={{email : '', date: Date.now(), ime: '', prz: '', pass: '', pass2: ''}}
             validationSchema={validationSheme}>
+            
+            {({setFieldValue}) => (
+
+       
+
             <Form className="ui form">
                 <table>
                     <tr>
@@ -115,12 +120,18 @@ const RegisterComponent = () => {
                             </div>
                         </td>
                     </tr>
+                    <tr>
+                        <td colSpan="2">
+                            <input id="file" name="file" type="file" style={{width: 210, marginTop: 20}} onChange={(e) => {setFieldValue("file",e.currentTarget.files[0])}} />
+                        </td>
+                    </tr>
                 </table>
                 
                 <br/>
-                <button type="submit" className="ui small blue button"> {" "} Log In {" "} </button>
+                <button type="submit" className="ui small blue button"> {" "} Register user {" "} </button>
 
             </Form>
+            )}
         </Formik>
 
     </div>);

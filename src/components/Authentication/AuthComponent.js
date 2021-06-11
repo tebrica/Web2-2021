@@ -8,7 +8,7 @@ const AuthComponent = () => {
     const [authForm, setAuthForm] = useState('login');
 
     return (
-        <div className="ui raised container segment" style={{textAlign: 'center'}}>
+        <div className="ui raised container segment" style={{textAlign: 'center', top: 60}}>
             <h3 className="ui center small header" style={{margin: 'auto',marginTop: 8}}> Electricity for future! </h3>
             <hr/>
 
@@ -29,7 +29,7 @@ const AuthComponent = () => {
                     </td>
 
                     <td>
-                        <div style={{float: 'left', backgroundColor: 'springgreen', height:480, width: 380, marginLeft: 170, marginTop: 0}}>
+                        <div style={{float: 'left', backgroundColor: 'springgreen', height:450, width: 380, marginLeft: 170, marginTop: 0}}>
                         <div style={{overflow: 'hidden'}}>
                             <button className="ui inverted green button" style={{width: '48%'}} onClick={() => setAuthForm('login')}> Log In </button>
                             <button className="ui inverted green button" style={{width: '48%'}} onClick={() => setAuthForm('register')}> Register </button>
