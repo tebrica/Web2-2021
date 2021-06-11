@@ -1,6 +1,8 @@
 import React from 'react';
 import { Form, Formik, ErrorMessage,Field } from 'formik';
 import * as yup from 'yup'
+import { useDispatch } from 'react-redux';
+import { RegisterUser } from '../../store/actions';
 
 const validationSheme = yup.object().shape({
     email: yup.string().required("Required!"),
@@ -13,12 +15,14 @@ const validationSheme = yup.object().shape({
 
 const RegisterComponent = () => {
 
+    const dispatch = useDispatch();
+
     const onRegisterSubmit = (values,{resetForm}) => {
         resetForm();
         values.date = document.getElementById('date').value
         if (values.date === '') { return }
         if (values.pass !== values.pass2) { alert('Passwords dont match!'); return; }
-        console.log(values)
+        //dispatch(RegisterUser(values));
     }
 
     return (<div>
