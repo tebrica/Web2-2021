@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const SideBar = () => {
+
     if (window.location.pathname === '/')
         return <div></div>
         
-    return (<div>
+    return (<div id="sidebar">
         <div style={{width: 150,top: 60, position: 'fixed'}} className="ui visible inverted left vertical sidebar menu">
           <a className="item" href="/">
             <i className="search icon" ></i>
