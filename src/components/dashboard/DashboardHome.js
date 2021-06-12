@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import DashBoardHomeItem from './DashboardHomeItem';
 
 const DashBoardHome = () => {
+
     return (<div style={{marginLeft: 150, height: 550}}>
         
         <table style={{marginLeft: 120, marginTop: 100, position: 'fixed'}}>

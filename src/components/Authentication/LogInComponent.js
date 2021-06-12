@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Formik, Form, ErrorMessage, Field } from 'formik';
 import * as yup from 'yup'
+import { useDispatch } from 'react-redux';
+import { LoginUser } from '../../store/actions/index'
+import { useHistory } from 'react-router';
 
 const validationSheme = yup.object().shape({
     email: yup.string().required("Username is required!"),
@@ -9,10 +12,25 @@ const validationSheme = yup.object().shape({
 
 const LogInComponent = () => {
 
+    const dispatch = useDispatch();
+    const { push } = useHistory();
+
     const onFormSubmit = (values,{resetForm}) => {
         resetForm();
-        console.log(values)
+        const data = { username: values.email, password: values.pass, 'grant_type' : 'password' }
+        const payload = {data: data, loginCallback: () => push('/dashboard/home')}
+        dispatch(LoginUser(payload))
+        setTimeout(() => {
+            window.location.reload();
+        },600)
     };
+
+    useEffect(() => {
+        if (localStorage.getItem('token') !== '' && localStorage.getItem('token') !== null && localStorage.getItem('token') !== undefined) {
+            push('/dashboard/home')
+            window.location.reload()
+        } // eslint-disable-next-line
+    },[])
 
     return (
         <div>
