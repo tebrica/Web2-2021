@@ -1,11 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 
 const SideBar = () => {
 
-    if (window.location.pathname === '/')
-        return <div></div>
+  const [show,setShow] = useState(0);
+  const { push } = useHistory();
+
+  const onLogoutClick = () => {
+    localStorage.setItem('token','');
+    setShow(1)
+    push('/');
+  }
+
+  if (window.location.pathname === '/')
+      return <div></div>
         
-    return (<div id="sidebar">
+  return (<div id="sidebar">
         <div style={{width: 150,top: 60, position: 'fixed'}} className="ui visible inverted left vertical sidebar menu">
           <a className="item" href="/">
             <i className="search icon" ></i>
@@ -45,10 +55,10 @@ const SideBar = () => {
               <i className="bell icon" ></i>
               Alerts
             </a>
-            <a className="item" href="/">
-              <i className="logout icon" ></i>
+            <button className="ui black button" onClick={() => onLogoutClick()}>
               Log Out
-            </a>
+              <i className="logout icon" style={{marginLeft: 32}}></i>
+            </button>
           </div>
           
         </div>
