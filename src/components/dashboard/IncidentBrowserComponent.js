@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'
+import { RefreshToken } from '../../store/actions';
 
 const IncidentBrowserComponent = () => {
+
+    const dispatch = useDispatch();
     
+    useEffect(() => {
+        dispatch(RefreshToken());
+    })
+
     return (
         <div style={{marginLeft: 150, height: 550}}>
             <div className="ui container segment" style={{paddingLeft: 20,marginTop: 100, position: 'fixed', width: 920, right: 1, left: 70, height: 490}} >

@@ -20,17 +20,7 @@ const LogInComponent = () => {
         const data = { username: values.email, password: values.pass, 'grant_type' : 'password' }
         const payload = {data: data, loginCallback: () => push('/dashboard/home')}
         dispatch(LoginUser(payload))
-        setTimeout(() => {
-            window.location.reload();
-        },600)
     };
-
-    useEffect(() => {
-        if (localStorage.getItem('token') !== '' && localStorage.getItem('token') !== null && localStorage.getItem('token') !== undefined) {
-            push('/dashboard/home')
-            window.location.reload()
-        } // eslint-disable-next-line
-    },[])
 
     return (
         <div>
