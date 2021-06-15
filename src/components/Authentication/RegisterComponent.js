@@ -13,7 +13,7 @@ const validationSheme = yup.object().shape({
     pass2: yup.string().required("Required!"),
 });
 
-const RegisterComponent = () => {
+const RegisterComponent = ({showLogin}) => {
 
     const dispatch = useDispatch();
 
@@ -22,6 +22,7 @@ const RegisterComponent = () => {
         values.date = document.getElementById('date').value
         if (values.date === '') { return }
         if (values.pass !== values.pass2) { alert('Passwords dont match!'); return; }
+        showLogin('login');
         dispatch(RegisterUser(values));
     }
 

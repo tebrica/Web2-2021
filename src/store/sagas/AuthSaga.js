@@ -1,7 +1,7 @@
 import { put, call, takeLatest } from "redux-saga/effects";
 import { REGISTER, LOGIN, LOGOUT, REFRESH_TOKEN } from "../../constants/action-types";
 import authService from "../../services/AuthService";
-import { SaveToken, LogoutUser } from "../actions";
+import { SaveToken } from "../actions";
 
 function* registerUser({payload}) {
     const data = { Email: payload.email, Password: payload.pass, ConfirmPassword: payload.pass2 }

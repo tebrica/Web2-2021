@@ -8,12 +8,14 @@ const initialState = {
 
 export default function auth(state = initialState, action) {
     switch(action.type) {
+
         case SAVE_TOKEN: {
-            console.log('BRATE')
             return { ...state, token: action.payload, };
         }
+
         default: {
             return {...state}
         }
+        
     }
 }

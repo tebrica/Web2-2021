@@ -18,37 +18,37 @@ const IncidentBrowserComponent = () => {
                 {/* HEADER TABELE  */}
                 <div style={{overflow: 'hidden'}}>
                     <Link to="/dashboard/new-incident" className="ui primary button" style={{float: 'left', marginLeft: 20, marginTop: 15}}> + New </Link>
-                    <div class="ui buttons" style={{marginTop : 15, marginLeft: 70}}>
-                        <button class="ui button">All incidents</button>
-                        <div class="or"></div>
-                        <button class="ui positive button">My Incidents</button>
+                    <div className="ui buttons" style={{marginTop : 15, marginLeft: 70}}>
+                        <button className="ui button">All incidents</button>
+                        <div className="or"></div>
+                        <button className="ui positive button">My Incidents</button>
                     </div>
                     <button className="ui black button" style={{marginLeft: 200}}> Filter </button>
                 </div>
 
                 {/* TABELA */}
-                <table class="ui green table" style={{marginTop: 30}}>
+                <table className="ui green table" style={{marginTop: 30}}>
                     <thead>
                         <tr>
                             <th>
                                 Id
-                                <i class="caret down icon"></i>
+                                <i className="caret down icon"></i>
                             </th>
                             <th>
                                 Start Date
-                                <i class="caret down icon"></i>
+                                <i className="caret down icon"></i>
                             </th>
                             <th>
                                 Phone No.
-                                <i class="caret down icon"></i>
+                                <i className="caret down icon"></i>
                             </th>
                             <th>
                                 Status
-                                <i class="caret down icon"></i>
+                                <i className="caret down icon"></i>
                             </th>
                             <th>
                                 Address
-                                <i class="caret down icon"></i>
+                                <i className="caret down icon"></i>
                             </th>
                         </tr>
                     </thead>

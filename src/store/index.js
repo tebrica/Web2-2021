@@ -33,6 +33,7 @@ const saveState = (state) => {
   }
 };
 
+// eslint-disable-next-line
 const peristedState = loadState();
 
 store.subscribe(() => {
