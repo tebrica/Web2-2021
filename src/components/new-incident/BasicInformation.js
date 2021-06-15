@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik, Form, ErrorMessage, Field } from 'formik';
-import * as yup from 'yup'
+//import * as yup from 'yup'
 
 const BasicInformation = () => {
 
-    const [incidentInformation, setIncidentInformation] = useState({});
+    //const [incidentInformation, setIncidentInformation] = useState({});
 
     return (<div className="ui green segment">
         <Formik>

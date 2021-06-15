@@ -34,7 +34,7 @@ const AuthComponent = () => {
                             <button className="ui inverted green button" style={{width: '48%'}} onClick={() => setAuthForm('login')}> Log In </button>
                             <button className="ui inverted green button" style={{width: '48%'}} onClick={() => setAuthForm('register')}> Register </button>
                         </div>
-                            {authForm === 'login' ? <LogInComponent/> : <RegisterComponent/>}
+                            {authForm === 'login' ? <LogInComponent/> : <RegisterComponent showLogin={setAuthForm}/>}
                         </div>
                     </td>
 
