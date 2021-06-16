@@ -1,15 +1,30 @@
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { RefreshToken } from '../../store/actions';
+import { GetIncidents, RefreshToken } from '../../store/actions';
+import { incidentSelector } from '../../store/selectors/AuthSelector';
 
 const IncidentBrowserComponent = () => {
 
     const dispatch = useDispatch();
+    const incidents = useSelector(incidentSelector);
     
     useEffect(() => {
-        dispatch(RefreshToken());
-    })
+        dispatch(GetIncidents())
+        dispatch(RefreshToken()); 
+        // eslint-disable-next-line
+    },[])
+
+    const renderedIncidents = incidents.map((incident) => {
+        return <tr>
+            <td> {incident.ID} </td>
+            <td> {incident.VremeRada} </td>
+            <td> {incident.Pozivi} </td>
+            <td> {incident.Status} </td>
+            <td> {incident.Voltage} </td>
+        </tr>
+    });
 
     return (
         <div style={{marginLeft: 150, height: 550}}>
@@ -53,20 +68,7 @@ const IncidentBrowserComponent = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                        <td>Apples</td>
-                        <td>200</td>
-                        <td>0g</td>
-                        <td>POTVRDJENA</td>
-                        <td> Gogoljeva 82 </td>
-                        </tr>
-                        <tr>
-                        <td>Orange</td>
-                        <td>310</td>
-                        <td>0g</td>
-                        <td>NEPOTVRDJENA</td>
-                        <td> Gogoljeva 82 </td>
-                        </tr>
+                        {renderedIncidents}
                     </tbody>
                 </table>
 
