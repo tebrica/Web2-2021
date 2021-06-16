@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT, REFRESH_TOKEN, REGISTER, SAVE_TOKEN } from '../../constants/action-types'
+import { GET_INCIDENTS, LOGIN, LOGOUT, REFRESH_TOKEN, REGISTER, SAVE_INCIDENTS, SAVE_TOKEN } from '../../constants/action-types'
 
 export const RegisterUser = (payload) => {
     return { type: REGISTER, payload: payload }
@@ -18,4 +18,12 @@ export const LogoutUser = () => {
 
 export const RefreshToken = () => {
     return { type: REFRESH_TOKEN }
+}
+
+export const GetIncidents = () => {
+    return { type: GET_INCIDENTS }
+}
+
+export const SaveIncidentsToBase = (payload) => {
+    return { type: SAVE_INCIDENTS, payload: payload}
 }

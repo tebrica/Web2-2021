@@ -2,6 +2,7 @@ import axios from 'axios'
 import qs from 'qs'
 
 const BASE_URL = 'http://localhost:8000';
+const headers = { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }
 
 const ENDPOINTS = {
     LOGIN: '/Token',
@@ -11,6 +12,8 @@ const ENDPOINTS = {
 
 const registerNewUser = async (payload) => {
     const response = await axios.post(BASE_URL + ENDPOINTS.REGISTER, payload);
+    console.log('RESPONSE:')
+    console.log(response)
     if (response.status !== 200) {
         alert("Error while registering new user!");
     }
@@ -19,7 +22,6 @@ const registerNewUser = async (payload) => {
 const loginUser = async (payload) => {
 
     const data = qs.stringify(payload);
-    const headers = { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }
 
     try {
         const response = await axios.post(BASE_URL + ENDPOINTS.LOGIN,data,headers);

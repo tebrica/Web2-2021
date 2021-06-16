@@ -23,7 +23,6 @@ function* logoutUser() {
 
 function* saveAuthToken() {
     const token = localStorage.getItem('token');
-    console.log(token);
     yield put(SaveToken(token));
 }
 
