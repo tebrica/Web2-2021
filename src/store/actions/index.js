@@ -1,4 +1,4 @@
-import { GET_INCIDENTS, LOGIN, LOGOUT, REFRESH_TOKEN, REGISTER, SAVE_INCIDENTS, SAVE_TOKEN } from '../../constants/action-types'
+import { GET_INCIDENTS, GET_WORK_REQUESTS, LOGIN, LOGOUT, REFRESH_TOKEN, REGISTER, SAVE_INCIDENTS, SAVE_TOKEN, SAVE_WORK_REQUESTS } from '../../constants/action-types'
 
 export const RegisterUser = (payload) => {
     return { type: REGISTER, payload: payload }
@@ -26,4 +26,12 @@ export const GetIncidents = () => {
 
 export const SaveIncidentsToBase = (payload) => {
     return { type: SAVE_INCIDENTS, payload: payload}
+}
+
+export const GetWorkRequests = () => {
+    return { type: GET_WORK_REQUESTS }
+}
+
+export const SaveWorkRequests = (payload) => {
+    return { type: SAVE_WORK_REQUESTS, payload: payload }
 }

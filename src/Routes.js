@@ -4,6 +4,7 @@ import AuthComponent from './components/Authentication/AuthComponent';
 import DashBoardHome from './components/dashboard/DashboardHome';
 import IncidentBrowserComponent from './components/dashboard/IncidentBrowserComponent';
 import NewIncidentComponent from './components/dashboard/NewIncidentComponent';
+import WorkRequests from './components/dashboard/WorkRequests';
 
 const Routes = () => (
     <Switch>
@@ -11,6 +12,7 @@ const Routes = () => (
         <Route exact path="/dashboard/home" component={DashBoardHome}/>
         <Route exact path="/dashboard/incidentbrowser" component={IncidentBrowserComponent}/>
         <Route exact path="/dashboard/new-incident" component={NewIncidentComponent} />
+        <Route exact path="/dashboard/work-requests" component={WorkRequests} />
     </Switch>
 )
 

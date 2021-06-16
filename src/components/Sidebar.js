@@ -34,7 +34,7 @@ const SideBar = () => {
           <i className="chart bar outline icon"></i>
           Incidents
         </a>
-        <a className="item" href="/">
+        <a className="item" href="/dashboard/work-requests">
           <i className="file icon"></i>
           Documents
         </a>
