@@ -8,12 +8,18 @@ const ENDPOINTS = {
     LOGIN: '/Token',
     REGISTER: '/api/Account/Register',
     REFRESH: '/token/refresh',
+    USER_INFO : '/api/UserInfo'
 }
 
 const registerNewUser = async (payload) => {
     const response = await axios.post(BASE_URL + ENDPOINTS.REGISTER, payload);
-    console.log('RESPONSE:')
-    console.log(response)
+    if (response.status !== 200) {
+        alert("Error while registering new user!");
+    }
+}
+
+const registerUserInfo = async (payload) => {
+    const response = await axios.post(BASE_URL + ENDPOINTS.USER_INFO, payload);
     if (response.status !== 200) {
         alert("Error while registering new user!");
     }
@@ -39,6 +45,7 @@ const loginUser = async (payload) => {
 const authService = {
     registerNewUser,
     loginUser,
+    registerUserInfo,
 }
 
 export default authService;
