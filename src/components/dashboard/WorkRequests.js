@@ -10,10 +10,8 @@ const WorkRequests = () => {
     const workRequests = useSelector(workRequestSelector)
 
     useEffect(() => {
-        dispatch(GetWorkRequests())
+        dispatch(GetWorkRequests()) // eslint-disable-next-line
     },[])
-
-    console.log(workRequests)
 
     const renderedWorkRequests =workRequests.map((workRequest) => {
         return <tr key={workRequest.IdPlana}>
@@ -30,7 +28,7 @@ const WorkRequests = () => {
         
             {/* HEADER TABELE  */}
             <div style={{overflow: 'hidden'}}>
-                <Link to="/dashboard/new-incident" className="ui primary button" style={{float: 'left', marginLeft: 20, marginTop: 15}}> + New </Link>
+                <Link to="/dashboard/new-work-request" className="ui primary button" style={{float: 'left', marginLeft: 20, marginTop: 15}}> + New </Link>
                 <div className="ui buttons" style={{marginTop : 15, marginLeft: 70}}>
                     <button className="ui button">All work requests</button>
                     <div className="or"></div>

@@ -6,6 +6,9 @@ import { SaveToken } from "../actions";
 function* registerUser({payload}) {
     const data = { Email: payload.email, Password: payload.pass, ConfirmPassword: payload.pass2 }
     yield call(authService.registerNewUser,data)
+
+    const dataInfo = { Username: payload.email, VrsteKorisnika: 'RADNIK', NazivProfilneSlike: payload.file.name, DatumRodjenja: payload.date, Adresa: 'Gogoljeva 34' };
+    yield call(authService.registerUserInfo,dataInfo)
 }
 
 function* loginUser({payload}) {

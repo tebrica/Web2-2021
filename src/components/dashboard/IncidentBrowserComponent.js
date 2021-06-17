@@ -17,7 +17,7 @@ const IncidentBrowserComponent = () => {
     },[])
 
     const renderedIncidents = incidents.map((incident) => {
-        return <tr>
+        return <tr key={incident.ID}>
             <td> {incident.ID} </td>
             <td> {incident.VremeRada} </td>
             <td> {incident.Pozivi} </td>
