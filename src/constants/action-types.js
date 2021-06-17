@@ -4,6 +4,8 @@ export const LOGIN = 'LOGIN';
 export const SAVE_TOKEN = 'SAVE_TOKEN';
 export const LOGOUT = 'LOGOUT';
 export const REFRESH_TOKEN = 'REFRESH_TOKEN';
+export const SAVE_CURRENT_LOGGED = 'SAVE_CURRENT_LOGGED';
+export const REMOVE_CURRENT_LOGGED = 'SAVE_CURRENT_LOGGED';
 
 // INCIDENTS
 export const GET_INCIDENTS = 'GET_INCIDENTS';
