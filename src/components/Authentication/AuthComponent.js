@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import LogInComponent from './LogInComponent';
 import RegisterComponent from './RegisterComponent';
 import SocialNetworks from './SocialNetworks';
+import { useHistory } from 'react-router';
 
 const AuthComponent = () => {
 
     const [authForm, setAuthForm] = useState('login');
+    const { push } = useHistory();
+
+    useEffect(() => {
+        if (localStorage.getItem('token') && localStorage.getItem('token') !== '') {
+            push('/dashboard/home')
+        } // eslint-disable-next-line
+    },[])
 
     return (
         <div className="ui raised container segment" style={{textAlign: 'center', top: 60}}>
