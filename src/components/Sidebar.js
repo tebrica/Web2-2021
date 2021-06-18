@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { LogoutUser } from '../store/actions';
 import { tokenSelector } from '../store/selectors/AuthSelector';
+import { Link } from 'react-router-dom'
 
 const SideBar = () => {
 
@@ -22,48 +23,51 @@ const SideBar = () => {
     else {
       return (<div id="sidebar">
       <div style={{width: 150,top: 60, position: 'fixed'}} className="ui visible inverted left vertical sidebar menu">
-        <a className="item" href="/">
+        
+        <Link to="/" className="ui black button" style={{width: 150}}>
           <i className="search icon" ></i>
           Search
-        </a>
-        <a className="item" href="/dashboard/home">
+        </Link>
+        <Link className="ui black button" to="/dashboard/home" style={{width: 150}}>
           <i className="home icon"  ></i>
           Home
-        </a>
-        <a className="item" href="/dashboard/incidentbrowser">
+        </Link>
+        <Link className="ui black button" to="/dashboard/incidentbrowser" style={{width: 150}}>
           <i className="chart bar outline icon"></i>
           Incidents
-        </a>
-        <a className="item" href="/dashboard/work-requests">
+        </Link>
+        <Link className="ui black button" to="/dashboard/work-requests" style={{width: 150}}>
           <i className="file icon"></i>
           Documents
-        </a>
-        <a className="item" href="/">
-          <i className="phone icon"  ></i>
+        </Link>
+        <Link className="ui black button" to="/" style={{width: 150}}>
+          <i className="phone icon"></i>
           Calls
-        </a>
-        <a className="item" href="/">
+        </Link>
+        <Link className="ui black button" to="/" style={{width: 150}}>
           <i className="briefcase icon"  ></i>
           Torba
-        </a>
-        <a className="item" href="/">
+        </Link>
+        <Link className="ui black button" to="/" style={{width: 150}}>
           <i className="users icon" ></i>
           Dva coveka
-        </a>
+        </Link>
     
         <div style={{marginTop: 125}}>
-          <a className="item" href="/">
+
+          <Link className="ui black button" to="/" style={{width: 150}}>
             <i className="wrench icon" ></i>
             Settings
-          </a>
-          <a className="item" href="/">
+          </Link>
+          <Link className="item" to="/" style={{width: 150}}>
             <i className="bell icon" ></i>
             Alerts
-          </a>
-          <button className="ui black button" onClick={() => onLogoutClick()}>
+          </Link>
+          <button className="ui black button" onClick={() => onLogoutClick()} style={{width: 150}}>
             Log Out
             <i className="logout icon" style={{marginLeft: 32}}></i>
           </button>
+
         </div>
         
       </div>
