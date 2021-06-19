@@ -23,15 +23,16 @@ const RegisterComponent = ({showLogin}) => {
         if (values.date === '') { return }
         if (values.pass !== values.pass2) { alert('Passwords dont match!'); return; }
         showLogin('login');
+        console.log(values)
         dispatch(RegisterUser(values));
     }
 
     return (<div>
-        <h3 style={{marginTop: 25}}> Register new account </h3>
+        <h3 style={{marginTop: 20}}> Register new account </h3>
 
         <Formik 
             onSubmit={onRegisterSubmit}
-            initialValues={{email : '', date: Date.now(), ime: '', prz: '', pass: '', pass2: ''}}
+            initialValues={{email : '', date: Date.now(), ime: '', prz: '', pass: '', pass2: '', role: ''}}
             validationSchema={validationSheme}>
             
             {({setFieldValue}) => (
@@ -42,7 +43,7 @@ const RegisterComponent = ({showLogin}) => {
                     <tbody>
                         <tr>
                             <td>
-                                <div className="field" style={{ overflow: "hidden",marginTop: 10 }}>
+                                <div className="field" style={{ overflow: "hidden",marginTop: 0 }}>
                                     <label htmlFor="email"> Username: </label>
                                     <div style={{ float: "left" }}>
                                         <Field type="text"name="email" placeholder="Email address.." style={{ width: 150, marginLeft: 20 }}/>
@@ -57,9 +58,9 @@ const RegisterComponent = ({showLogin}) => {
                             </td>
 
                             <td>
-                                <div style={{marginLeft: 0, marginTop: 8}}>
+                                <div style={{marginLeft: 0, marginTop: 0}}>
                                     <label htmlFor="date"> Datum rodjenja </label>
-                                    <input id="date" type="date" name="date" style={{ width: 150, marginLeft: 0, height: 38 }} />
+                                    <input id="date" type="date" name="date" style={{ width: 160, marginLeft: 0, height: 38 }} />
                                 </div>
                             </td>
                         </tr>
@@ -127,13 +128,23 @@ const RegisterComponent = ({showLogin}) => {
                         </tr>
                         <tr>
                             <td colSpan="2">
-                                <input id="file" name="file" type="file" style={{width: 210, marginTop: 20}} onChange={(e) => {setFieldValue("file",e.currentTarget.files[0])}} />
+                                <input id="file" name="file" type="file" style={{width: 210, marginTop: 15}} onChange={(e) => {setFieldValue("file",e.currentTarget.files[0])}} />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colSpan="2">
+                                <select className="ui dropdown" name="cause" style={{width: 160, marginLeft: 100, marginTop: 5, marginBottom: 5}} onChange={(e) => setFieldValue('role',e.target.value) }>
+                                    <option value="CLAN_EKIPE"> Clan ekipe </option>
+                                    <option value="DISPECER"> Dispecer </option>
+                                    <option value="RADNIK"> Radnik </option>
+                                    <option value="POTROSAC"> Potrosac </option>
+                                    <option value="ADMINISTRATOR"> Administrator </option>
+                                </select>
                             </td>
                         </tr>
                     </tbody>
                 </table>
                     
-                <br/>
                 <button type="submit" className="ui small blue button"> {" "} Register user {" "} </button>
             </Form>
             )}

@@ -1,10 +1,11 @@
-import { REMOVE_CURRENT_LOGGED, SAVE_CURRENT_LOGGED, SAVE_TOKEN } from "../../constants/action-types"
+import { REMOVE_CURRENT_LOGGED, SAVE_CURRENT_LOGGED, SAVE_TOKEN, SAVE_UNAPPROVED_USERS } from "../../constants/action-types"
 
 let token = localStorage.getItem('token');
 
 const initialState = {
     token : token === undefined ? '' : token,
     currentlyLogged : null,
+    unapprovedUsers: []
 }
 
 export default function auth(state = initialState, action) {
@@ -18,6 +19,9 @@ export default function auth(state = initialState, action) {
         }
         case REMOVE_CURRENT_LOGGED: {
             return { ...state, currentlyLogged: null }
+        }
+        case SAVE_UNAPPROVED_USERS: {
+            return { ...state, unapprovedUsers: action.payload }
         }
         default: {
             return {...state}

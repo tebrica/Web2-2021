@@ -1,13 +1,14 @@
 import { put, call, takeLatest } from "redux-saga/effects";
-import { REGISTER, LOGIN, LOGOUT, REFRESH_TOKEN } from "../../constants/action-types";
+import { REGISTER, LOGIN, LOGOUT, REFRESH_TOKEN, GET_UNAPPROVED_USERS, APPROVE_USER } from "../../constants/action-types";
+import UserNumberToRole from "../../constants/EnumFunctions";
 import authService from "../../services/AuthService";
-import { RemoveCurrentlyLogged, SaveCurrentlyLogged, SaveToken } from "../actions";
+import { RemoveCurrentlyLogged, SaveCurrentlyLogged, SaveToken, SaveUnapprovedUsers } from "../actions";
 
 function* registerUser({payload}) {
     const data = { Email: payload.email, Password: payload.pass, ConfirmPassword: payload.pass2 }
     yield call(authService.registerNewUser,data)
 
-    const dataInfo = { Username: payload.email, VrsteKorisnika: 'RADNIK', NazivProfilneSlike: payload.file.name, DatumRodjenja: payload.date, Adresa: 'Gogoljeva 34' };
+    const dataInfo = { Username: payload.email, VrsteKorisnika: payload.role, NazivProfilneSlike: payload.file.name, DatumRodjenja: payload.date, Adresa: 'Gogoljeva 34' };
     yield call(authService.registerUserInfo,dataInfo)
 }
 
@@ -17,6 +18,7 @@ function* loginUser({payload}) {
     if (token !== undefined) {
         yield put(SaveToken(token));
         const response = yield call (authService.fetchAdditionalUserData,payload.data.username)
+        response.VrsteKorisnika = UserNumberToRole(response.VrsteKorisnika);
         yield put(SaveCurrentlyLogged(response))
         yield call(payload.loginCallback)
     }
@@ -34,10 +36,22 @@ function* saveAuthToken() {
     yield put(SaveToken(token));
 }
 
+function* getUnapprovedUsers() {
+    const data = yield call(authService.getUnapprovedUsers)
+    yield put(SaveUnapprovedUsers(data))
+}
+
+function* approveUser({payload}) {
+    yield call(authService.approveUser,payload)
+    const data = yield call(authService.getUnapprovedUsers)
+    yield put(SaveUnapprovedUsers(data))
+}
+
 export default function* authSaga() {
     yield takeLatest(REGISTER, registerUser)
     yield takeLatest(LOGIN, loginUser)
     yield takeLatest(LOGOUT,logoutUser)
     yield takeLatest(REFRESH_TOKEN, saveAuthToken)
-
+    yield takeLatest(GET_UNAPPROVED_USERS, getUnapprovedUsers)
+    yield takeLatest(APPROVE_USER, approveUser)
 }

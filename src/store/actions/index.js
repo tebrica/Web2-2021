@@ -1,4 +1,4 @@
-import { GET_CALLS, GET_INCIDENTS, GET_WORK_REQUESTS, LOGIN, LOGOUT, REFRESH_TOKEN, REGISTER, REMOVE_CURRENT_LOGGED, SAVE_CALLS, SAVE_CURRENT_LOGGED, SAVE_INCIDENTS, SAVE_TOKEN, SAVE_WORK_REQUESTS } from '../../constants/action-types'
+import { APPROVE_USER, GET_CALLS, GET_INCIDENTS, GET_UNAPPROVED_USERS, GET_WORK_REQUESTS, LOGIN, LOGOUT, REFRESH_TOKEN, REGISTER, REMOVE_CURRENT_LOGGED, SAVE_CALLS, SAVE_CURRENT_LOGGED, SAVE_INCIDENTS, SAVE_TOKEN, SAVE_UNAPPROVED_USERS, SAVE_WORK_REQUESTS } from '../../constants/action-types'
 
 export const RegisterUser = (payload) => {
     return { type: REGISTER, payload: payload }
@@ -50,4 +50,16 @@ export const GetCalls = () => {
 
 export const SaveCalls = (payload) => {
     return { type: SAVE_CALLS, payload: payload }
+}
+
+export const GetUnapprovedUsers = () => {
+    return { type: GET_UNAPPROVED_USERS }
+}
+
+export const SaveUnapprovedUsers = (payload) => {
+    return { type: SAVE_UNAPPROVED_USERS, payload: payload }
+}
+
+export const ApproveUser = (payload) => {
+    return { type: APPROVE_USER, payload: payload }
 }

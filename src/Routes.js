@@ -6,6 +6,7 @@ import IncidentBrowserComponent from './components/dashboard/IncidentBrowserComp
 import NewIncidentComponent from './components/dashboard/NewIncidentComponent';
 import NewWorkRequest from './components/new-work-request/NewWorkRequest';
 import WorkRequests from './components/dashboard/WorkRequests';
+import AdminPreferences from './components/Authentication/AdminPreferences';
 
 const Routes = () => (
     <Switch>
@@ -15,6 +16,7 @@ const Routes = () => (
         <Route exact path="/dashboard/new-incident" component={NewIncidentComponent} />
         <Route exact path="/dashboard/work-requests" component={WorkRequests} />
         <Route exact path="/dashboard/new-work-request" component={NewWorkRequest}/>
+        <Route exact path="/admin" component={AdminPreferences}/>
     </Switch>
 )
 
