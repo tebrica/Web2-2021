@@ -1,6 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { GetCalls } from '../../store/actions';
+import { callSelector } from '../../store/selectors/AuthSelector';
 
 const Calls = ({setCurrentPage}) => {
+
+    const dispatch = useDispatch();
+    const allCalls = useSelector(callSelector)
+
+    useEffect(() => {
+        dispatch(GetCalls()) // eslint-disable-next-line
+    },[])
+
+    console.log(allCalls)
+
     return <div>
         {/* HEADER TABELE  */}
         <div style={{overflow: 'hidden'}}>

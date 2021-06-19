@@ -2,7 +2,8 @@ import axiosClient from "./BaseApiService";
 
 const ENDPOINTS = {
     INCIDENTS: '/Incidenti',
-    WORK_REQUESTS: '/PlanoviRada'
+    WORK_REQUESTS: '/PlanoviRada',
+    CALLS: '/Pozivi',
 }
 
 const getIncidents = async () => {
@@ -27,9 +28,21 @@ const getWorkRequests = async () => {
     }
 }
 
+const getPozivi = async () => {
+    try {
+        const response = await axiosClient.get(ENDPOINTS.CALLS);
+        return response.data
+    }
+    catch(error) {
+        alert('Fetch error! Please try again!')
+        return undefined
+    }
+}
+
 const incidentService = {
     getIncidents,
     getWorkRequests,
+    getPozivi,
 }
 
 export default incidentService;
