@@ -1,4 +1,4 @@
-import { GET_INCIDENTS, GET_WORK_REQUESTS, LOGIN, LOGOUT, REFRESH_TOKEN, REGISTER, REMOVE_CURRENT_LOGGED, SAVE_CURRENT_LOGGED, SAVE_INCIDENTS, SAVE_TOKEN, SAVE_WORK_REQUESTS } from '../../constants/action-types'
+import { GET_CALLS, GET_INCIDENTS, GET_WORK_REQUESTS, LOGIN, LOGOUT, REFRESH_TOKEN, REGISTER, REMOVE_CURRENT_LOGGED, SAVE_CALLS, SAVE_CURRENT_LOGGED, SAVE_INCIDENTS, SAVE_TOKEN, SAVE_WORK_REQUESTS } from '../../constants/action-types'
 
 export const RegisterUser = (payload) => {
     return { type: REGISTER, payload: payload }
@@ -42,4 +42,12 @@ export const SaveCurrentlyLogged = (payload) => {
 
 export const RemoveCurrentlyLogged = () => {
     return { type: REMOVE_CURRENT_LOGGED }
+}
+
+export const GetCalls = () => {
+    return { type: GET_CALLS }
+}
+
+export const SaveCalls = (payload) => {
+    return { type: SAVE_CALLS, payload: payload }
 }

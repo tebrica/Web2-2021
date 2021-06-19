@@ -15,3 +15,7 @@ export const ADD_INCIDENT = 'ADD_INCIDENT';
 // WORK REQUESTS
 export const GET_WORK_REQUESTS = 'GET_WORK_REQUESTS';
 export const SAVE_WORK_REQUESTS = 'SAVE_WORK_REQUESTS';
+
+// CALLS
+export const GET_CALLS = 'GET_CALLS';
+export const SAVE_CALLS = 'SAVE_CALLS';

@@ -30,7 +30,7 @@ const BasicInformation = () => {
                         <tr>
                             <td> <p style={{marginTop: 20}}> Type: </p> </td>
                             <td>
-                                <select class="ui dropdown" style={{marginTop: 15, width: 165}}>
+                                <select className="ui dropdown" style={{marginTop: 15, width: 165}}>
                                     <option value=""> --- </option>
                                     <option value="PLANIRANI_INCIDENT">Planirani incident</option>
                                     <option value="NEPLANIRANI_INCIDENT">Neplanirani incident</option>
