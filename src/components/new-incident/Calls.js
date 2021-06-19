@@ -12,7 +12,14 @@ const Calls = ({setCurrentPage}) => {
         dispatch(GetCalls()) // eslint-disable-next-line
     },[])
 
-    console.log(allCalls)
+    const renderedCalls = allCalls.map((call) => {
+        return (<tr key={call.Id}>
+            <td> {call.Id} </td>
+            <td> {call.Razlog} </td>
+            <td> {call.Kvar} </td>
+            <td> {call.Komentar} </td>
+        </tr>);
+    });
 
     return <div>
         {/* HEADER TABELE  */}
@@ -48,18 +55,7 @@ const Calls = ({setCurrentPage}) => {
             </thead>
 
             <tbody>
-                <tr>
-                    <td> 2849183 </td>
-                    <td> No electricity </td>
-                    <td> Strong wind </td>
-                    <td> Hurry up! </td>
-                </tr>
-                <tr>
-                    <td> 4323272 </td>
-                    <td> No electricity </td>
-                    <td> Lightning </td>
-                    <td>  </td>
-                </tr>
+               {renderedCalls}
             </tbody>
         </table>
     </div>

@@ -50,11 +50,33 @@ const fetchAdditionalUserData = async(username) => {
     }
 }
 
+const getUnapprovedUsers = async() => {
+    try {
+        return (await axios.get(`${BASE_URL}/${ENDPOINTS.USER_INFO}`)).data
+    }
+    catch(error) {
+        alert('Fetch error! Please try again!')
+        return undefined
+    }
+}
+
+const approveUser = async(username) => {
+    try {
+        await axios.post(`${BASE_URL}/${ENDPOINTS.USER_INFO}?username=${username}`)
+    }
+    catch(error) {
+        alert('Fetch error! Please try again!')
+        return undefined
+    }
+}
+
 const authService = {
     registerNewUser,
     loginUser,
     registerUserInfo,
     fetchAdditionalUserData,
+    getUnapprovedUsers,
+    approveUser,
 }
 
 export default authService;

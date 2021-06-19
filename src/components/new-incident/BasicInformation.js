@@ -45,7 +45,7 @@ const BasicInformation = () => {
                         <tr>
                             <td><p style={{marginTop: 20}}>Priority:</p></td>
                             <td>
-                                <select class="ui dropdown" style={{marginTop: 15, width: 165}}>
+                                <select className="ui dropdown" style={{marginTop: 15, width: 165}}>
                                     <option value=""> --- </option>
                                     <option value="0">0</option>
                                     <option value="1">1</option>

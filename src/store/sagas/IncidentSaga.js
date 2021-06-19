@@ -5,7 +5,6 @@ import { SaveCalls, SaveIncidentsToBase, SaveWorkRequests } from "../actions";
 
 function* getIncidents() {
     const response =  yield call(incidentService.getIncidents)
-    console.log(response);
     yield put(SaveIncidentsToBase(response))
 }
 
