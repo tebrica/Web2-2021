@@ -1,7 +1,17 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { loggedUserSelector } from '../../store/selectors/AuthSelector';
 import DashBoardHomeItem from './DashboardHomeItem';
 
 const DashBoardHome = () => {
+
+    const user = useSelector(loggedUserSelector);
+    const { push } = useHistory()
+
+    if (user === null || user === undefined) {
+        push('/')
+    }
 
     return (<div style={{marginLeft: 150, height: 550}}>
         

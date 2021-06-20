@@ -134,7 +134,7 @@ const RegisterComponent = ({showLogin}) => {
                         <tr>
                             <td colSpan="2">
                                 <select className="ui dropdown" name="cause" style={{width: 160, marginLeft: 100, marginTop: 5, marginBottom: 5}} onChange={(e) => setFieldValue('role',e.target.value) }>
-                                    <option value="CLAN_EKIPE"> Clan ekipe </option>
+                                    <option value="CLANEKIPE"> Clan ekipe </option>
                                     <option value="DISPECER"> Dispecer </option>
                                     <option value="RADNIK"> Radnik </option>
                                     <option value="POTROSAC"> Potrosac </option>
