@@ -42,7 +42,13 @@ const loginUser = async (payload) => {
 
 const fetchAdditionalUserData = async(username) => {
     try {
-        return (await axios.get(`${BASE_URL}/${ENDPOINTS.USER_INFO}?username=${username}`)).data
+        const response = await axios.get(`${BASE_URL}/${ENDPOINTS.USER_INFO}?username=${username}`)
+        if (response.status === 400) {
+            alert('Ovaj nalog jos uvek nije odobren, ceka se odobrenje od strane administratora!')
+        }
+        else {
+            return response.data;
+        }
     }
     catch(error) {
         alert('Login error! Please try again with a different username/password combination!')
