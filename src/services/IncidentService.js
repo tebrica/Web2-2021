@@ -17,6 +17,17 @@ const getIncidents = async () => {
     }
 }
 
+const getMyIncidents = async (username) => {
+    try {
+        const incidents = await axiosClient.get(ENDPOINTS.INCIDENTS + `?username=${username}`);
+        return incidents.data;
+    }
+    catch(error) {
+        alert('Fetch error! Please try again!')
+        return undefined
+    }
+}
+
 const getWorkRequests = async () => {
     try {
         const response = await axiosClient.get(ENDPOINTS.WORK_REQUESTS);
@@ -43,6 +54,7 @@ const incidentService = {
     getIncidents,
     getWorkRequests,
     getPozivi,
+    getMyIncidents,
 }
 
 export default incidentService;

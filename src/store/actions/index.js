@@ -20,8 +20,8 @@ export const RefreshToken = () => {
     return { type: REFRESH_TOKEN }
 }
 
-export const GetIncidents = () => {
-    return { type: GET_INCIDENTS }
+export const GetIncidents = (gettype) => {
+    return { type: GET_INCIDENTS, payload: gettype }
 }
 
 export const SaveIncidentsToBase = (payload) => {

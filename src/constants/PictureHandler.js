@@ -7,5 +7,6 @@ export default function pictureMapper(picName) {
         case 'Mia.jpg' : return 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80'
         case 'Robert.jpg' : return 'https://jooinn.com/images/people-9.jpg'
         case 'Tom.jpg' : return 'https://media.istockphoto.com/photos/portrait-of-handsome-latino-african-man-picture-id1007763808?k=6&m=1007763808&s=612x612&w=0&h=Js1VDBulbaNw_CF7fghP_nhUPCC-DQTqb7Wym1CdTOI='
+        default : { return '' }
     }
 }
