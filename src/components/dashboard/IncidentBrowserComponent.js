@@ -11,9 +11,8 @@ const IncidentBrowserComponent = () => {
     const incidents = useSelector(incidentSelector);
     
     useEffect(() => {
-        dispatch(GetIncidents())
-        dispatch(RefreshToken()); 
-        // eslint-disable-next-line
+        dispatch(GetIncidents('all'))
+        dispatch(RefreshToken());   // eslint-disable-next-line
     },[])
 
     const renderedIncidents = incidents.map((incident) => {
@@ -34,9 +33,9 @@ const IncidentBrowserComponent = () => {
                 <div style={{overflow: 'hidden'}}>
                     <Link to="/dashboard/new-incident" className="ui primary button" style={{float: 'left', marginLeft: 20, marginTop: 15}}> + New </Link>
                     <div className="ui buttons" style={{marginTop : 15, marginLeft: 70}}>
-                        <button className="ui button">All incidents</button>
+                        <button className="ui button" onClick={() => dispatch(GetIncidents('all'))}>All incidents</button>
                         <div className="or"></div>
-                        <button className="ui positive button">My Incidents</button>
+                        <button className="ui positive button" onClick={() => dispatch(GetIncidents('my'))}>My Incidents</button>
                     </div>
                     <button className="ui black button" style={{marginLeft: 200}}> Filter </button>
                 </div>

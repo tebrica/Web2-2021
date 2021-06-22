@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ApproveUser, GetUnapprovedUsers } from '../../store/actions';
 import { unapprovedUsersSelector } from '../../store/selectors/AuthSelector';
 import UserNumberToRole from '../../constants/EnumFunctions'
+import pictureMapper from '../../constants/PictureHandler';
 
 const AdminPreferences = () => {
 
@@ -16,7 +17,7 @@ const AdminPreferences = () => {
     const userDetailsRendered = users.map((user) => {
         return ( <div className="card" key={user.Username}>
             <div className="content">
-                <img className="right floated mini ui image" src=""/>
+                <img className="right floated mini ui image" src={pictureMapper(user.NazivProfilneSlike)} alt="Nema slike"/>
                 <div className="header">
                     {user.Username}
                 </div>

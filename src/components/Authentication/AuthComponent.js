@@ -17,7 +17,7 @@ const AuthComponent = () => {
 
     return (
         <div className="ui raised container segment" style={{textAlign: 'center', top: 60}}>
-            <h3 className="ui center small header" style={{margin: 'auto',marginTop: 8}}> Electricity for future! </h3>
+            <h1 className="ui center small header" style={{margin: 'auto', fontSize: 20}}> Electricity for future! </h1>
             <hr/>
 
             <table>
