@@ -28,6 +28,16 @@ const getMyIncidents = async (username) => {
     }
 }
 
+const addNewIncident = async(payload) => {
+    try {
+        await axiosClient.post(ENDPOINTS.INCIDENTS, payload)
+    }
+    catch(error) {
+        alert('Fetch error! Please try again!')
+        return undefined
+    }
+}
+
 const getWorkRequests = async () => {
     try {
         const response = await axiosClient.get(ENDPOINTS.WORK_REQUESTS);
@@ -55,6 +65,7 @@ const incidentService = {
     getWorkRequests,
     getPozivi,
     getMyIncidents,
+    addNewIncident,
 }
 
 export default incidentService;

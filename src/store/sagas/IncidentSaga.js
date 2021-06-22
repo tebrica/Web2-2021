@@ -1,5 +1,5 @@
 import { call, put, select, takeLatest } from "redux-saga/effects";
-import { GET_CALLS, GET_INCIDENTS, GET_WORK_REQUESTS } from "../../constants/action-types";
+import { ADD_INCIDENT, GET_CALLS, GET_INCIDENTS, GET_WORK_REQUESTS } from "../../constants/action-types";
 import incidentService from '../../services/IncidentService';
 import { SaveCalls, SaveIncidentsToBase, SaveWorkRequests } from "../actions";
 import { loggedUserSelector } from "../selectors/AuthSelector";
@@ -26,8 +26,14 @@ function* GetCalls() {
     yield put(SaveCalls(response));
 }
 
+function* AddIncident({payload}) {
+    console.log(payload);
+    yield call(incidentService.addNewIncident,payload)
+}
+
 export default function* incidentSaga() {
     yield takeLatest(GET_INCIDENTS,getIncidents)
     yield takeLatest(GET_WORK_REQUESTS,GetWorkRequests)
     yield takeLatest(GET_CALLS,GetCalls)
+    yield takeLatest(ADD_INCIDENT, AddIncident)
 }

@@ -15,7 +15,7 @@ const NewIncidentComponent = () => {
     const renderedPage = () => {
         switch(currentPage)
         {
-            case 0: return (<div style={{float: 'left', position: 'fixed', top: 115,left: 410}}>
+            case 0: return (<div style={{float: 'left', position: 'fixed', top: 90,left: 410}}>
                 <BasicInformation incident={newIncident} setIncident={setNewIncident}/>
             </div>)
 
@@ -41,7 +41,7 @@ const NewIncidentComponent = () => {
 
     return (
         <div style={{marginLeft: 150, height: 550, overflow: 'hidden'}}>
-            <div className="ui container segment" style={{paddingLeft: 20,marginTop: 100, position: 'fixed', width: 920, right: 1, left: 70, height: 490, float: 'left'}}>
+            <div className="ui container segment" style={{paddingLeft: 20,marginTop: 80, position: 'fixed', width: 920, right: 1, left: 70, height: 510, float: 'left'}}>
                 <IncidentMenu setCurrentForm={setCurrentPage} currentForm={currentPage}/>
                 {renderedPage()}
             </div>

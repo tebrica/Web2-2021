@@ -1,4 +1,4 @@
-import { APPROVE_USER, GET_CALLS, GET_INCIDENTS, GET_UNAPPROVED_USERS, GET_WORK_REQUESTS, LOGIN, LOGOUT, REFRESH_TOKEN, REGISTER, REMOVE_CURRENT_LOGGED, SAVE_CALLS, SAVE_CURRENT_LOGGED, SAVE_INCIDENTS, SAVE_TOKEN, SAVE_UNAPPROVED_USERS, SAVE_WORK_REQUESTS } from '../../constants/action-types'
+import { ADD_INCIDENT, APPROVE_USER, GET_CALLS, GET_INCIDENTS, GET_UNAPPROVED_USERS, GET_WORK_REQUESTS, LOGIN, LOGOUT, REFRESH_TOKEN, REGISTER, REMOVE_CURRENT_LOGGED, SAVE_CALLS, SAVE_CURRENT_LOGGED, SAVE_INCIDENTS, SAVE_TOKEN, SAVE_UNAPPROVED_USERS, SAVE_WORK_REQUESTS } from '../../constants/action-types'
 
 export const RegisterUser = (payload) => {
     return { type: REGISTER, payload: payload }
@@ -26,6 +26,10 @@ export const GetIncidents = (gettype) => {
 
 export const SaveIncidentsToBase = (payload) => {
     return { type: SAVE_INCIDENTS, payload: payload}
+}
+
+export const AddNewIncident = (payload) => {
+    return { type: ADD_INCIDENT, payload: payload }
 }
 
 export const GetWorkRequests = () => {
