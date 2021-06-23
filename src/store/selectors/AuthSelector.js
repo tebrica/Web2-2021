@@ -9,3 +9,5 @@ export const loggedUserSelector = (state) => state.auth.currentlyLogged;
 export const callSelector = (state) => state.incident.calls;
 
 export const unapprovedUsersSelector = (state) => state.auth.unapprovedUsers;
+
+export const devicesSelector = (state) => state.incident.devices;

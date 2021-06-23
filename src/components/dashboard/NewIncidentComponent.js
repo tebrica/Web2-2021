@@ -1,26 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import makeid from '../../constants/RandomGenerator';
 import BasicInformation from '../new-incident/BasicInformation';
 import Calls from '../new-incident/Calls';
 import Devices from '../new-incident/Devices';
 import NewCall from '../new-incident/NewCall';
+import NewDeviceComponent from '../new-incident/NewDeviceComponent';
 import Resolution from '../new-incident/Resolution';
 import IncidentMenu from './IncidentMenu';
 
 const NewIncidentComponent = () => {
 
+    const [incidentId,setIncidentId] = useState('');
+
     const [currentPage,setCurrentPage] = useState(0);
 
-    const [newIncident,setNewIncident] = useState({});
+    const [headerPosted,setHeaderPosted] = useState(false);
+
+    useEffect(() => {
+        setIncidentId('INC_' + makeid(6));
+    },[]);
 
     const renderedPage = () => {
         switch(currentPage)
         {
             case 0: return (<div style={{float: 'left', position: 'fixed', top: 90,left: 410}}>
-                <BasicInformation incident={newIncident} setIncident={setNewIncident}/>
+                <BasicInformation incidentId={incidentId} setHeaderPosted={setHeaderPosted} />
             </div>)
 
             case 1: return (<div style={{float: 'left', position: 'fixed', top: 110,left: 410}}>
-                <Devices/>
+                <Devices setCurrentPage={setCurrentPage} headerPosted={headerPosted} />
             </div>)
 
             case 2: return (<div style={{float: 'left', position: 'fixed', top: 140,left: 410}}>
@@ -33,6 +41,10 @@ const NewIncidentComponent = () => {
 
             case 7: return (<div style={{float: 'left', position: 'fixed', top: 115,left: 410}}>
                 <NewCall setCurrentPage={setCurrentPage}/>
+            </div>)
+
+            case 8: return (<div style={{float: 'left', position: 'fixed', top: 115,left: 410}}>
+                <NewDeviceComponent setCurrentPage={setCurrentPage} incidentId={incidentId} headerPosted={headerPosted}  />                
             </div>)
 
             default: <div> Not implemented </div>

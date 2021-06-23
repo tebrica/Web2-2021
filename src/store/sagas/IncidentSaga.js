@@ -1,7 +1,7 @@
 import { call, put, select, takeLatest } from "redux-saga/effects";
-import { ADD_INCIDENT, GET_CALLS, GET_INCIDENTS, GET_WORK_REQUESTS } from "../../constants/action-types";
+import { ADD_DEVICE, ADD_INCIDENT, GET_CALLS, GET_DEVICES, GET_INCIDENTS, GET_WORK_REQUESTS } from "../../constants/action-types";
 import incidentService from '../../services/IncidentService';
-import { SaveCalls, SaveIncidentsToBase, SaveWorkRequests } from "../actions";
+import { SaveCalls, SaveDevices, SaveIncidentsToBase, SaveWorkRequests } from "../actions";
 import { loggedUserSelector } from "../selectors/AuthSelector";
 
 function* getIncidents({payload}) {
@@ -27,8 +27,18 @@ function* GetCalls() {
 }
 
 function* AddIncident({payload}) {
-    console.log(payload);
     yield call(incidentService.addNewIncident,payload)
+}
+
+function* getDevices() {
+    const response = yield call(incidentService.getOprema)
+    yield put(SaveDevices(response))
+}
+
+function* addDevice(payload) {
+    yield call(incidentService.postOprema,payload)
+    const response = yield call(incidentService.getOprema)
+    yield put(SaveDevices(response))
 }
 
 export default function* incidentSaga() {
@@ -36,4 +46,6 @@ export default function* incidentSaga() {
     yield takeLatest(GET_WORK_REQUESTS,GetWorkRequests)
     yield takeLatest(GET_CALLS,GetCalls)
     yield takeLatest(ADD_INCIDENT, AddIncident)
+    yield takeLatest(GET_DEVICES, getDevices)
+    yield takeLatest(ADD_DEVICE, addDevice)
 }

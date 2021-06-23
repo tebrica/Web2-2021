@@ -1,4 +1,4 @@
-import { ADD_INCIDENT, APPROVE_USER, GET_CALLS, GET_INCIDENTS, GET_UNAPPROVED_USERS, GET_WORK_REQUESTS, LOGIN, LOGOUT, REFRESH_TOKEN, REGISTER, REMOVE_CURRENT_LOGGED, SAVE_CALLS, SAVE_CURRENT_LOGGED, SAVE_INCIDENTS, SAVE_TOKEN, SAVE_UNAPPROVED_USERS, SAVE_WORK_REQUESTS } from '../../constants/action-types'
+import { ADD_DEVICE, ADD_INCIDENT, APPROVE_USER, GET_CALLS, GET_DEVICES, GET_INCIDENTS, GET_UNAPPROVED_USERS, GET_WORK_REQUESTS, LOGIN, LOGOUT, REFRESH_TOKEN, REGISTER, REMOVE_CURRENT_LOGGED, SAVE_CALLS, SAVE_CURRENT_LOGGED, SAVE_DEVICES, SAVE_INCIDENTS, SAVE_TOKEN, SAVE_UNAPPROVED_USERS, SAVE_WORK_REQUESTS } from '../../constants/action-types'
 
 export const RegisterUser = (payload) => {
     return { type: REGISTER, payload: payload }
@@ -66,4 +66,16 @@ export const SaveUnapprovedUsers = (payload) => {
 
 export const ApproveUser = (payload) => {
     return { type: APPROVE_USER, payload: payload }
+}
+
+export const GetDevices = () => {
+    return { type: GET_DEVICES }
+}
+
+export const SaveDevices = (payload) => {
+    return { type: SAVE_DEVICES, payload: payload }
+}
+
+export const AddNewDevice = (payload) => {
+    return { type: ADD_DEVICE, payload: payload }
 }

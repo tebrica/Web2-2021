@@ -22,3 +22,8 @@ export const SAVE_WORK_REQUESTS = 'SAVE_WORK_REQUESTS';
 // CALLS
 export const GET_CALLS = 'GET_CALLS';
 export const SAVE_CALLS = 'SAVE_CALLS';
+
+// DEVICES
+export const ADD_DEVICE = 'ADD_DEVICE';
+export const GET_DEVICES = 'GET_DEVICES';
+export const SAVE_DEVICES = 'SAVE_DEVICES';
