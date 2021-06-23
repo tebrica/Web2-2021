@@ -1,9 +1,10 @@
-import { SAVE_CALLS, SAVE_INCIDENTS, SAVE_WORK_REQUESTS } from "../../constants/action-types"
+import { SAVE_CALLS, SAVE_DEVICES, SAVE_INCIDENTS, SAVE_WORK_REQUESTS } from "../../constants/action-types"
 
 const initialState = {
     incidents : [],
     workRequests: [],
     calls: [],
+    devices: [],
 }
 
 export default function incident(state = initialState, action) {
@@ -16,6 +17,9 @@ export default function incident(state = initialState, action) {
         }
         case SAVE_CALLS: {
             return { ...state, calls: action.payload };
+        }
+        case SAVE_DEVICES: {
+            return { ...state, devices: action.payload };
         }
         default: {
             return {...state}

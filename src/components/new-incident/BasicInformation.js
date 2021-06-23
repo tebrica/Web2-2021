@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Formik, Form, ErrorMessage, Field } from 'formik';
-import makeid from '../../constants/RandomGenerator';
 import * as yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux';
 import { loggedUserSelector } from '../../store/selectors/AuthSelector';
@@ -10,15 +9,10 @@ const validationSheme = yup.object().shape({
     AffectedPeople : yup.number().required().min(0,'Must be > 0')
 })
 
-const BasicInformation = () => {
+const BasicInformation = ({ incidentId, setHeaderPosted }) => {
 
-    const [incidentId,setIncidentId] = useState('');
     const user = useSelector(loggedUserSelector);
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        setIncidentId('INC_' + makeid(6));
-    },[]);
 
     const onFormSubmit = (values,{resetForm}) => {
         resetForm();
@@ -27,6 +21,7 @@ const BasicInformation = () => {
         vals.Status = 'Active';
         vals.VremeRada = values.ATA;
         dispatch(AddNewIncident(vals))
+        setHeaderPosted(true);
     };
 
     return (<div className="ui green segment">

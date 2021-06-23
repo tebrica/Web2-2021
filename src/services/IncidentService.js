@@ -4,6 +4,7 @@ const ENDPOINTS = {
     INCIDENTS: '/Incidenti',
     WORK_REQUESTS: '/PlanoviRada',
     CALLS: '/Pozivi',
+    EQUIPMENT : '/Oprema'
 }
 
 const getIncidents = async () => {
@@ -60,12 +61,35 @@ const getPozivi = async () => {
     }
 }
 
+const getOprema = async () => {
+    try {
+        const response = await axiosClient.get(ENDPOINTS.EQUIPMENT);
+        return response.data
+    }
+    catch(error) {
+        alert('Fetch error! Please try again!')
+        return undefined
+    }
+}
+
+const postOprema = async (payload) => {
+    try {
+        await axiosClient.post(ENDPOINTS.EQUIPMENT,payload.payload)
+    }
+    catch(error) {
+        alert('Post error! Please try again!')
+        return undefined
+    }
+}
+
 const incidentService = {
     getIncidents,
     getWorkRequests,
     getPozivi,
     getMyIncidents,
     addNewIncident,
+    getOprema,
+    postOprema,
 }
 
 export default incidentService;
