@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetDevices } from '../../store/actions';
 import { devicesSelector } from '../../store/selectors/AuthSelector';
+import Paginator from '../Paginator';
 
 const Devices = ({ setCurrentPage }) => {
 
@@ -9,12 +10,19 @@ const Devices = ({ setCurrentPage }) => {
 
     const devices = useSelector(devicesSelector)
 
+    const [currentPagePagin,setCurrentPagePagin] = useState(1);   // eslint-disable-next-line
+    const [postsPerPage,setPostsPerPage] = useState(5);
+
     useEffect(() => {
         dispatch(GetDevices()); // eslint-disable-next-line
     },[])
 
+    // Get current incidents..
+    const indexOfLastDevice = currentPagePagin * postsPerPage;
+    const indexOfFirstDevice = indexOfLastDevice - postsPerPage;
+    const currentDevices = devices.slice(indexOfFirstDevice, indexOfLastDevice);
 
-    const devicesRendered = devices.map((device) => {
+    const devicesRendered = currentDevices.map((device) => {
         return (<tr key={device.IdOprema}>
             <td> {device.IdOprema} </td>
             <td> {device.Name} </td>
@@ -64,6 +72,10 @@ const Devices = ({ setCurrentPage }) => {
 
                 <tbody> {devicesRendered} </tbody>
             </table>
+
+            <div style={{ marginTop: 30 }}>
+                <Paginator incidentsPerPage={postsPerPage} totalIncidents={devices.length} changePage={(num) => setCurrentPagePagin(num)} />
+            </div>
 
         </div>
     );
