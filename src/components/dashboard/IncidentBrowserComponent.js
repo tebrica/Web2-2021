@@ -1,27 +1,38 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { GetIncidents, RefreshToken } from '../../store/actions';
 import { incidentSelector } from '../../store/selectors/AuthSelector';
+import Paginator from '../Paginator';
 
 const IncidentBrowserComponent = () => {
 
     const dispatch = useDispatch();
     const incidents = useSelector(incidentSelector);
+
+    const [currentPage,setCurrentPage] = useState(1);   // eslint-disable-next-line
+    const [postsPerPage,setPostsPerPage] = useState(5);
     
     useEffect(() => {
         dispatch(GetIncidents('all'))
         dispatch(RefreshToken());   // eslint-disable-next-line
     },[])
 
-    const renderedIncidents = incidents.map((incident) => {
+    // Get current incidents..
+    const indexOfLastIncident = currentPage * postsPerPage;
+    const indexOfFirstIncident = indexOfLastIncident - postsPerPage;
+    const currentIncidents = incidents.slice(indexOfFirstIncident, indexOfLastIncident);
+
+    const renderedIncidents = currentIncidents.map((incident) => {
         return <tr key={incident.ID}>
             <td> {incident.ID} </td>
-            <td> {incident.VremeRada} </td>
+            <td> {incident.VremeRada.slice(0,10)} </td>
             <td> {incident.Pozivi} </td>
             <td> {incident.Status} </td>
-            <td> {incident.Voltage} </td>
+            <td> {incident.Voltage} kW </td>
+            <td> {incident.AffectedPeople} </td>
+            <td> {incident.IdKorisnika === '' ? '-' : incident.IdKorisnika} </td>
         </tr>
     });
 
@@ -61,7 +72,15 @@ const IncidentBrowserComponent = () => {
                                 <i className="caret down icon"></i>
                             </th>
                             <th>
-                                Address
+                                Voltage
+                                <i className="caret down icon"></i>
+                            </th>
+                            <th>
+                                Affected people
+                                <i className="caret down icon"></i>
+                            </th>
+                            <th>
+                                Id Korisnika
                                 <i className="caret down icon"></i>
                             </th>
                         </tr>
@@ -71,7 +90,10 @@ const IncidentBrowserComponent = () => {
                     </tbody>
                 </table>
 
-
+                <div style={{ marginTop: 30 }}>
+                    <Paginator incidentsPerPage={postsPerPage} totalIncidents={incidents.length} changePage={(num) => setCurrentPage(num)} />
+                </div>
+            
             </div>
         </div>
     );

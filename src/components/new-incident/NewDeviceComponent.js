@@ -29,7 +29,7 @@ const NewDeviceComponent = ({ setCurrentPage, incidentId, headerPosted }) => {
         setCurrentPage(1)
     }
     
-    return (<div>
+    return (<div className="ui raised container segment" style={{ width: 600 }}>
 
         <h2 style={{ marginLeft: 180, marginBottom: 50 }}> Dodavanje opreme: </h2>
 
@@ -82,7 +82,10 @@ const NewDeviceComponent = ({ setCurrentPage, incidentId, headerPosted }) => {
                 </ErrorMessage>
 
                 <br/>
-                <button className="ui tiny primary button" type="submit" style={{ marginTop: 40, marginLeft: 80 }}> Add equipment </button>
+                <button className="ui tiny primary button" type="submit" style={{ marginTop: 40, marginLeft: 80 }}> 
+                    <i className="save icon"></i>
+                    Add equipment 
+                </button>
 
             </Form>
         </Formik>

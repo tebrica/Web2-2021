@@ -143,7 +143,10 @@ const BasicInformation = ({ incidentId, setHeaderPosted }) => {
    
                         </tbody>
                     </table>
-                    <button className="ui small primary button" type="submit"> ADD INCIDENT </button>
+                    <button className="ui small primary button" type="submit" style={{ marginLeft: 20, marginTop: 20 }}> 
+                        <i className="save icon"></i>
+                        SAVE INFO 
+                    </button>
                 </Form>
             )}
         </Formik>
