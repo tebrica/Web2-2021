@@ -9,7 +9,7 @@ const validationSheme = yup.object().shape({
     AffectedPeople : yup.number().required().min(0,'Must be > 0')
 })
 
-const BasicInformation = ({ incidentId, setHeaderPosted }) => {
+const BasicInformation = ({ incidentId, setHeaderPosted, setCurrentPage }) => {
 
     const user = useSelector(loggedUserSelector);
     const dispatch = useDispatch();
@@ -22,6 +22,7 @@ const BasicInformation = ({ incidentId, setHeaderPosted }) => {
         vals.VremeRada = values.ATA;
         dispatch(AddNewIncident(vals))
         setHeaderPosted(true);
+        setCurrentPage(1)
     };
 
     return (<div className="ui green segment">
