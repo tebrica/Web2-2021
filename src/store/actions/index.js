@@ -1,4 +1,4 @@
-import { ADD_DEVICE, ADD_INCIDENT, APPROVE_USER, GET_CALLS, GET_DEVICES, GET_INCIDENTS, GET_UNAPPROVED_USERS, GET_WORK_REQUESTS, LOGIN, LOGOUT, REFRESH_TOKEN, REGISTER, REMOVE_CURRENT_LOGGED, SAVE_CALLS, SAVE_CURRENT_LOGGED, SAVE_DEVICES, SAVE_INCIDENTS, SAVE_TOKEN, SAVE_UNAPPROVED_USERS, SAVE_WORK_REQUESTS } from '../../constants/action-types'
+import { ADD_DEVICE, ADD_INCIDENT, ADD_RESOLUTION, APPROVE_USER, GET_CALLS, GET_DEVICES, GET_INCIDENTS, GET_UNAPPROVED_USERS, GET_WORK_REQUESTS, LOGIN, LOGOUT, REFRESH_TOKEN, REGISTER, REMOVE_CURRENT_LOGGED, SAVE_CALLS, SAVE_CURRENT_LOGGED, SAVE_DEVICES, SAVE_INCIDENTS, SAVE_TOKEN, SAVE_UNAPPROVED_USERS, SAVE_WORK_REQUESTS } from '../../constants/action-types'
 
 export const RegisterUser = (payload) => {
     return { type: REGISTER, payload: payload }
@@ -78,4 +78,8 @@ export const SaveDevices = (payload) => {
 
 export const AddNewDevice = (payload) => {
     return { type: ADD_DEVICE, payload: payload }
+}
+
+export const AddNewResolution = (payload) => {
+    return { type: ADD_RESOLUTION, payload: payload }
 }

@@ -4,7 +4,8 @@ const ENDPOINTS = {
     INCIDENTS: '/Incidenti',
     WORK_REQUESTS: '/PlanoviRada',
     CALLS: '/Pozivi',
-    EQUIPMENT : '/Oprema'
+    EQUIPMENT : '/Oprema',
+    RESOLUTIONS: '/Resolutions'
 }
 
 const getIncidents = async () => {
@@ -82,6 +83,10 @@ const postOprema = async (payload) => {
     }
 }
 
+const postResolution = async ({payload}) => {
+    await axiosClient.post(ENDPOINTS.RESOLUTIONS, payload)
+}
+
 const incidentService = {
     getIncidents,
     getWorkRequests,
@@ -90,6 +95,7 @@ const incidentService = {
     addNewIncident,
     getOprema,
     postOprema,
+    postResolution,
 }
 
 export default incidentService;

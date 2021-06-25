@@ -24,15 +24,15 @@ const NewIncidentComponent = () => {
         switch(currentPage)
         {
             case 0: return (<div style={{float: 'left', position: 'fixed', top: 90,left: 410}}>
-                <BasicInformation incidentId={incidentId} setHeaderPosted={setHeaderPosted} />
+                <BasicInformation incidentId={incidentId} setHeaderPosted={setHeaderPosted} setCurrentPage={setCurrentPage} />
             </div>)
 
             case 1: return (<div style={{float: 'left', position: 'fixed', top: 110,left: 410}}>
                 <Devices setCurrentPage={setCurrentPage} headerPosted={headerPosted} />
             </div>)
 
-            case 2: return (<div style={{float: 'left', position: 'fixed', top: 140,left: 410}}>
-                <Resolution/>
+            case 2: return (<div style={{float: 'left', position: 'fixed', top: 110,left: 410}}>
+                <Resolution setCurrentPage={setCurrentPage} headerPosted={headerPosted} incidentId={incidentId}  />
             </div>)
 
             case 3: return (<div style={{float: 'left', position: 'fixed', top: 110,left: 410}}>
