@@ -56,7 +56,7 @@ const NewDeviceComponent = ({ setCurrentPage, incidentId, headerPosted }) => {
                     <Field type="text" name="OpremaType" placeholder="Equipment type.." />
                 </div>
                 <ErrorMessage name="OpremaType">
-                    {(msg) => <div style={{ color: "red", marginLeft: 40 }}> {msg} </div>}
+                    {(msg) => <div style={{ color: "red", marginLeft: 120 }}> {msg} </div>}
                 </ErrorMessage>
 
                 <br/>
@@ -67,7 +67,7 @@ const NewDeviceComponent = ({ setCurrentPage, incidentId, headerPosted }) => {
                     <Field type="text" name="Coordinates" placeholder="Coordinates.." />
                 </div>
                 <ErrorMessage name="Coordinates">
-                    {(msg) => <div style={{ color: "red", marginLeft: 40 }}> {msg} </div>}
+                    {(msg) => <div style={{ color: "red", marginLeft: 120 }}> {msg} </div>}
                 </ErrorMessage>
 
                 <br/>
@@ -78,13 +78,13 @@ const NewDeviceComponent = ({ setCurrentPage, incidentId, headerPosted }) => {
                     <Field type="text" name="Address" placeholder="Address.." />
                 </div>
                 <ErrorMessage name="Address">
-                    {(msg) => <div style={{ color: "red", marginLeft: 40 }}> {msg} </div>}
+                    {(msg) => <div style={{ color: "red", marginLeft: 120 }}> {msg} </div>}
                 </ErrorMessage>
 
                 <br/>
-                <button className="ui tiny primary button" type="submit" style={{ marginTop: 40, marginLeft: 80 }}> 
+                <button className="ui tiny primary button" type="submit" style={{ marginTop: 40, marginLeft: 120 }}> 
                     <i className="save icon"></i>
-                    Add equipment 
+                    Add device 
                 </button>
 
             </Form>

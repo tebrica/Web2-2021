@@ -28,7 +28,7 @@ const NewIncidentComponent = () => {
             </div>)
 
             case 1: return (<div style={{float: 'left', position: 'fixed', top: 110,left: 410}}>
-                <Devices setCurrentPage={setCurrentPage} headerPosted={headerPosted} />
+                <Devices setCurrentPage={setCurrentPage} incidentId={incidentId} />
             </div>)
 
             case 2: return (<div style={{float: 'left', position: 'fixed', top: 110,left: 410}}>

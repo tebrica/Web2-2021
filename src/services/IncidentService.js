@@ -62,9 +62,9 @@ const getPozivi = async () => {
     }
 }
 
-const getOprema = async () => {
+const getOprema = async (payload) => {
     try {
-        const response = await axiosClient.get(ENDPOINTS.EQUIPMENT);
+        const response = await axiosClient.get(ENDPOINTS.EQUIPMENT + `?incId=${payload}`);
         return response.data
     }
     catch(error) {

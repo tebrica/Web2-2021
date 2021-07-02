@@ -7,6 +7,8 @@ import NewIncidentComponent from './components/dashboard/NewIncidentComponent';
 import NewWorkRequest from './components/new-work-request/NewWorkRequest';
 import WorkRequests from './components/dashboard/WorkRequests';
 import AdminPreferences from './components/Authentication/AdminPreferences';
+import UserInfoComponent from './components/Authentication/UserInfoComponent';
+import MapsComponent from './components/dashboard/MapsComponent';
 
 const Routes = () => (
     <Switch>
@@ -17,6 +19,8 @@ const Routes = () => (
         <Route exact path="/dashboard/work-requests" component={WorkRequests} />
         <Route exact path="/dashboard/new-work-request" component={NewWorkRequest}/>
         <Route exact path="/admin" component={AdminPreferences}/>
+        <Route exact path="/user" component={UserInfoComponent}/>
+        <Route exact path="/map" component={MapsComponent}/>
     </Switch>
 )
 

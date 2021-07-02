@@ -21,9 +21,6 @@ const IncidentMenu = ({setCurrentForm,currentForm}) => {
         <button className={`ui green button item ${currentForm === 5 ? 'active' : ''}`} style={{width: '100%'}}  onClick={() => setCurrentForm(5)}>
           Multimedia Attachments
         </button>
-        <button className={`ui green button item ${currentForm === 6 ? 'active' : ''}`} style={{width: '100%'}}  onClick={() => setCurrentForm(6)}>
-          Equipment
-        </button>
       </div>
     );
 }

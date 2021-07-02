@@ -30,8 +30,8 @@ function* AddIncident({payload}) {
     yield call(incidentService.addNewIncident,payload)
 }
 
-function* getDevices() {
-    const response = yield call(incidentService.getOprema)
+function* getDevices({payload}) {
+    const response = yield call(incidentService.getOprema,payload)
     yield put(SaveDevices(response))
 }
 

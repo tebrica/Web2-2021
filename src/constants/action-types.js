@@ -28,3 +28,6 @@ export const SAVE_CALLS = 'SAVE_CALLS';
 export const ADD_DEVICE = 'ADD_DEVICE';
 export const GET_DEVICES = 'GET_DEVICES';
 export const SAVE_DEVICES = 'SAVE_DEVICES';
+
+// YANDEX MAPS
+export const GET_COORDINATES = 'GET_COORDINATES';
