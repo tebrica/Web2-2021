@@ -23,7 +23,7 @@ const RegisterComponent = ({showLogin}) => {
         if (values.date === '') { return }
         if (values.pass !== values.pass2) { alert('Passwords dont match!'); return; }
         showLogin('login');
-        console.log(values)
+        values.role = values.role === '' ? 'CLANEKIPE' : values.role;
         dispatch(RegisterUser(values));
     }
 

@@ -15,10 +15,12 @@ const Header = () => {
     else {
       //const relativePath = `../../public/photos/${loggedInUser.NazivProfilneSlike}`
       return (
-        <div className="ui horizontal list" style={{backgroundColor: "lightgreen", right: 25, position: "fixed", top: 5, width: 260, height: 50}}>
+        <div className="ui horizontal list" style={{backgroundColor: "lightgreen", right: 25, position: "fixed", top: 5, width: 260, height: 50, overflow: "hidden"}}>
           <div className="item">
-            <img className="ui mini circular image" src={pictureMapper(loggedInUser.NazivProfilneSlike)} alt="Nema slike" style={{marginLeft: 10, height: 44, width: 44}}/>
-            <div className="content" style={{marginLeft: 15}}>
+            <Link to="/user" style={{ float: "left" }} >
+              <img className="ui mini circular image" src={pictureMapper(loggedInUser.NazivProfilneSlike)} alt="Nema slike" style={{marginLeft: 10, height: 44, width: 44}}/>
+            </Link>
+            <div className="content" style={{marginLeft: 15, float: "left"}}>
               <div className="ui sub header">{loggedInUser.Username}</div>
               <p style={{marginTop: 3}}> {loggedInUser.VrsteKorisnika} </p> 
             </div>

@@ -4,7 +4,7 @@ import { GetDevices } from '../../store/actions';
 import { devicesSelector } from '../../store/selectors/AuthSelector';
 import Paginator from '../Paginator';
 
-const Devices = ({ setCurrentPage }) => {
+const Devices = ({ setCurrentPage, incidentId }) => {
 
     const dispatch = useDispatch();
 
@@ -14,7 +14,7 @@ const Devices = ({ setCurrentPage }) => {
     const [postsPerPage,setPostsPerPage] = useState(5);
 
     useEffect(() => {
-        dispatch(GetDevices()); // eslint-disable-next-line
+        dispatch(GetDevices(incidentId)); // eslint-disable-next-line
     },[])
 
     // Get current incidents..
@@ -36,8 +36,8 @@ const Devices = ({ setCurrentPage }) => {
         <div>
             {/* HEADER TABELE  */}
             <div style={{overflow: 'hidden'}}>
-                    <button className="ui small primary button" onClick={() => setCurrentPage(8)}> + New Device </button>
-                    <button className="ui black button" style={{marginLeft: 460, marginTop: 18}}> Filter </button>
+                <button className="ui small primary button" onClick={() => setCurrentPage(8)}> + New Device </button>
+                <button className="ui black button" style={{marginLeft: 460, marginTop: 18}}> Filter </button>
             </div>
 
             {/* TABELA */}
@@ -70,12 +70,15 @@ const Devices = ({ setCurrentPage }) => {
                     </tr>
                 </thead>
 
-                <tbody> {devicesRendered} </tbody>
+                <tbody> { devices.length === 0 ? <div></div> : devicesRendered } </tbody>
+
+
             </table>
 
+            { devices.length === 0 ? <div></div> : 
             <div style={{ marginTop: 30 }}>
                 <Paginator incidentsPerPage={postsPerPage} totalIncidents={devices.length} changePage={(num) => setCurrentPagePagin(num)} />
-            </div>
+            </div>}
 
         </div>
     );

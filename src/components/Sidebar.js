@@ -60,15 +60,15 @@ const SideBar = () => {
           </p>
         </Link>
 
-        <Link className="ui black button" to="/" style={{width: 150, height: 40}}>
-          <p> Dva coveka 
-            <i className="users icon" style={{marginLeft: 13}}></i>
+        <Link className="ui black button" to="/map" style={{width: 150, height: 40}}>
+          <p> Maps
+            <i className="map icon" style={{marginLeft: 44}}></i>
           </p>
         </Link>
     
         <div style={{marginTop: 125}}>
 
-          <Link className="ui black button" to="/" style={{width: 150, height: 40}}>
+          <Link className="ui black button" to="/settings" style={{width: 150, height: 40}}>
             <p> Settings 
             <i className="wrench icon" style={{marginLeft: 30}}></i>
             </p>

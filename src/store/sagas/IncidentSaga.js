@@ -30,15 +30,17 @@ function* AddIncident({payload}) {
     yield call(incidentService.addNewIncident,payload)
 }
 
-function* getDevices() {
-    const response = yield call(incidentService.getOprema)
+function* getDevices({payload}) {
+    const response = yield call(incidentService.getOprema,payload)
     yield put(SaveDevices(response))
 }
 
 function* addDevice(payload) {
+    const coordinates = yield call(incidentService.getLocationCoordinates,payload)
+    console.log(coordinates);
     yield call(incidentService.postOprema,payload)
-    const response = yield call(incidentService.getOprema)
-    yield put(SaveDevices(response))
+    const res = yield call(incidentService.getOprema,payload)
+    yield put(SaveDevices(res))
 }
 
 function* addResolution(payload) {

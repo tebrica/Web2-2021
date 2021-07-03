@@ -1,4 +1,4 @@
-import { ADD_DEVICE, ADD_INCIDENT, ADD_RESOLUTION, APPROVE_USER, GET_CALLS, GET_DEVICES, GET_INCIDENTS, GET_UNAPPROVED_USERS, GET_WORK_REQUESTS, LOGIN, LOGOUT, REFRESH_TOKEN, REGISTER, REMOVE_CURRENT_LOGGED, SAVE_CALLS, SAVE_CURRENT_LOGGED, SAVE_DEVICES, SAVE_INCIDENTS, SAVE_TOKEN, SAVE_UNAPPROVED_USERS, SAVE_WORK_REQUESTS } from '../../constants/action-types'
+import { ADD_DEVICE, ADD_INCIDENT, ADD_RESOLUTION, APPROVE_USER, CHANGE_PASSWORD, GET_CALLS, GET_COORDINATES, GET_DEVICES, GET_INCIDENTS, GET_UNAPPROVED_USERS, GET_WORK_REQUESTS, LOGIN, LOGOUT, REFRESH_TOKEN, REGISTER, REMOVE_CURRENT_LOGGED, SAVE_CALLS, SAVE_CURRENT_LOGGED, SAVE_DEVICES, SAVE_INCIDENTS, SAVE_TOKEN, SAVE_UNAPPROVED_USERS, SAVE_WORK_REQUESTS } from '../../constants/action-types'
 
 export const RegisterUser = (payload) => {
     return { type: REGISTER, payload: payload }
@@ -68,8 +68,8 @@ export const ApproveUser = (payload) => {
     return { type: APPROVE_USER, payload: payload }
 }
 
-export const GetDevices = () => {
-    return { type: GET_DEVICES }
+export const GetDevices = (payload) => {
+    return { type: GET_DEVICES, payload: payload }
 }
 
 export const SaveDevices = (payload) => {
@@ -82,4 +82,12 @@ export const AddNewDevice = (payload) => {
 
 export const AddNewResolution = (payload) => {
     return { type: ADD_RESOLUTION, payload: payload }
+}
+
+export const GetCoordinates = (payload) => {
+    return { type: GET_COORDINATES, payload: payload }
+}
+
+export const ChangePassword = (payload) => {
+    return { type: CHANGE_PASSWORD, payload: payload }
 }
