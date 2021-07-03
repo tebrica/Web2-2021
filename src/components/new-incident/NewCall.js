@@ -17,7 +17,6 @@ const NewCall = ({ setCurrentPage, incidentId, headerPosted }) => {
     const user = useSelector(loggedUserSelector);
 
     const onFormSubmit = (values,{resetForm}) => {
-        console.log('eeee')
         resetForm();
         if (!headerPosted) {
             alert('You have to enter basic information first!');
@@ -27,6 +26,7 @@ const NewCall = ({ setCurrentPage, incidentId, headerPosted }) => {
         vals.IncidentId = incidentId;
         vals.UsernameKor = user.Username;
         dispatch(AddCall(vals))
+        setCurrentPage(3)
     };
 
     console.log(headerPosted)

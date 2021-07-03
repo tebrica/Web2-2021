@@ -41,12 +41,8 @@ function* getDevices({payload}) {
     yield put(SaveDevices(response))
 }
 
-function* addDevice(payload) {
-    const coordinates = yield call(incidentService.getLocationCoordinates,payload)
-    console.log(coordinates);
+function* addDevice({payload}) {
     yield call(incidentService.postOprema,payload)
-    const res = yield call(incidentService.getOprema,payload)
-    yield put(SaveDevices(res))
 }
 
 function* addResolution(payload) {
