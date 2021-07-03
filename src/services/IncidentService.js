@@ -86,9 +86,8 @@ const getOprema = async (payload) => {
 }
 
 const postOprema = async (payload) => {
-
     try {
-        await axiosClient.post(ENDPOINTS.EQUIPMENT,payload.payload)
+        await axiosClient.post(ENDPOINTS.EQUIPMENT,payload)
     }
     catch(error) {
         alert('Post error! Please try again!')

@@ -1,20 +1,27 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { GetCalls } from '../../store/actions';
 import { callSelector } from '../../store/selectors/AuthSelector';
+import Paginator from '../Paginator';
 
 const Calls = ({ setCurrentPage, incidentId }) => {
 
     const dispatch = useDispatch();
     const allCalls = useSelector(callSelector)
 
+    const [currentPagePagin,setCurrentPagePagin] = useState(1);   // eslint-disable-next-line
+    const [postsPerPage,setPostsPerPage] = useState(5);
+
     useEffect(() => {
         dispatch(GetCalls(incidentId)) // eslint-disable-next-line
     },[])
 
-    console.log(allCalls)
+    // Get current incidents..
+    const indexOfLastDevice = currentPagePagin * postsPerPage;
+    const indexOfFirstDevice = indexOfLastDevice - postsPerPage;
+    const currentDevices = allCalls.slice(indexOfFirstDevice, indexOfLastDevice);
 
-    const renderedCalls = allCalls.map((call) => {
+    const renderedCalls = currentDevices.map((call) => {
         return (<tr key={call.Id}>
             <td> {call.Id} </td>
             <td> {call.Razlog} </td>
@@ -60,6 +67,10 @@ const Calls = ({ setCurrentPage, incidentId }) => {
                {renderedCalls}
             </tbody>
         </table>
+
+        <div style={{ marginTop: 30 }}>
+            <Paginator incidentsPerPage={postsPerPage} totalIncidents={allCalls.length} changePage={(num) => setCurrentPagePagin(num)} />
+        </div>
     </div>
 }
 
