@@ -46,6 +46,7 @@ function* getUnapprovedUsers() {
 }
 
 function* approveUser({payload}) {
+    console.log(payload)
     yield call(authService.approveUser,payload)
     const data = yield call(authService.getUnapprovedUsers)
     yield put(SaveUnapprovedUsers(data))

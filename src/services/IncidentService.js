@@ -63,6 +63,17 @@ const getPozivi = async () => {
     }
 }
 
+const getPoziviForIncident = async (incidentId) => {
+    try {
+        const response = await axiosClient.get(ENDPOINTS.CALLS + `?incidentId=${incidentId}`);
+        return response.data
+    }
+    catch(error) {
+        alert('Fetch error! Please try again!')
+        return undefined
+    }
+}
+
 const getOprema = async (payload) => {
     try {
         const response = await axiosClient.get(ENDPOINTS.EQUIPMENT + `?incId=${payload}`);
@@ -100,6 +111,10 @@ const postResolution = async ({payload}) => {
     await axiosClient.post(ENDPOINTS.RESOLUTIONS, payload)
 }
 
+const postCall = async (payload) => {
+    await axiosClient.post(ENDPOINTS.CALLS, payload)
+}
+
 const incidentService = {
     getIncidents,
     getWorkRequests,
@@ -110,6 +125,8 @@ const incidentService = {
     postOprema,
     postResolution,
     getLocationCoordinates,
+    getPoziviForIncident,
+    postCall,
 }
 
 export default incidentService;

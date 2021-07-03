@@ -48,7 +48,7 @@ const SideBar = () => {
           </p>
         </Link>
 
-        <Link className="ui black button" to="/" style={{width: 150, height: 40}}>
+        <Link className="ui black button" to="/calls" style={{width: 150, height: 40}}>
           <p> Calls
           <i className="phone icon" style={{marginLeft: 45}}></i>
           </p>

@@ -1,4 +1,4 @@
-import { ADD_DEVICE, ADD_INCIDENT, ADD_RESOLUTION, APPROVE_USER, CHANGE_PASSWORD, GET_CALLS, GET_COORDINATES, GET_DEVICES, GET_INCIDENTS, GET_UNAPPROVED_USERS, GET_WORK_REQUESTS, LOGIN, LOGOUT, REFRESH_TOKEN, REGISTER, REMOVE_CURRENT_LOGGED, SAVE_CALLS, SAVE_CURRENT_LOGGED, SAVE_DEVICES, SAVE_INCIDENTS, SAVE_TOKEN, SAVE_UNAPPROVED_USERS, SAVE_WORK_REQUESTS } from '../../constants/action-types'
+import { ADD_CALL, ADD_DEVICE, ADD_INCIDENT, ADD_RESOLUTION, APPROVE_USER, CHANGE_PASSWORD, GET_CALLS, GET_COORDINATES, GET_DEVICES, GET_INCIDENTS, GET_UNAPPROVED_USERS, GET_WORK_REQUESTS, LOGIN, LOGOUT, REFRESH_TOKEN, REGISTER, REMOVE_CURRENT_LOGGED, SAVE_CALLS, SAVE_CURRENT_LOGGED, SAVE_DEVICES, SAVE_INCIDENTS, SAVE_TOKEN, SAVE_UNAPPROVED_USERS, SAVE_WORK_REQUESTS } from '../../constants/action-types'
 
 export const RegisterUser = (payload) => {
     return { type: REGISTER, payload: payload }
@@ -48,12 +48,16 @@ export const RemoveCurrentlyLogged = () => {
     return { type: REMOVE_CURRENT_LOGGED }
 }
 
-export const GetCalls = () => {
-    return { type: GET_CALLS }
+export const GetCalls = (incId) => {
+    return { type: GET_CALLS, incident: incId }
 }
 
 export const SaveCalls = (payload) => {
     return { type: SAVE_CALLS, payload: payload }
+}
+
+export const AddCall = (payload) => {
+    return { type: ADD_CALL, payload: payload }
 }
 
 export const GetUnapprovedUsers = () => {

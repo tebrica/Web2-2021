@@ -3,14 +3,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { GetCalls } from '../../store/actions';
 import { callSelector } from '../../store/selectors/AuthSelector';
 
-const Calls = ({setCurrentPage}) => {
+const Calls = ({ setCurrentPage, incidentId }) => {
 
     const dispatch = useDispatch();
     const allCalls = useSelector(callSelector)
 
     useEffect(() => {
-        dispatch(GetCalls()) // eslint-disable-next-line
+        dispatch(GetCalls(incidentId)) // eslint-disable-next-line
     },[])
+
+    console.log(allCalls)
 
     const renderedCalls = allCalls.map((call) => {
         return (<tr key={call.Id}>

@@ -70,7 +70,7 @@ const Devices = ({ setCurrentPage, incidentId }) => {
                     </tr>
                 </thead>
 
-                <tbody> { devices.length === 0 ? <div></div> : devicesRendered } </tbody>
+                <tbody><div> { devices.length === 0 ? <div></div> : devicesRendered } </div> </tbody>
 
 
             </table>
