@@ -68,7 +68,7 @@ const SideBar = () => {
     
         <div style={{marginTop: 125}}>
 
-          <Link className="ui black button" to="/" style={{width: 150, height: 40}}>
+          <Link className="ui black button" to="/settings" style={{width: 150, height: 40}}>
             <p> Settings 
             <i className="wrench icon" style={{marginLeft: 30}}></i>
             </p>

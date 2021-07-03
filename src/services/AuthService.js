@@ -1,5 +1,6 @@
 import axios from 'axios'
 import qs from 'qs'
+import axiosClient from "./BaseApiService";
 
 const BASE_URL = 'http://localhost:8000';
 const headers = { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }
@@ -9,6 +10,7 @@ const ENDPOINTS = {
     REGISTER: '/api/Account/Register',
     REFRESH: '/token/refresh',
     USER_INFO : '/api/UserInfo',
+    CHANGE_PASS: '/api/Account/ChangePassword',
 }
 
 const registerNewUser = async (payload) => {
@@ -76,6 +78,11 @@ const approveUser = async(username) => {
     }
 }
 
+const changePass = async(payload) => {
+    const res = await axiosClient.post(ENDPOINTS.CHANGE_PASS,payload)
+    console.log(res)
+}
+
 const authService = {
     registerNewUser,
     loginUser,
@@ -83,6 +90,7 @@ const authService = {
     fetchAdditionalUserData,
     getUnapprovedUsers,
     approveUser,
+    changePass,
 }
 
 export default authService;

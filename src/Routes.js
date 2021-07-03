@@ -9,6 +9,7 @@ import WorkRequests from './components/dashboard/WorkRequests';
 import AdminPreferences from './components/Authentication/AdminPreferences';
 import UserInfoComponent from './components/Authentication/UserInfoComponent';
 import MapsComponent from './components/dashboard/MapsComponent';
+import Settings from './components/settings/Settings';
 
 const Routes = () => (
     <Switch>
@@ -21,6 +22,7 @@ const Routes = () => (
         <Route exact path="/admin" component={AdminPreferences}/>
         <Route exact path="/user" component={UserInfoComponent}/>
         <Route exact path="/map" component={MapsComponent}/>
+        <Route exact path="/settings" component={Settings} />
     </Switch>
 )
 

@@ -1,3 +1,4 @@
+import axios from "axios";
 import axiosClient from "./BaseApiService";
 
 const ENDPOINTS = {
@@ -74,8 +75,20 @@ const getOprema = async (payload) => {
 }
 
 const postOprema = async (payload) => {
+
     try {
         await axiosClient.post(ENDPOINTS.EQUIPMENT,payload.payload)
+    }
+    catch(error) {
+        alert('Post error! Please try again!')
+        return undefined
+    }
+}
+
+const getLocationCoordinates = async (payload) => {
+
+    try {
+        await axios.get("https://geocode-maps.yandex.ru/1.x/?apikey=1cdda24c-aedc-4883-8d49-60b9dec638a2&geocode=Tverskaya+6")
     }
     catch(error) {
         alert('Post error! Please try again!')
@@ -96,6 +109,7 @@ const incidentService = {
     getOprema,
     postOprema,
     postResolution,
+    getLocationCoordinates,
 }
 
 export default incidentService;

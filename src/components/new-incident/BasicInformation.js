@@ -133,7 +133,7 @@ const BasicInformation = ({ incidentId, setHeaderPosted, setCurrentPage }) => {
                                 <td colSpan="2">
                                     <div>
                                         <div style={{ float: "left" }}>
-                                            <Field type="text" name="Description" placeholder="Description.." style={{ width: 300, marginLeft: 30, marginTop: 12 }}/>
+                                            <Field type="text" name="Description" placeholder="Description.." style={{ width: 300, marginTop: 12 }}/>
                                             <ErrorMessage name="Description">
                                                 {(msg) => <div style={{ color: "red", marginLeft: 80 }}> {msg} </div>}
                                             </ErrorMessage>
