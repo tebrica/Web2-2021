@@ -111,6 +111,10 @@ const postResolution = async ({payload}) => {
     await axiosClient.post(ENDPOINTS.RESOLUTIONS, payload)
 }
 
+const postCall = async (payload) => {
+    await axiosClient.post(ENDPOINTS.CALLS, payload)
+}
+
 const incidentService = {
     getIncidents,
     getWorkRequests,
@@ -122,6 +126,7 @@ const incidentService = {
     postResolution,
     getLocationCoordinates,
     getPoziviForIncident,
+    postCall,
 }
 
 export default incidentService;
