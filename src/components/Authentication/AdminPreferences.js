@@ -29,7 +29,8 @@ const AdminPreferences = () => {
                 </div>
                 <div className="extra content">
                     <div className="ui two buttons">
-                        <div className="ui basic green button" onClick={() => dispatch(ApproveUser(user.Username))}>Approve</div>
+                        <div className="ui basic green button" onClick={() => dispatch(ApproveUser({username: user.Username, val: 0}))}>Approve</div>
+                        <div className="ui basic red button" onClick={() => dispatch(ApproveUser({username: user.Username, val: 2}))}>Deny</div>
                     </div>
                 </div>
             </div>

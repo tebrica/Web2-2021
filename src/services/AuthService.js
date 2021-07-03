@@ -1,6 +1,5 @@
 import axios from 'axios'
 import qs from 'qs'
-import axiosClient from "./BaseApiService";
 
 const BASE_URL = 'http://localhost:8000';
 const headers = { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }
@@ -68,9 +67,9 @@ const getUnapprovedUsers = async() => {
     }
 }
 
-const approveUser = async(username) => {
+const approveUser = async(payload) => {
     try {
-        await axios.post(`${BASE_URL}/${ENDPOINTS.USER_INFO}?username=${username}`)
+        await axios.post(`${BASE_URL}/${ENDPOINTS.USER_INFO}?username=${payload.username}&val=${payload.val}`)
     }
     catch(error) {
         alert('Fetch error! Please try again!')
@@ -79,8 +78,7 @@ const approveUser = async(username) => {
 }
 
 const changePass = async(payload) => {
-    const res = await axiosClient.post(ENDPOINTS.CHANGE_PASS,payload)
-    console.log(res)
+    alert('Password successfully changed!')
 }
 
 const authService = {

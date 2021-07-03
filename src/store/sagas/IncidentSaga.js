@@ -21,8 +21,14 @@ function* GetWorkRequests() {
     yield put(SaveWorkRequests(response))
 }
 
-function* GetCalls() {
-    const response = yield call(incidentService.getPozivi);
+function* GetCalls({incident}) {
+    let response;
+    if (incident === 'all') {
+        response = yield call(incidentService.getPozivi);
+    }
+    else {
+        response = yield call(incidentService.getPoziviForIncident,incident);
+    }
     yield put(SaveCalls(response));
 }
 

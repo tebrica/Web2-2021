@@ -48,8 +48,8 @@ export const RemoveCurrentlyLogged = () => {
     return { type: REMOVE_CURRENT_LOGGED }
 }
 
-export const GetCalls = () => {
-    return { type: GET_CALLS }
+export const GetCalls = (incId) => {
+    return { type: GET_CALLS, incident: incId }
 }
 
 export const SaveCalls = (payload) => {

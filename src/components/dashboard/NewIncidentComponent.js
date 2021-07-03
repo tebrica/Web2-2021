@@ -36,11 +36,11 @@ const NewIncidentComponent = () => {
             </div>)
 
             case 3: return (<div style={{float: 'left', position: 'fixed', top: 110,left: 410}}>
-                <Calls setCurrentPage={setCurrentPage}/>
+                <Calls setCurrentPage={setCurrentPage} incidentId={incidentId}/>
             </div>)
 
             case 7: return (<div style={{float: 'left', position: 'fixed', top: 115,left: 410}}>
-                <NewCall setCurrentPage={setCurrentPage}/>
+                <NewCall setCurrentPage={setCurrentPage} incidentId={incidentId}/>
             </div>)
 
             case 8: return (<div style={{float: 'left', position: 'fixed', top: 115,left: 410}}>
