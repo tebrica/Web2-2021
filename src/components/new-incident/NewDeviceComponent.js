@@ -8,8 +8,8 @@ import { AddNewDevice } from '../../store/actions';
 const validationSheme = yup.object().shape({
     Name: yup.string().required('Required'),
     OpremaType: yup.string().required('Required'),
-    Coordinates: yup.string().required('Required'),
-    Address: yup.string().required('Required')
+    Address: yup.string().required('Required'),
+    Number: yup.number().required('Required').min(1,'Must be > 1')
 })
 
 const NewDeviceComponent = ({ setCurrentPage, incidentId, headerPosted }) => {
@@ -35,10 +35,10 @@ const NewDeviceComponent = ({ setCurrentPage, incidentId, headerPosted }) => {
 
         <Formik
         onSubmit={onFormSubmit}
-        initialValues={{ Name: '', OpremaType: '', Coordinates: '', Address: '' }}
+        initialValues={{ Name: '', OpremaType: '', Address: '', Number: 0 }}
         validationSchema={validationSheme}>
 
-            <Form style={{ marginLeft: 120 }}>
+            <Form style={{ marginLeft: 60 }}>
 
                 <label htmlFor="Name" style={{ marginRight: 40 }}> Device name: </label>
                 <div className="ui input">
@@ -62,24 +62,26 @@ const NewDeviceComponent = ({ setCurrentPage, incidentId, headerPosted }) => {
                 <br/>
                 <br/>
 
-                <label htmlFor="Coordinates" style={{ marginRight: 40 }}> Coordinates: </label>
-                <div className="ui input">
-                    <Field type="text" name="Coordinates" placeholder="Coordinates.." />
-                </div>
-                <ErrorMessage name="Coordinates">
-                    {(msg) => <div style={{ color: "red", marginLeft: 120 }}> {msg} </div>}
-                </ErrorMessage>
+                <div style={{ overflow: 'hidden' }}>
+                    <div style={{ float: 'left' }}>
+                        <label htmlFor="Address" style={{ marginRight: 10 }}> {'Address & Number:'} </label>
+                        <div className="ui input">
+                            <Field type="text" name="Address" placeholder="Address.." />
+                        </div>
+                        <ErrorMessage name="Address">
+                            {(msg) => <div style={{ color: "red", marginLeft: 120 }}> {msg} </div>}
+                        </ErrorMessage>
+                    </div>
 
-                <br/>
-                <br/>
-
-                <label htmlFor="Address" style={{ marginRight: 65 }}> Address: </label>
-                <div className="ui input">
-                    <Field type="text" name="Address" placeholder="Address.." />
+                    <div style={{ float: 'left', marginLeft: 20 }}>
+                        <div className="ui input" style={{width: 80}}>
+                            <Field type="number" name="Number" placeholder="Num."/>
+                        </div>
+                        <ErrorMessage name="Number">
+                            {(msg) => <div style={{ color: "red", marginLeft: 10 }}> {msg} </div>}
+                        </ErrorMessage>
+                    </div>
                 </div>
-                <ErrorMessage name="Address">
-                    {(msg) => <div style={{ color: "red", marginLeft: 120 }}> {msg} </div>}
-                </ErrorMessage>
 
                 <br/>
                 <button className="ui tiny primary button" type="submit" style={{ marginTop: 40, marginLeft: 120 }}> 

@@ -6,7 +6,8 @@ const ENDPOINTS = {
     WORK_REQUESTS: '/PlanoviRada',
     CALLS: '/Pozivi',
     EQUIPMENT : '/Oprema',
-    RESOLUTIONS: '/Resolutions'
+    RESOLUTIONS: '/Resolutions',
+    ONE_INCIDENT: '/SingleIncident',
 }
 
 const getIncidents = async () => {
@@ -29,6 +30,11 @@ const getMyIncidents = async (username) => {
         alert('Fetch error! Please try again!')
         return undefined
     }
+}
+
+const getIncidentById = async (incidentId) => {
+    const response = await axiosClient.get(ENDPOINTS.ONE_INCIDENT + `?incidentId=${incidentId}`)
+    return response.data
 }
 
 const addNewIncident = async(payload) => {
@@ -114,6 +120,18 @@ const postCall = async (payload) => {
     await axiosClient.post(ENDPOINTS.CALLS, payload)
 }
 
+const getCoordinatesByAddress = async(payload) => {
+    const address = payload.address.replace(' ','+')
+    const fullAddress = payload.number + '+' + address;
+    const brt = await axios.post(`https://maps.googleapis.com/maps/api/geocode/json?address=${fullAddress}&key=AIzaSyACJqGcEMIw0d1nGS2_rVCCMsvlQVs8gig`)
+    return brt.data.results[0].geometry.location
+}
+
+const getAllOprema = async () => {
+    const oprema = await axiosClient.get(ENDPOINTS.EQUIPMENT);
+    return oprema.data;
+}
+
 const incidentService = {
     getIncidents,
     getWorkRequests,
@@ -126,6 +144,9 @@ const incidentService = {
     getLocationCoordinates,
     getPoziviForIncident,
     postCall,
+    getCoordinatesByAddress,
+    getAllOprema,
+    getIncidentById,
 }
 
 export default incidentService;

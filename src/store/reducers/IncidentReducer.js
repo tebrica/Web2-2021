@@ -1,10 +1,11 @@
-import { SAVE_CALLS, SAVE_DEVICES, SAVE_INCIDENTS, SAVE_WORK_REQUESTS } from "../../constants/action-types"
+import { DELETE_EDIT_INCIDENT, SAVE_CALLS, SAVE_DETAILS, SAVE_DEVICES, SAVE_INCIDENTS, SAVE_WORK_REQUESTS } from "../../constants/action-types"
 
 const initialState = {
     incidents : [],
     workRequests: [],
     calls: [],
     devices: [],
+    editIncident: null,
 }
 
 export default function incident(state = initialState, action) {
@@ -20,6 +21,12 @@ export default function incident(state = initialState, action) {
         }
         case SAVE_DEVICES: {
             return { ...state, devices: action.payload };
+        }
+        case SAVE_DETAILS: {
+            return { ...state, editIncident: action.payload };
+        }
+        case DELETE_EDIT_INCIDENT: {
+            return { ...state, editIncident: null }
         }
         default: {
             return {...state}
