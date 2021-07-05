@@ -1,4 +1,4 @@
-import { ADD_CALL, ADD_DEVICE, ADD_INCIDENT, ADD_RESOLUTION, APPROVE_USER, CHANGE_PASSWORD, GET_CALLS, GET_COORDINATES, GET_DEVICES, GET_INCIDENTS, GET_UNAPPROVED_USERS, GET_WORK_REQUESTS, LOGIN, LOGOUT, REFRESH_TOKEN, REGISTER, REMOVE_CURRENT_LOGGED, SAVE_CALLS, SAVE_CURRENT_LOGGED, SAVE_DEVICES, SAVE_INCIDENTS, SAVE_TOKEN, SAVE_UNAPPROVED_USERS, SAVE_WORK_REQUESTS } from '../../constants/action-types'
+import { ADD_CALL, ADD_DEVICE, ADD_INCIDENT, ADD_RESOLUTION, APPROVE_USER, CHANGE_PASSWORD, DELETE_EDIT_INCIDENT, GET_ALL_DEVICES, GET_CALLS, GET_COORDINATES, GET_DEVICES, GET_INCIDENTS, GET_UNAPPROVED_USERS, GET_WORK_REQUESTS, LOGIN, LOGOUT, REFRESH_TOKEN, REGISTER, REMOVE_CURRENT_LOGGED, SAVE_CALLS, SAVE_CURRENT_LOGGED, SAVE_DETAILS, SAVE_DEVICES, SAVE_EDIT_INCIDENT, SAVE_INCIDENTS, SAVE_TOKEN, SAVE_UNAPPROVED_USERS, SAVE_WORK_REQUESTS } from '../../constants/action-types'
 
 export const RegisterUser = (payload) => {
     return { type: REGISTER, payload: payload }
@@ -94,4 +94,20 @@ export const GetCoordinates = (payload) => {
 
 export const ChangePassword = (payload) => {
     return { type: CHANGE_PASSWORD, payload: payload }
+}
+
+export const GetAllDevices = () => {
+    return { type: GET_ALL_DEVICES }
+}
+
+export const SaveEditIncident = (incidentId) => {
+    return { type: SAVE_EDIT_INCIDENT, payload: incidentId }
+}
+
+export const DeleteEditIncident = () => {
+    return { type: DELETE_EDIT_INCIDENT }
+}
+
+export const SaveCurrentIncidentToRedux = (payload) => {
+    return { type: SAVE_DETAILS, payload: payload }
 }

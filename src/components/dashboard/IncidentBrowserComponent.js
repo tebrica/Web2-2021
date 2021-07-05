@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { GetIncidents, RefreshToken } from '../../store/actions';
+import { DeleteEditIncident, GetIncidents, RefreshToken } from '../../store/actions';
 import { incidentSelector } from '../../store/selectors/AuthSelector';
 import Paginator from '../Paginator';
 
@@ -15,6 +15,7 @@ const IncidentBrowserComponent = () => {
     const [postsPerPage,setPostsPerPage] = useState(5);
     
     useEffect(() => {
+        dispatch(DeleteEditIncident());
         dispatch(GetIncidents('all'))
         dispatch(RefreshToken());   // eslint-disable-next-line
     },[])

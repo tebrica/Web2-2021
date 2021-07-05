@@ -1,7 +1,7 @@
 import { call, put, select, takeLatest } from "redux-saga/effects";
-import { ADD_CALL, ADD_DEVICE, ADD_INCIDENT, ADD_RESOLUTION, GET_CALLS, GET_DEVICES, GET_INCIDENTS, GET_WORK_REQUESTS } from "../../constants/action-types";
+import { ADD_CALL, ADD_DEVICE, ADD_INCIDENT, ADD_RESOLUTION, GET_ALL_DEVICES, GET_CALLS, GET_DEVICES, GET_INCIDENTS, GET_WORK_REQUESTS, SAVE_EDIT_INCIDENT } from "../../constants/action-types";
 import incidentService from '../../services/IncidentService';
-import { SaveCalls, SaveDevices, SaveIncidentsToBase, SaveWorkRequests } from "../actions";
+import { SaveCalls, SaveCurrentIncidentToRedux, SaveDevices, SaveIncidentsToBase, SaveWorkRequests } from "../actions";
 import { loggedUserSelector } from "../selectors/AuthSelector";
 
 function* getIncidents({payload}) {
@@ -42,7 +42,10 @@ function* getDevices({payload}) {
 }
 
 function* addDevice({payload}) {
-    yield call(incidentService.postOprema,payload)
+    const address = { address: payload.Address, number: payload.Number }
+    const coords = yield call(incidentService.getCoordinatesByAddress,address)
+    const data = { IdOprema: payload.IdOprema, Name: payload.Name, OpremaType: payload.OpremaType, CoordinateX: coords.lat, CoordinateY: coords.lng, IncidentId: payload.IncidentId }
+    yield call(incidentService.postOprema,data)
 }
 
 function* addResolution(payload) {
@@ -51,6 +54,16 @@ function* addResolution(payload) {
 
 function* addCall({payload}) {
     yield call(incidentService.postCall,payload)
+}
+
+function* getAllDevices() {
+    const response = yield call(incidentService.getAllOprema)
+    yield put(SaveDevices(response))
+}
+
+function* getIncidentById({payload}) {
+    const incident = yield call(incidentService.getIncidentById,payload);
+    yield put(SaveCurrentIncidentToRedux(incident));
 }
 
 export default function* incidentSaga() {
@@ -62,4 +75,6 @@ export default function* incidentSaga() {
     yield takeLatest(ADD_DEVICE, addDevice)
     yield takeLatest(ADD_RESOLUTION, addResolution)
     yield takeLatest(ADD_CALL, addCall)
+    yield takeLatest(GET_ALL_DEVICES,getAllDevices)
+    yield takeLatest(SAVE_EDIT_INCIDENT, getIncidentById)
 }

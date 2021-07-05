@@ -24,6 +24,7 @@ const NewIncidentComponent = () => {
         switch(currentPage)
         {
             case 0: return (<div style={{float: 'left', position: 'fixed', top: 90,left: 410}}>
+                <h3 className="ui header" style={{ marginLeft: 190 }}> Basic information about incident </h3>
                 <BasicInformation incidentId={incidentId} setHeaderPosted={setHeaderPosted} setCurrentPage={setCurrentPage} />
             </div>)
 

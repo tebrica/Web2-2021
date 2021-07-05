@@ -34,7 +34,8 @@ const CallsComponent = () => {
     return (<div style={{marginLeft: 150, height: 550}}>
         <div className="ui container segment" style={{paddingLeft: 20,marginTop: 80, position: 'fixed', width: 920, right: 1, left: 50, height: 490}} >
             {/* TABELA */}
-            <table className="ui green table" style={{marginTop: 30}}>
+            <h2 className="ui header" style={{ marginLeft: 5 }}> All Calls </h2>
+            <table className="ui green table" style={{marginTop: 12}}>
                     <thead>
                         <tr>
                             <th>

@@ -11,3 +11,5 @@ export const callSelector = (state) => state.incident.calls;
 export const unapprovedUsersSelector = (state) => state.auth.unapprovedUsers;
 
 export const devicesSelector = (state) => state.incident.devices;
+
+export const editIncidentSelector = (state) => state.incident.editIncident;
