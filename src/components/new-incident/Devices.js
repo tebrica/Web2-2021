@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetDevices } from '../../store/actions';
-import { devicesSelector } from '../../store/selectors/AuthSelector';
+import { devicesSelector, editIncidentSelector } from '../../store/selectors/AuthSelector';
 import Paginator from '../Paginator';
 
 const Devices = ({ setCurrentPage, incidentId }) => {
@@ -9,11 +9,15 @@ const Devices = ({ setCurrentPage, incidentId }) => {
     const dispatch = useDispatch();
 
     const devices = useSelector(devicesSelector)
+    const editIncident = useSelector(editIncidentSelector);
 
     const [currentPagePagin,setCurrentPagePagin] = useState(1);   // eslint-disable-next-line
     const [postsPerPage,setPostsPerPage] = useState(5);
 
     useEffect(() => {
+        if (editIncident !== null) {    // eslint-disable-next-line
+            incidentId = editIncident.ID;
+        }   
         dispatch(GetDevices(incidentId)); // eslint-disable-next-line
     },[])
 
@@ -24,11 +28,11 @@ const Devices = ({ setCurrentPage, incidentId }) => {
 
     const devicesRendered = currentDevices.map((device) => {
         return (<tr key={device.IdOprema}>
-            <td> {device.IdOprema} </td>
-            <td> {device.Name} </td>
-            <td> {device.OpremaType} </td>
-            <td> {device.Coordinates} </td>
-            <td> {device.Address} </td>
+            <td>{device.IdOprema}</td>
+            <td>{device.Name}</td>
+            <td>{device.OpremaType}</td>
+            <td>{device.Coordinates}</td>
+            <td>{device.Address}</td>
         </tr>);
     })
 
@@ -70,12 +74,12 @@ const Devices = ({ setCurrentPage, incidentId }) => {
                     </tr>
                 </thead>
 
-                <tbody> { devices.length === 0 ? <div> No devices. </div> : devicesRendered } </tbody>
+                <tbody>{devices.length === 0 ? 'No devices' : devicesRendered}</tbody>
 
 
             </table>
 
-            { devices.length === 0 ? <div></div> : 
+            {devices.length === 0 ? <div></div> : 
             <div style={{ marginTop: 30 }}>
                 <Paginator incidentsPerPage={postsPerPage} totalIncidents={devices.length} changePage={(num) => setCurrentPagePagin(num)} />
             </div>}

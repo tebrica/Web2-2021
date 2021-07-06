@@ -2,7 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as yup from 'yup';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loggedUserSelector } from '../../store/selectors/AuthSelector';
+import { editIncidentSelector, loggedUserSelector } from '../../store/selectors/AuthSelector';
 import { AddCall } from '../../store/actions';
 
 const validationSheme = yup.object().shape({
@@ -15,21 +15,22 @@ const NewCall = ({ setCurrentPage, incidentId, headerPosted }) => {
 
     const dispatch = useDispatch();
     const user = useSelector(loggedUserSelector);
+    const editIncident = useSelector(editIncidentSelector);
 
     const onFormSubmit = (values,{resetForm}) => {
         resetForm();
-        if (!headerPosted) {
-            alert('You have to enter basic information first!');
-            setCurrentPage(0);
+        if (editIncident === null) {
+            if (!headerPosted) {
+                alert('You have to enter basic information first!');
+                setCurrentPage(0);
+            }
         }
         const vals = values;
-        vals.IncidentId = incidentId;
+        vals.IncidentId = editIncident === null ? incidentId : editIncident.ID;
         vals.UsernameKor = user.Username;
         dispatch(AddCall(vals))
         setCurrentPage(3)
     };
-
-    console.log(headerPosted)
 
     return <div className="ui green segment"> 
         <Formik

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup'
-import { useDispatch } from 'react-redux';
-import { AddNewResolution } from '../../store/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { AddNewResolution, GetResolution } from '../../store/actions';
+import { editIncidentSelector, editResolutionSelector } from '../../store/selectors/AuthSelector';
 
 const validationSheme = yup.object().shape({
     Cause: yup.string().required('Required'),
@@ -13,12 +14,28 @@ const validationSheme = yup.object().shape({
 
 const Resolution = ({ setCurrentPage, headerPosted, incidentId }) => {
 
+    let initialValues = { };
     const dispatch = useDispatch();
+    const editResolution = useSelector(editResolutionSelector);
+    const editIncident = useSelector(editIncidentSelector);
+
+    useEffect(() => {
+        dispatch(GetResolution(incidentId))  // eslint-disable-next-line
+    },[])
+
+    if (editResolution === null) {
+        initialValues = { Cause: '', SubCause: '', Construction: '', Material: '' }
+    }
+    else {
+        initialValues = { Cause: editResolution.Cause, SubCause: editResolution.SubCause, Construction: editResolution.Construction, Material: editResolution.Material }
+    }
 
     const onFormSubmit = (values,{resetForm}) => {
         resetForm();
-        if (!headerPosted) {
-            alert('Header is not posted, failed!');
+        if (editIncident === null) {
+            if (!headerPosted) {
+                alert('Header is not posted, failed!');
+            }
         }
         let vals = values;
         vals.IncidentId = incidentId;
@@ -36,7 +53,7 @@ const Resolution = ({ setCurrentPage, headerPosted, incidentId }) => {
             <Form>
 
                 <label htmlFor="cause"> Cause: </label>
-                <select className="ui dropdown" name="cause" style={{width: 160, marginLeft: 114}} onChange={(e) => setFieldValue('Cause',e.target.value)}>
+                <select className="ui dropdown" name="Cause" defaultValue={initialValues.Cause} style={{width: 160, marginLeft: 114}} onChange={(e) => setFieldValue('Cause',e.target.value)}>
                     <option value=""> -- </option>
                     <option value="Weather"> Weather </option>
                     <option value="Human factor"> Human factor </option>
@@ -49,7 +66,7 @@ const Resolution = ({ setCurrentPage, headerPosted, incidentId }) => {
                 <br/>
 
                 <label htmlFor="subcause"> Subcause: </label>
-                <select className="ui dropdown" name="subcause" style={{width: 160, marginTop: 30, marginLeft: 94}} onChange={(e) => setFieldValue('SubCause',e.target.value)}>
+                <select className="ui dropdown" name="subcause" defaultValue={initialValues.SubCause} style={{width: 160, marginTop: 30, marginLeft: 94}} onChange={(e) => setFieldValue('SubCause',e.target.value)}>
                     <option value=""> -- </option>
                     <option value="Thunder"> Thunder </option>
                     <option value="Hurricane"> Hurricane </option>
@@ -63,7 +80,7 @@ const Resolution = ({ setCurrentPage, headerPosted, incidentId }) => {
                 <br/>
 
                 <label htmlFor="consType"> Construction Type: </label>
-                <select className="ui dropdown" name="consType" style={{width: 160, marginTop: 30, marginLeft: 40}} onChange={(e) => setFieldValue('Construction',e.target.value)}>
+                <select className="ui dropdown" name="consType" defaultValue={initialValues.Construction} style={{width: 160, marginTop: 30, marginLeft: 40}} onChange={(e) => setFieldValue('Construction',e.target.value)}>
                     <option value=""> -- </option>
                     <option value="1">Underground</option>
                     <option value="0">Above ground</option>
@@ -75,7 +92,7 @@ const Resolution = ({ setCurrentPage, headerPosted, incidentId }) => {
                 <br/>
 
                 <label htmlFor="material"> Material: </label>
-                <select className="ui dropdown" name="material" style={{width: 160, marginTop: 30, marginLeft: 100}} onChange={(e) => setFieldValue('Material',e.target.value)}>
+                <select className="ui dropdown" name="material" defaultValue={initialValues.Material} style={{width: 160, marginTop: 30, marginLeft: 100}} onChange={(e) => setFieldValue('Material',e.target.value)}>
                     <option value=""> -- </option>
                     <option value="Metal">Metal</option>
                     <option value="Plastic">Plastic</option>
