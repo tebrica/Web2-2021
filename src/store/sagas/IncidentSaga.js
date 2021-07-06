@@ -44,7 +44,7 @@ function* getDevices({payload}) {
 function* addDevice({payload}) {
     const address = { address: payload.Address, number: payload.Number }
     const coords = yield call(incidentService.getCoordinatesByAddress,address)
-    const data = { IdOprema: payload.IdOprema, Name: payload.Name, OpremaType: payload.OpremaType, CoordinateX: coords.lat, CoordinateY: coords.lng, IncidentId: payload.IncidentId }
+    const data = { IdOprema: payload.IdOprema, Name: payload.Name, OpremaType: payload.OpremaType, CoordinateX: coords.lat, CoordinateY: coords.lng, IncidentId: payload.IncidentId, Address: payload.Address + " " + payload.Number }
     yield call(incidentService.postOprema,data)
     const response = yield call(incidentService.getOprema,payload.IncidentId)
     yield put(SaveDevices(response))

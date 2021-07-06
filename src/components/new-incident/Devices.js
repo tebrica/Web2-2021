@@ -31,7 +31,7 @@ const Devices = ({ setCurrentPage, incidentId }) => {
             <td>{device.IdOprema}</td>
             <td>{device.Name}</td>
             <td>{device.OpremaType}</td>
-            <td>{device.Coordinates}</td>
+            <td>{device.CoordinateX} <br/> {device.CoordinateY} </td>
             <td>{device.Address}</td>
         </tr>);
     })
