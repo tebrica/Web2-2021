@@ -2,8 +2,9 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup'
 import makeid from '../../constants/RandomGenerator';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { AddNewDevice } from '../../store/actions';
+import { editIncidentSelector } from '../../store/selectors/AuthSelector';
 
 const validationSheme = yup.object().shape({
     Name: yup.string().required('Required'),
@@ -15,20 +16,25 @@ const validationSheme = yup.object().shape({
 const NewDeviceComponent = ({ setCurrentPage, incidentId, headerPosted }) => {
 
     const dispatch = useDispatch();
+    const editIncident = useSelector(editIncidentSelector);
     
     const onFormSubmit = (values,{resetForm}) => {
         resetForm();
-        if (!headerPosted) {
-            alert('You need to post basic incident information first!')
-            return;
+        if (editIncident === null) {
+            if (!headerPosted) {
+                alert('You need to post basic incident information first!')
+                return;
+            }
         }
         const vals = values;
-        vals.IncidentId = incidentId;
+        vals.IncidentId = editIncident === null ? incidentId : editIncident.ID;
         vals.IdOprema = 'OPR_' + makeid(5)
         dispatch(AddNewDevice(vals));
         setCurrentPage(1)
     }
     
+    console.log(headerPosted)
+
     return (<div className="ui raised container segment" style={{ width: 600 }}>
 
         <h2 style={{ marginLeft: 180, marginBottom: 50 }}> Dodavanje opreme: </h2>

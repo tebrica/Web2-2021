@@ -132,6 +132,16 @@ const getAllOprema = async () => {
     return oprema.data;
 }
 
+const getResolutionForIncident = async(incidentId) => {
+    try {
+        const result = await axiosClient.get(ENDPOINTS.RESOLUTIONS + `?IncidentId=${incidentId}`);
+        return result.data;
+    }
+    catch(error) {
+        return null;
+    }
+} 
+
 const incidentService = {
     getIncidents,
     getWorkRequests,
@@ -147,6 +157,7 @@ const incidentService = {
     getCoordinatesByAddress,
     getAllOprema,
     getIncidentById,
+    getResolutionForIncident,
 }
 
 export default incidentService;

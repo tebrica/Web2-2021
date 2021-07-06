@@ -1,7 +1,7 @@
 import { call, put, select, takeLatest } from "redux-saga/effects";
-import { ADD_CALL, ADD_DEVICE, ADD_INCIDENT, ADD_RESOLUTION, GET_ALL_DEVICES, GET_CALLS, GET_DEVICES, GET_INCIDENTS, GET_WORK_REQUESTS, SAVE_EDIT_INCIDENT } from "../../constants/action-types";
+import { ADD_CALL, ADD_DEVICE, ADD_INCIDENT, ADD_RESOLUTION, GET_ALL_DEVICES, GET_CALLS, GET_DEVICES, GET_INCIDENTS, GET_RESOLUTION_FOR_INCIDENT, GET_WORK_REQUESTS, SAVE_EDIT_INCIDENT } from "../../constants/action-types";
 import incidentService from '../../services/IncidentService';
-import { SaveCalls, SaveCurrentIncidentToRedux, SaveDevices, SaveIncidentsToBase, SaveWorkRequests } from "../actions";
+import { SaveCalls, SaveCurrentIncidentToRedux, SaveDevices, SaveIncidentsToBase, SaveResolution, SaveWorkRequests } from "../actions";
 import { loggedUserSelector } from "../selectors/AuthSelector";
 
 function* getIncidents({payload}) {
@@ -46,14 +46,23 @@ function* addDevice({payload}) {
     const coords = yield call(incidentService.getCoordinatesByAddress,address)
     const data = { IdOprema: payload.IdOprema, Name: payload.Name, OpremaType: payload.OpremaType, CoordinateX: coords.lat, CoordinateY: coords.lng, IncidentId: payload.IncidentId }
     yield call(incidentService.postOprema,data)
+    const response = yield call(incidentService.getOprema,payload.IncidentId)
+    yield put(SaveDevices(response))
 }
 
 function* addResolution(payload) {
+    console.log(payload.payload.IncidentId)
     yield call(incidentService.postResolution,payload)
+    const resolution = yield call(incidentService.getResolutionForIncident,payload.payload.IncidentId);
+    console.log(resolution);
+    yield put(SaveResolution(resolution));
 }
 
 function* addCall({payload}) {
+    console.log(payload.IncidentId)
     yield call(incidentService.postCall,payload)
+    const result = yield call(incidentService.getPoziviForIncident,payload.IncidentId);
+    yield put(SaveCalls(result));
 }
 
 function* getAllDevices() {
@@ -64,6 +73,11 @@ function* getAllDevices() {
 function* getIncidentById({payload}) {
     const incident = yield call(incidentService.getIncidentById,payload);
     yield put(SaveCurrentIncidentToRedux(incident));
+}
+
+function* getResolution({payload}) {
+    const result = yield call(incidentService.getResolutionForIncident,payload)
+    yield put(SaveResolution(result));
 }
 
 export default function* incidentSaga() {
@@ -77,4 +91,5 @@ export default function* incidentSaga() {
     yield takeLatest(ADD_CALL, addCall)
     yield takeLatest(GET_ALL_DEVICES,getAllDevices)
     yield takeLatest(SAVE_EDIT_INCIDENT, getIncidentById)
+    yield takeLatest(GET_RESOLUTION_FOR_INCIDENT, getResolution)
 }

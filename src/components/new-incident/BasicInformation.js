@@ -12,17 +12,29 @@ const validationSheme = yup.object().shape({
     Description: yup.string().required('Required').min(3,'Too short!')
 })
 
-const BasicInformation = ({ incidentId, setHeaderPosted, setCurrentPage }) => {
+const BasicInformation = ({ incidentId, setHeaderPosted, setCurrentPage, setIncidentId }) => {
 
+    var initValues;
     const user = useSelector(loggedUserSelector);
     const editIncident = useSelector(editIncidentSelector);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        
+        if (editIncident !== null) {
+            setIncidentId(editIncident.ID);
+            setHeaderPosted(true);
+        }   // eslint-disable-next-line
     },[])
+  
+    if (editIncident === null) {
+        initValues = { AffectedPeople: 0, IncidentType: '', ATA: '', Prioritet: 0, ETR: '', Confirmed: false, Pozivi: 0, ETA: '', Voltage: 0, Description: '', IdKorisnika: '' }
+    }
+    else {
+        initValues = { AffectedPeople: editIncident.AffectedPeople, IncidentType: editIncident.IncidentType, ATA: editIncident.ATA, 
+        Prioritet: editIncident.Prioritet, ETR: editIncident.ETR, Confirmed: false, Pozivi: editIncident.Pozivi, ETA: editIncident.ETA, 
+        Voltage: editIncident.Voltage, Description: editIncident.Description, IdKorisnika: editIncident.IdKorisnika }
+    }
 
-    console.log(editIncident)
 
     const onFormSubmit = (values,{resetForm}) => {
         resetForm();
@@ -32,6 +44,7 @@ const BasicInformation = ({ incidentId, setHeaderPosted, setCurrentPage }) => {
         vals.VremeRada = values.ATA;
         vals.Confirmed = true;
         vals.Calls = 0;
+        vals.IncidentType = vals.IncidentType === '' ? 'PLANIRANI_INCIDENT' : vals.IncidentType;
         dispatch(AddNewIncident(vals))
         setHeaderPosted(true);
         setCurrentPage(1)
@@ -39,11 +52,13 @@ const BasicInformation = ({ incidentId, setHeaderPosted, setCurrentPage }) => {
 
     return (<div className="ui green segment">
         <Formik 
-            initialValues={{ AffectedPeople: 0, IncidentType: '', ATA: '', Prioritet: 0, ETR: '', Confirmed: false, Pozivi: 0, ETA: '', Voltage: 0, Description: '', IdKorisnika: '' }}
+            enableReinitialize
+            initialValues={initValues}
             validationSchema={validationSheme}
             onSubmit={onFormSubmit}>
 
             {({setFieldValue}) => (
+                
                 <Form className="ui form">
 
                     <table>
@@ -52,11 +67,11 @@ const BasicInformation = ({ incidentId, setHeaderPosted, setCurrentPage }) => {
                             
                             <tr>
                                 <td> <p style={{marginRight: 35}}> Incident ID: </p> </td>
-                                <td> <p style={{marginRight: 120}} onChange={(e) => setFieldValue(e.target.value)}> {incidentId} </p>  </td>
+                                <td> <p style={{marginRight: 120}} onChange={(e) => setFieldValue(e.target.value)}> { editIncident === null ? incidentId : editIncident.ID} </p>  </td>
                                 <td> Affected customers: </td>
                                 <td>
                                     <div style={{ float: "left" }}>
-                                        <Field type="number" name="AffectedPeople" placeholder="0" style={{ width: 150, marginLeft: 30 }}/>
+                                        <Field type="number" defaultValue={initValues.AffectedPeople} name="AffectedPeople" placeholder="0" style={{ width: 150, marginLeft: 30 }}/>
                                         <ErrorMessage name="AffectedPeople">
                                             {(msg) => <div style={{ color: "red", marginLeft: 40 }}> {msg} </div>}
                                         </ErrorMessage>
@@ -67,21 +82,21 @@ const BasicInformation = ({ incidentId, setHeaderPosted, setCurrentPage }) => {
                             <tr>
                                 <td> <p style={{marginTop: 20}}> Type: </p> </td>
                                 <td>
-                                    <select name="ATA" className="ui dropdown" style={{marginTop: 15, width: 165}} onChange={(e) => setFieldValue("IncidentType",e.target.value)}>
+                                    <select name="ATA" defaultValue={initValues.IncidentType} className="ui dropdown" style={{marginTop: 15, width: 165}} onChange={(e) => setFieldValue("IncidentType",e.target.value)}>
                                         <option value="PLANIRANI_INCIDENT">Planirani incident</option>
                                         <option value="NEPLANIRANI_INCIDENT">Neplanirani incident</option>
                                     </select>
                                 </td>
                                 <td> <p style={{marginTop: 20}}> ATA (Arrival Time): </p> </td>
                                 <td>
-                                    <input type="date" name="outagetime" style={{ width: 150, marginLeft: 30, height: 38, marginTop: 15}} onChange={(e) => setFieldValue('ATA',e.target.value)} />
+                                    <input type="date" defaultValue={initValues.ATA.substring(0,10)} name="outagetime" style={{ width: 150, marginLeft: 30, height: 38, marginTop: 15}} onChange={(e) => setFieldValue('ATA',e.target.value)} />
                                 </td>
                             </tr>
 
                             <tr>
                                 <td><p style={{marginTop: 20}}>Priority:</p></td>
                                 <td>
-                                    <select className="ui dropdown" style={{marginTop: 15, width: 165}} onChange={(e) => setFieldValue('Prioritet',parseInt(e.target.value))}>
+                                    <select defaultValue={initValues.Prioritet} className="ui dropdown" style={{marginTop: 15, width: 165}} onChange={(e) => setFieldValue('Prioritet',parseInt(e.target.value))}>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -90,18 +105,18 @@ const BasicInformation = ({ incidentId, setHeaderPosted, setCurrentPage }) => {
                                 </td>
                                 <td><p style={{marginTop: 20}}>ETR:</p></td>
                                 <td>
-                                    <input id="ETR" type="date" name="ETR" style={{ width: 150, marginLeft: 30, height: 38, marginTop: 18 }} onChange={(e) => setFieldValue('ETR',e.target.value)} />
+                                    <input id="ETR" defaultValue={initValues.ETR.substring(0,10)} type="date" name="ETR" style={{ width: 150, marginLeft: 30, height: 38, marginTop: 18 }} onChange={(e) => setFieldValue('ETR',e.target.value)} />
                                 </td>
                             </tr>
 
                             <tr>
                                 <td><p style={{marginTop: 20}}>ETA:</p></td>
                                 <td>
-                                    <input id="ETA" type="date" name="ETA" style={{ width: 150, height: 38, marginTop: 18 }} onChange={(e) => setFieldValue("ETA",e.target.value)} />
+                                    <input id="ETA" defaultValue={initValues.ETA.substring(0,10)} type="date" name="ETA" style={{ width: 150, height: 38, marginTop: 18 }} onChange={(e) => setFieldValue("ETA",e.target.value)} />
                                 </td>
                                 <td><p style={{marginTop: 20}}>Dodela resavanja:</p></td>
                                 <td>
-                                    <select className="ui dropdown" style={{marginTop: 15, width: 165}} onChange={(e) => setFieldValue('IdKorisnika',e.target.value)}>
+                                    <select className="ui dropdown" defaultValue={initValues.IdKorisnika} style={{marginTop: 15, width: 165}} onChange={(e) => setFieldValue('IdKorisnika',e.target.value)}>
                                         <option value="0"> --- </option>
                                         <option value={user.Username}>Self assign</option>
                                     </select>
@@ -111,14 +126,14 @@ const BasicInformation = ({ incidentId, setHeaderPosted, setCurrentPage }) => {
                             <tr>
                                 <td><p style={{marginTop: 20}}>Voltage [kV]:</p></td>
                                 <td>
-                                    <Field type="number" style={{width: 150, marginTop: 20}} name="Voltage" />
+                                    <Field type="number" defaultValue={initValues.Voltage} style={{width: 150, marginTop: 20}} name="Voltage" />
                                     <ErrorMessage name="Voltage">
                                         {(msg) => <div style={{ color: "red", marginLeft: 40 }}> {msg} </div>}
                                     </ErrorMessage>
                                 </td>
                                 <td><p style={{marginTop: 20}}>Vreme incidenta:</p></td>
                                 <td>
-                                    <input id="SheduledTime" type="date" name="SheduledTime" style={{ width: 170, height: 38, marginTop: 18, marginLeft: 30 }} 
+                                    <input id="SheduledTime" defaultValue={initValues.ATA.substring(0,10)} type="date" name="SheduledTime" style={{ width: 170, height: 38, marginTop: 18, marginLeft: 30 }} 
                                         onChange={(e) => setFieldValue('VremeIncidenta',e.target.value)}/>
                                 </td>
                             </tr>
@@ -126,7 +141,7 @@ const BasicInformation = ({ incidentId, setHeaderPosted, setCurrentPage }) => {
                             <tr>
                                 <td><p style={{marginTop: 20}}>Description</p></td>
                                 <td colSpan="2">
-                                    <Field type="text" name="Description" placeholder="Description.." style={{ width: 300, marginTop: 12 }}/>
+                                    <Field type="text" defaultValue={initValues.Description} name="Description" placeholder="Description.." style={{ width: 300, marginTop: 12 }}/>
                                 </td>
                                 <td>
                                     <ErrorMessage name="Description">

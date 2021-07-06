@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { GetCalls } from '../../store/actions';
-import { callSelector } from '../../store/selectors/AuthSelector';
+import { callSelector, editIncidentSelector } from '../../store/selectors/AuthSelector';
 import Paginator from '../Paginator';
 
 const Calls = ({ setCurrentPage, incidentId }) => {
 
     const dispatch = useDispatch();
-    const allCalls = useSelector(callSelector)
+    const allCalls = useSelector(callSelector);
+    const editIncident = useSelector(editIncidentSelector);
 
     const [currentPagePagin,setCurrentPagePagin] = useState(1);   // eslint-disable-next-line
     const [postsPerPage,setPostsPerPage] = useState(5);
 
     useEffect(() => {
+        if (editIncident !== null) {    // eslint-disable-next-line
+            incidentId = editIncident.ID;
+        }
         dispatch(GetCalls(incidentId)) // eslint-disable-next-line
     },[])
 

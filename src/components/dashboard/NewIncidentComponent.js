@@ -25,7 +25,7 @@ const NewIncidentComponent = () => {
         {
             case 0: return (<div style={{float: 'left', position: 'fixed', top: 90,left: 410}}>
                 <h3 className="ui header" style={{ marginLeft: 190 }}> Basic information about incident </h3>
-                <BasicInformation incidentId={incidentId} setHeaderPosted={setHeaderPosted} setCurrentPage={setCurrentPage} />
+                <BasicInformation incidentId={incidentId} setHeaderPosted={setHeaderPosted} setCurrentPage={setCurrentPage} setIncidentId={setIncidentId} />
             </div>)
 
             case 1: return (<div style={{float: 'left', position: 'fixed', top: 110,left: 410}}>
