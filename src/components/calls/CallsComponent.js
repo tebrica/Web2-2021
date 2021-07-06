@@ -35,7 +35,7 @@ const CallsComponent = () => {
         <div className="ui container segment" style={{paddingLeft: 20,marginTop: 80, position: 'fixed', width: 920, right: 1, left: 50, height: 490}} >
             {/* TABELA */}
             <h2 className="ui header" style={{ marginLeft: 5 }}> All Calls </h2>
-            <table className="ui green table" style={{marginTop: 12}}>
+            <table className="ui sortable celled green table" style={{marginTop: 12}}>
                     <thead>
                         <tr>
                             <th>
