@@ -9,6 +9,7 @@ const ENDPOINTS = {
     RESOLUTIONS: '/Resolutions',
     ONE_INCIDENT: '/SingleIncident',
     NOTIFICATIONS: '/Poruka',
+    INCIDENTI_SORT: '/IncidentiSort',
 }
 
 const getIncidents = async () => {
@@ -179,6 +180,11 @@ const addNotification = async(payload) => {
     await axiosClient.post(ENDPOINTS.NOTIFICATIONS,payload);
 }
 
+const sortIncidents = async(payload) => {
+    const results = await axiosClient.get(ENDPOINTS.INCIDENTI_SORT + `?columnName=${payload}`)
+    return results.data;
+}
+
 const incidentService = {
     getIncidents,
     getWorkRequests,
@@ -200,6 +206,7 @@ const incidentService = {
     getUnreadNotifications,
     getNotificationType,
     addNotification,
+    sortIncidents,
 }
 
 export default incidentService;
