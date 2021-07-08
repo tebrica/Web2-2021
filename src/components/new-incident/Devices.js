@@ -12,7 +12,7 @@ const Devices = ({ setCurrentPage, incidentId }) => {
     const editIncident = useSelector(editIncidentSelector);
 
     const [currentPagePagin,setCurrentPagePagin] = useState(1);   // eslint-disable-next-line
-    const [postsPerPage,setPostsPerPage] = useState(5);
+    const [postsPerPage,setPostsPerPage] = useState(4);
 
     useEffect(() => {
         if (editIncident !== null) {    // eslint-disable-next-line

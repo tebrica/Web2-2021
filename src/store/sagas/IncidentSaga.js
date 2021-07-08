@@ -32,8 +32,13 @@ function* GetCalls({incident}) {
     yield put(SaveCalls(response));
 }
 
-function* AddIncident({payload}) {
-    yield call(incidentService.addNewIncident,payload)
+function* AddIncident(payload) {
+    if (payload.addupd === "ADD") {
+        yield call(incidentService.addNewIncident,payload.payload);
+    }
+    else {
+        yield call(incidentService.updateIncident,payload.payload);
+    }
 }
 
 function* getDevices({payload}) {

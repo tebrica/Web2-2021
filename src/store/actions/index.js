@@ -28,8 +28,8 @@ export const SaveIncidentsToBase = (payload) => {
     return { type: SAVE_INCIDENTS, payload: payload}
 }
 
-export const AddNewIncident = (payload) => {
-    return { type: ADD_INCIDENT, payload: payload }
+export const AddNewIncident = (payload, addupd) => {
+    return { type: ADD_INCIDENT, payload: payload, addupd: addupd }
 }
 
 export const GetWorkRequests = () => {
