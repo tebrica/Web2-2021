@@ -47,7 +47,7 @@ const NotificationsComponent = () => {
             </button>
         </div>
 
-        <div style={{ position: 'fixed', top: 105, left: 450 }}>
+        <div style={{ position: 'fixed', top: 95, left: 450 }}>
             {renderNotificationFilter()}
         </div>
         </div>

@@ -9,8 +9,6 @@ const NotificationList = ({ notificationMode }) => {
     const dispatch = useDispatch();
     const notifications = useSelector(NotificationSelector);
 
-    console.log(notifications);
-
     const renderedNotifications = notifications.map(notification => {
         return <div key={notification.IdPoruke}>
             <SingleNotification notification={notification} />
@@ -31,7 +29,7 @@ const NotificationList = ({ notificationMode }) => {
 
     return <div>
         <h3 style={{ fontSize: 22 }}> {notificationMode} </h3> 
-        <div style={{ marginTop: 30 }}>
+        <div style={{ marginTop: 20, overflow: 'scroll', height: 400 }}>
             {renderedNotifications}
         </div>
     </div>
