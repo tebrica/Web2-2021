@@ -1,4 +1,4 @@
-import { ADD_CALL, ADD_DEVICE, ADD_INCIDENT, ADD_RESOLUTION, APPROVE_USER, CHANGE_PASSWORD, DELETE_EDIT_INCIDENT, GET_ALL_DEVICES, GET_CALLS, GET_COORDINATES, GET_DEVICES, GET_INCIDENTS, GET_RESOLUTION_FOR_INCIDENT, GET_UNAPPROVED_USERS, GET_WORK_REQUESTS, LOGIN, LOGOUT, REFRESH_TOKEN, REGISTER, REMOVE_CURRENT_LOGGED, SAVE_CALLS, SAVE_CURRENT_LOGGED, SAVE_DETAILS, SAVE_DEVICES, SAVE_EDIT_INCIDENT, SAVE_INCIDENTS, SAVE_RESOLUTION_FOR_INCIDENT, SAVE_TOKEN, SAVE_UNAPPROVED_USERS, SAVE_WORK_REQUESTS } from '../../constants/action-types'
+import { ADD_CALL, ADD_DEVICE, ADD_INCIDENT, ADD_NOTIFICATION, ADD_RESOLUTION, APPROVE_USER, CHANGE_PASSWORD, DELETE_EDIT_INCIDENT, GET_ALL_DEVICES, GET_CALLS, GET_COORDINATES, GET_DEVICES, GET_INCIDENTS, GET_NOTIFICATIONS, GET_RESOLUTION_FOR_INCIDENT, GET_UNAPPROVED_USERS, GET_WORK_REQUESTS, LOGIN, LOGOUT, REFRESH_TOKEN, REGISTER, REMOVE_CURRENT_LOGGED, SAVE_CALLS, SAVE_CURRENT_LOGGED, SAVE_DETAILS, SAVE_DEVICES, SAVE_EDIT_INCIDENT, SAVE_INCIDENTS, SAVE_NOTIFICATIONS, SAVE_RESOLUTION_FOR_INCIDENT, SAVE_TOKEN, SAVE_UNAPPROVED_USERS, SAVE_WORK_REQUESTS, SORT_INCIDENTS, UPDATE_USER } from '../../constants/action-types'
 
 export const RegisterUser = (payload) => {
     return { type: REGISTER, payload: payload }
@@ -118,4 +118,24 @@ export const GetResolution = (payload) => {
 
 export const SaveResolution = (payload) => {
     return { type: SAVE_RESOLUTION_FOR_INCIDENT, payload: payload }
+}
+
+export const GetNotifications = (payload) => {
+    return { type: GET_NOTIFICATIONS, payload: payload }
+}
+
+export const SaveNotifications = (payload) => {
+    return { type: SAVE_NOTIFICATIONS, payload: payload }
+}
+
+export const AddNotification = (payload) => {
+    return { type: ADD_NOTIFICATION, payload: payload }
+}
+
+export const SortIncidents = (payload) => {
+    return { type: SORT_INCIDENTS, payload: payload }
+}
+
+export const UpdateUser = (payload) => {
+    return { type: UPDATE_USER, payload: payload }
 }

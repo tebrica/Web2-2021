@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { DeleteEditIncident, GetIncidents, RefreshToken } from '../../store/actions';
+import { DeleteEditIncident, GetIncidents, RefreshToken, SortIncidents } from '../../store/actions';
 import { incidentSelector } from '../../store/selectors/AuthSelector';
 import Paginator from '../Paginator';
 
@@ -13,6 +13,8 @@ const IncidentBrowserComponent = () => {
 
     const [currentPage,setCurrentPage] = useState(1);   // eslint-disable-next-line
     const [postsPerPage,setPostsPerPage] = useState(5);
+
+    console.log(incidents)
     
     useEffect(() => {
         dispatch(DeleteEditIncident());
@@ -29,10 +31,10 @@ const IncidentBrowserComponent = () => {
         return <tr key={incident.ID}>
             <td> {incident.ID} </td>
             <td> {incident.VremeRada.slice(0,10)} </td>
-            <td> {incident.Pozivi} </td>
-            <td> {incident.Status} </td>
+            <td> {incident.IncidentType === 0 ? 'Planirani incident' : 'Neplanirani incident'} </td>
             <td> {incident.Voltage} kW </td>
             <td> {incident.AffectedPeople} </td>
+            <td> {incident.Status} </td>
             <td> {incident.IdKorisnika === '' ? '-' : incident.IdKorisnika} </td>
         </tr>
     });
@@ -58,26 +60,37 @@ const IncidentBrowserComponent = () => {
                         <tr>
                             <th>
                                 Id
-                                <i className="caret down icon"></i>
+                                <button type="button" style={{ marginLeft: 10, width: 32 }} onClick={() => dispatch(SortIncidents('ID'))}>
+                                    <i className="caret down icon"></i>
+                                </button>
+                                
                             </th>
                             <th>
                                 Start Date
-                                <i className="caret down icon"></i>
+                                <button type="button" style={{ marginLeft: 10, width: 32 }} onClick={() => dispatch(SortIncidents('StartDate'))}>
+                                    <i className="caret down icon"></i>
+                                </button>
                             </th>
                             <th>
-                                Phone No.
-                                <i className="caret down icon"></i>
-                            </th>
-                            <th>
-                                Status
-                                <i className="caret down icon"></i>
+                                Incident type
+                                <button type="button" style={{ marginLeft: 10, width: 32 }} onClick={() => dispatch(SortIncidents('IncidentType'))}>
+                                    <i className="caret down icon"></i>
+                                </button>
                             </th>
                             <th>
                                 Voltage
-                                <i className="caret down icon"></i>
+                                <button type="button" style={{ marginLeft: 10, width: 32 }} onClick={() => dispatch(SortIncidents('Voltage'))}>
+                                    <i className="caret down icon"></i>
+                                </button>
                             </th>
                             <th>
                                 Affected people
+                                <button type="button" style={{ marginLeft: 10, width: 32 }} onClick={() => dispatch(SortIncidents('AffectedPeople'))}>
+                                    <i className="caret down icon"></i>
+                                </button>
+                            </th>
+                            <th>
+                                Status
                                 <i className="caret down icon"></i>
                             </th>
                             <th>

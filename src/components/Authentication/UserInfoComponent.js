@@ -1,22 +1,28 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loggedUserSelector } from '../../store/selectors/AuthSelector';
 import pictureMapper from '../../constants/PictureHandler';
+import { UpdateUser } from '../../store/actions';
 
 const UserInfoComponent = () => {
 
+    const dispatch = useDispatch();
     const user = useSelector(loggedUserSelector);
 
-    const onFormSubmit = () => {
+    console.log(user)
 
+    const onFormSubmit = (values, {resetForm}) => {
+        resetForm();
+        let vals = { Id: user.Id, Username: user.Username, DatumRodjenja: values.DatumRodjenja, Ime: values.Ime, Prezime: values.Prezime, NazivProfilneSlike: values.file.name }
+        dispatch(UpdateUser(vals));
     }
 
     return (<div className="ui container segment" style={{ position: 'fixed', top: 70, left: 180, width: 1000 }} >
         <h3 className="ui top attached header"> User account information </h3>
 
         <Formik onSubmit={onFormSubmit}
-                initialValues={{ email: user.Username, date: '', ime: '', prezime: '' }}>
+                initialValues={{ email: user.Username, DatumRodjenja: '', Ime: '', Prezime: '' }}>
 
             {({setFieldValue}) => (
 
@@ -28,13 +34,13 @@ const UserInfoComponent = () => {
                             <td> Username: </td>
                             <td>
                                 <div className="ui disabled input">
-                                    <input type="text" value={user.Username}/>
+                                    <input type="text" defaultValue={user.Username}/>
                                 </div> 
                             </td>
                             <td> Datum rođenja: </td>
                             <td> 
                                 <div className="ui small input focus">
-                                    <Field type="date" name="date" />
+                                    <Field type="date" name="DatumRodjenja" />
                                 </div>
                             </td>
                         </tr>
@@ -43,13 +49,13 @@ const UserInfoComponent = () => {
                             <td> Ime: </td>
                             <td>
                                 <div className="ui small input focus">
-                                    <Field type="ime" name="text" placeholder="Ime..."/>
+                                    <Field type="text" name="Ime" placeholder="Ime..."/>
                                 </div>
                             </td>
                             <td> Prezime: </td>
                             <td>
                                 <div className="ui small input focus">
-                                    <Field type="text" name="prezime" placeholder="Prezime..."/>
+                                    <Field type="text" name="Prezime" placeholder="Prezime..."/>
                                 </div>
                             </td>
                         </tr>

@@ -1,7 +1,7 @@
 import { call, put, select, takeLatest } from "redux-saga/effects";
-import { ADD_CALL, ADD_DEVICE, ADD_INCIDENT, ADD_RESOLUTION, GET_ALL_DEVICES, GET_CALLS, GET_DEVICES, GET_INCIDENTS, GET_RESOLUTION_FOR_INCIDENT, GET_WORK_REQUESTS, SAVE_EDIT_INCIDENT } from "../../constants/action-types";
+import { ADD_CALL, ADD_DEVICE, ADD_INCIDENT, ADD_NOTIFICATION, ADD_RESOLUTION, GET_ALL_DEVICES, GET_CALLS, GET_DEVICES, GET_INCIDENTS, GET_NOTIFICATIONS, GET_RESOLUTION_FOR_INCIDENT, GET_WORK_REQUESTS, SAVE_EDIT_INCIDENT, SORT_INCIDENTS } from "../../constants/action-types";
 import incidentService from '../../services/IncidentService';
-import { SaveCalls, SaveCurrentIncidentToRedux, SaveDevices, SaveIncidentsToBase, SaveResolution, SaveWorkRequests } from "../actions";
+import { SaveCalls, SaveCurrentIncidentToRedux, SaveDevices, SaveIncidentsToBase, SaveNotifications, SaveResolution, SaveWorkRequests } from "../actions";
 import { loggedUserSelector } from "../selectors/AuthSelector";
 
 function* getIncidents({payload}) {
@@ -85,6 +85,30 @@ function* getResolution({payload}) {
     yield put(SaveResolution(result));
 }
 
+function* getNotifications({ payload }) {
+    let response;
+    if (payload === 'all') {
+        response = yield call(incidentService.getAllNotifications)
+
+    }
+    else if (payload === 'unread') {
+        response = yield call(incidentService.getUnreadNotifications)
+    }
+    else {
+        response = yield call(incidentService.getNotificationType,payload)
+    }
+    yield put(SaveNotifications(response));
+}
+
+function* addNotification({ payload }) {
+    yield call(incidentService.addNotification,payload)
+}
+
+function* sortIncidents({ payload }) {
+    const results = yield call(incidentService.sortIncidents,payload)
+    yield put(SaveIncidentsToBase(results));
+}
+
 export default function* incidentSaga() {
     yield takeLatest(GET_INCIDENTS,getIncidents)
     yield takeLatest(GET_WORK_REQUESTS,GetWorkRequests)
@@ -97,4 +121,7 @@ export default function* incidentSaga() {
     yield takeLatest(GET_ALL_DEVICES,getAllDevices)
     yield takeLatest(SAVE_EDIT_INCIDENT, getIncidentById)
     yield takeLatest(GET_RESOLUTION_FOR_INCIDENT, getResolution)
+    yield takeLatest(GET_NOTIFICATIONS, getNotifications)
+    yield takeLatest(ADD_NOTIFICATION, addNotification)
+    yield takeLatest(SORT_INCIDENTS, sortIncidents)
 }

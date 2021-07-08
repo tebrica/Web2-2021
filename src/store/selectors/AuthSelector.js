@@ -15,3 +15,5 @@ export const devicesSelector = (state) => state.incident.devices;
 export const editIncidentSelector = (state) => state.incident.editIncident;
 
 export const editResolutionSelector = (state) => state.incident.currentResolution;
+
+export const NotificationSelector = (state) => state.incident.Notifications

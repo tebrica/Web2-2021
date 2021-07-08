@@ -1,5 +1,5 @@
 import { put, call, takeLatest } from "redux-saga/effects";
-import { REGISTER, LOGIN, LOGOUT, REFRESH_TOKEN, GET_UNAPPROVED_USERS, APPROVE_USER, CHANGE_PASSWORD } from "../../constants/action-types";
+import { REGISTER, LOGIN, LOGOUT, REFRESH_TOKEN, GET_UNAPPROVED_USERS, APPROVE_USER, CHANGE_PASSWORD, UPDATE_USER } from "../../constants/action-types";
 import UserNumberToRole from "../../constants/EnumFunctions";
 import authService from "../../services/AuthService";
 import { RemoveCurrentlyLogged, SaveCurrentlyLogged, SaveToken, SaveUnapprovedUsers } from "../actions";
@@ -15,6 +15,9 @@ function* registerUser({payload}) {
 function* loginUser({payload}) {
 
     const response = yield call (authService.fetchAdditionalUserData,payload.data.username)
+    if (response === undefined) {
+        return;
+    }
     response.VrsteKorisnika = UserNumberToRole(response.VrsteKorisnika);
 
     if (response !== undefined) {
@@ -56,6 +59,19 @@ function* changePassword({payload}) {
     yield call(authService.changePass,payload)
 }
 
+function* updateLoggedInUser({ payload }) {
+    yield call(authService.updateLoggedInUser,payload)
+    const response = yield call (authService.fetchAdditionalUserData,payload.Username)
+    if (response === undefined) {
+        // localStorage.removeItem('token')
+        // yield put(SaveToken(''))
+        // yield put(RemoveCurrentlyLogged())
+        return;
+    }
+    response.VrsteKorisnika = UserNumberToRole(response.VrsteKorisnika);
+    yield put(SaveCurrentlyLogged(response));
+}
+
 export default function* authSaga() {
     yield takeLatest(REGISTER, registerUser)
     yield takeLatest(LOGIN, loginUser)
@@ -64,4 +80,5 @@ export default function* authSaga() {
     yield takeLatest(GET_UNAPPROVED_USERS, getUnapprovedUsers)
     yield takeLatest(APPROVE_USER, approveUser)
     yield takeLatest(CHANGE_PASSWORD, changePassword)
+    yield takeLatest(UPDATE_USER, updateLoggedInUser)
 }
