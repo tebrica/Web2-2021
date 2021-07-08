@@ -11,6 +11,7 @@ import UserInfoComponent from './components/Authentication/UserInfoComponent';
 import MapsComponent from './components/dashboard/MapsComponent';
 import Settings from './components/settings/Settings';
 import CallsComponent from './components/calls/CallsComponent';
+import NotificationsComponent from './components/Notifications/NotificationsComponent';
 
 const Routes = () => (
     <Switch>
@@ -25,6 +26,7 @@ const Routes = () => (
         <Route exact path="/map" component={MapsComponent}/>
         <Route exact path="/settings" component={Settings} />
         <Route exact path="/calls" component={CallsComponent} />
+        <Route exact path="/notifications" component={NotificationsComponent} />
     </Switch>
 )
 
