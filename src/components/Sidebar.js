@@ -82,7 +82,7 @@ const SideBar = () => {
 
           <button className="ui black button" onClick={() => onLogoutClick()} style={{width: 150}}>
             Log Out
-            <i className="logout icon" style={{marginLeft: 32}}></i>
+            <i className="logout icon" style={{marginLeft: 25}}></i>
           </button>
 
         </div>

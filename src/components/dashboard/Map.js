@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { YMaps, Map, Placemark, Clusterer } from 'react-yandex-maps';
 import { GetAllDevices, SaveEditIncident } from '../../store/actions';
 import { devicesSelector } from '../../store/selectors/AuthSelector';
+import makeid from '../../constants/RandomGenerator';
 
 const MapG = () => {
 
@@ -22,7 +23,7 @@ const MapG = () => {
     }
 
     const devicesPinsRendered = devices.map(device => {
-        return <Placemark key={device.CoordinateX} geometry={[device.CoordinateX, device.CoordinateY]} onClick={() => loadIncidentInfo(device.IncidentId)} />
+        return <Placemark key={makeid(10)} geometry={[device.CoordinateX, device.CoordinateY]} onClick={() => loadIncidentInfo(device.IncidentId)} />
     })
       
     return (

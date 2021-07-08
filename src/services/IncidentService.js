@@ -142,6 +142,16 @@ const getResolutionForIncident = async(incidentId) => {
     }
 } 
 
+const updateIncident = async(payload) => {
+    console.log(payload)
+    try {
+        await axiosClient.put(ENDPOINTS.INCIDENTS + `/${payload.ID}`,payload);
+    }
+    catch(error) {
+        return null;
+    }
+}
+
 const incidentService = {
     getIncidents,
     getWorkRequests,
@@ -158,6 +168,7 @@ const incidentService = {
     getAllOprema,
     getIncidentById,
     getResolutionForIncident,
+    updateIncident,
 }
 
 export default incidentService;

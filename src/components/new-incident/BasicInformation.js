@@ -3,7 +3,7 @@ import { Formik, Form, ErrorMessage, Field } from 'formik';
 import * as yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux';
 import { editIncidentSelector, loggedUserSelector } from '../../store/selectors/AuthSelector';
-import { AddNewIncident } from '../../store/actions';
+import { AddNewIncident, SaveEditIncident } from '../../store/actions';
 
 const validationSheme = yup.object().shape({
     AffectedPeople : yup.number().required('Required!').min(0,'Must be > 0'),
@@ -21,6 +21,7 @@ const BasicInformation = ({ incidentId, setHeaderPosted, setCurrentPage, setInci
 
     useEffect(() => {
         if (editIncident !== null) {
+            dispatch(SaveEditIncident(editIncident.ID));
             setIncidentId(editIncident.ID);
             setHeaderPosted(true);
         }   // eslint-disable-next-line
@@ -39,13 +40,20 @@ const BasicInformation = ({ incidentId, setHeaderPosted, setCurrentPage, setInci
     const onFormSubmit = (values,{resetForm}) => {
         resetForm();
         const vals = values;
-        vals.ID = incidentId;
+        vals.ID = editIncident === null ? incidentId : editIncident.ID;
         vals.Status = 'Active';
         vals.VremeRada = values.ATA;
         vals.Confirmed = true;
         vals.Calls = 0;
         vals.IncidentType = vals.IncidentType === '' ? 'PLANIRANI_INCIDENT' : vals.IncidentType;
-        dispatch(AddNewIncident(vals))
+        if (editIncident === null) {
+            dispatch(AddNewIncident(vals,'ADD'))
+        }
+        else {
+            vals.VremeIncidenta = vals.ATA;
+            dispatch(AddNewIncident(vals,'UPDATE'))
+        }
+        
         setHeaderPosted(true);
         setCurrentPage(1)
     };
