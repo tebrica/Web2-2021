@@ -78,7 +78,12 @@ const approveUser = async(payload) => {
 }
 
 const changePass = async(payload) => {
+    // :D
     alert('Password successfully changed!')
+}
+
+const updateLoggedInUser = async(payload) => {
+    await axios.put(BASE_URL + ENDPOINTS.USER_INFO,payload);
 }
 
 const authService = {
@@ -89,6 +94,7 @@ const authService = {
     getUnapprovedUsers,
     approveUser,
     changePass,
+    updateLoggedInUser,
 }
 
 export default authService;
