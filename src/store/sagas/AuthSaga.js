@@ -15,6 +15,9 @@ function* registerUser({payload}) {
 function* loginUser({payload}) {
 
     const response = yield call (authService.fetchAdditionalUserData,payload.data.username)
+    if (response === undefined) {
+        return;
+    }
     response.VrsteKorisnika = UserNumberToRole(response.VrsteKorisnika);
 
     if (response !== undefined) {
@@ -59,6 +62,12 @@ function* changePassword({payload}) {
 function* updateLoggedInUser({ payload }) {
     yield call(authService.updateLoggedInUser,payload)
     const response = yield call (authService.fetchAdditionalUserData,payload.Username)
+    if (response === undefined) {
+        // localStorage.removeItem('token')
+        // yield put(SaveToken(''))
+        // yield put(RemoveCurrentlyLogged())
+        return;
+    }
     response.VrsteKorisnika = UserNumberToRole(response.VrsteKorisnika);
     yield put(SaveCurrentlyLogged(response));
 }

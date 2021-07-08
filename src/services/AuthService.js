@@ -44,7 +44,7 @@ const loginUser = async (payload) => {
 const fetchAdditionalUserData = async(username) => {
     try {
         const response = await axios.get(`${BASE_URL}/${ENDPOINTS.USER_INFO}?username=${username}`)
-        if (response.status === 400) {
+        if (response.status === 401) {
             alert('Ovaj nalog jos uvek nije odobren, ceka se odobrenje od strane administratora!')
         }
         else {
@@ -52,8 +52,13 @@ const fetchAdditionalUserData = async(username) => {
         }
     }
     catch(error) {
-        alert('Login error! Please try again with a different username/password combination!')
-        return undefined
+        if (error.response.status === 401) {
+            alert('Your account has to be approved by administrator!');
+        }
+        else if (error.response.status === 404) {
+            alert('Invalid username/password combination \n Register to continue..');
+        }
+        return undefined;
     }
 }
 
