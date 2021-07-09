@@ -14,7 +14,7 @@ const UserInfoComponent = () => {
 
     const onFormSubmit = (values, {resetForm}) => {
         resetForm();
-        let vals = { Id: user.Id, Username: user.Username, DatumRodjenja: values.DatumRodjenja, Ime: values.Ime, Prezime: values.Prezime, NazivProfilneSlike: values.file.name }
+        let vals = { Id: user.Id, Username: user.Username, DatumRodjenja: values.DatumRodjenja, Ime: values.Ime, Prezime: values.Prezime, NazivProfilneSlike: values.file.name, UserType: values.UserType }
         dispatch(UpdateUser(vals));
     }
 
@@ -22,7 +22,7 @@ const UserInfoComponent = () => {
         <h3 className="ui top attached header"> User account information </h3>
 
         <Formik onSubmit={onFormSubmit}
-                initialValues={{ email: user.Username, DatumRodjenja: '', Ime: '', Prezime: '' }}>
+                initialValues={{ email: user.Username, DatumRodjenja: '', Ime: '', Prezime: '', UserType: '' }}>
 
             {({setFieldValue}) => (
 
@@ -58,6 +58,16 @@ const UserInfoComponent = () => {
                                     <Field type="text" name="Prezime" placeholder="Prezime..."/>
                                 </div>
                             </td>
+                        </tr>
+
+                        <tr>
+                            <select className="ui dropdown" onChange={(e) => setFieldValue("UserType",e.target.value)}>
+                                <option value="CLANEKIPE"> Clan ekipe </option>
+                                <option value="DISPECER"> Dispecer </option>
+                                <option value="RADNIK"> Radnik </option>
+                                <option value="POTROSAC"> Potrosac </option>
+                                <option value="ADMINISTRATOR"> Administrator </option>
+                            </select>
                         </tr>
 
                         <tr>

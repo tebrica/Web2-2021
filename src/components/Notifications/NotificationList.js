@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { GetNotifications } from '../../store/actions';
+import { GetNotifications, markNotificationAsRead } from '../../store/actions';
 import { NotificationSelector } from '../../store/selectors/AuthSelector';
 import SingleNotification from './SingleNotification';
 
@@ -14,6 +14,14 @@ const NotificationList = ({ notificationMode }) => {
             <SingleNotification notification={notification} />
         </div>
     })
+
+    const markAllNotificationRead = () => {
+        let ids = []
+        notifications.forEach(notif => {
+            ids.push(notif.IdPoruke)
+        });
+        dispatch(markNotificationAsRead(ids));
+    }
 
     useEffect(() => {
         switch(notificationMode) {
@@ -29,9 +37,13 @@ const NotificationList = ({ notificationMode }) => {
 
     return <div>
         <h3 style={{ fontSize: 22 }}> {notificationMode} </h3> 
-        <div style={{ marginTop: 20, overflow: 'scroll', height: 400 }}>
+        <div style={{ marginTop: 20, overflow: 'scroll', height: 350 }}>
             {renderedNotifications}
         </div>
+        {notificationMode === "Unread notifications" ?
+            <button className="ui primary button small" style={{ marginLeft: 500, marginTop: 15 }} onClick={() => markAllNotificationRead()}> Mark all read </button> 
+            : <div></div>
+        }
     </div>
 }
 

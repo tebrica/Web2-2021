@@ -1,8 +1,9 @@
 import { call, put, select, takeLatest } from "redux-saga/effects";
-import { ADD_CALL, ADD_DEVICE, ADD_INCIDENT, ADD_NOTIFICATION, ADD_RESOLUTION, GET_ALL_DEVICES, GET_CALLS, GET_DEVICES, GET_INCIDENTS, GET_NOTIFICATIONS, GET_RESOLUTION_FOR_INCIDENT, GET_WORK_REQUESTS, SAVE_EDIT_INCIDENT, SORT_INCIDENTS } from "../../constants/action-types";
+import { ADD_CALL, ADD_DEVICE, ADD_INCIDENT, ADD_NOTIFICATION, ADD_RESOLUTION, GET_ALL_DEVICES, GET_CALLS, GET_DEVICES, GET_INCIDENTS, GET_NOTIFICATIONS, GET_RESOLUTION_FOR_INCIDENT, GET_WORK_REQUESTS, MARK_NOTIFICATIONS_READ, SAVE_EDIT_INCIDENT, SORT_INCIDENTS } from "../../constants/action-types";
 import incidentService from '../../services/IncidentService';
 import { SaveCalls, SaveCurrentIncidentToRedux, SaveDevices, SaveIncidentsToBase, SaveNotifications, SaveResolution, SaveWorkRequests } from "../actions";
 import { loggedUserSelector } from "../selectors/AuthSelector";
+import makeid from '../../constants/RandomGenerator';
 
 function* getIncidents({payload}) {
     let response;
@@ -35,6 +36,8 @@ function* GetCalls({incident}) {
 function* AddIncident(payload) {
     if (payload.addupd === "ADD") {
         yield call(incidentService.addNewIncident,payload.payload);
+        const notification = { IdPoruke: 'NOT_' + makeid(6), IdKorisnika: 'admin@app.com', Sadrzaj: 'A new incident has been added to the system', Tip: 2, Procitana : false, Timestamp: '2021-07-22T00:00:00'}
+        yield call(incidentService.addNotification,notification);
     }
     else {
         yield call(incidentService.updateIncident,payload.payload);
@@ -109,6 +112,10 @@ function* sortIncidents({ payload }) {
     yield put(SaveIncidentsToBase(results));
 }
 
+function* markNotificationAsRead({ payload }) {
+    yield call(incidentService.markNotificationsRead,payload);
+}
+
 export default function* incidentSaga() {
     yield takeLatest(GET_INCIDENTS,getIncidents)
     yield takeLatest(GET_WORK_REQUESTS,GetWorkRequests)
@@ -124,4 +131,5 @@ export default function* incidentSaga() {
     yield takeLatest(GET_NOTIFICATIONS, getNotifications)
     yield takeLatest(ADD_NOTIFICATION, addNotification)
     yield takeLatest(SORT_INCIDENTS, sortIncidents)
+    yield takeLatest(MARK_NOTIFICATIONS_READ, markNotificationAsRead)
 }
