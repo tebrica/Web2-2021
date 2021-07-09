@@ -10,6 +10,7 @@ const ENDPOINTS = {
     ONE_INCIDENT: '/SingleIncident',
     NOTIFICATIONS: '/Poruka',
     INCIDENTI_SORT: '/IncidentiSort',
+    CREWS: '/Crew'
 }
 
 const getIncidents = async () => {
@@ -144,6 +145,11 @@ const getResolutionForIncident = async(incidentId) => {
     }
 } 
 
+const getCrews = async() => {
+    const response = await axiosClient.get(ENDPOINTS.CREWS)
+    return response.data;
+}
+
 const updateIncident = async(payload) => {
     console.log(payload)
     try {
@@ -212,6 +218,7 @@ const incidentService = {
     addNotification,
     sortIncidents,
     markNotificationsRead,
+    getCrews,
 }
 
 export default incidentService;

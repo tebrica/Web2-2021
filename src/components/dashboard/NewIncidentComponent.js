@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import makeid from '../../constants/RandomGenerator';
 import BasicInformation from '../new-incident/BasicInformation';
 import Calls from '../new-incident/Calls';
+import Crew from '../new-incident/Crew';
 import Devices from '../new-incident/Devices';
 import NewCall from '../new-incident/NewCall';
 import NewDeviceComponent from '../new-incident/NewDeviceComponent';
@@ -38,6 +39,10 @@ const NewIncidentComponent = () => {
 
             case 3: return (<div style={{float: 'left', position: 'fixed', top: 110,left: 410}}>
                 <Calls setCurrentPage={setCurrentPage} incidentId={incidentId}/>
+            </div>)
+
+            case 4: return (<div style={{float: 'left', position: 'fixed', top: 110,left: 410}}>
+                <Crew setCurrentPage={setCurrentPage} incidentId={incidentId}/>
             </div>)
 
             case 7: return (<div style={{float: 'left', position: 'fixed', top: 115,left: 410}}>
