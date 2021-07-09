@@ -39,7 +39,7 @@ const AdminPreferences = () => {
 
     return <div>
         <div className="ui cards" style={{marginTop: 70, marginLeft: 180, position: 'fixed'}}>
-            {userDetailsRendered}
+            {users.length === 0 ? <h1 style={{ marginTop: 20, marginLeft: 30 }}> No users to approve. </h1> : userDetailsRendered}
         </div>
     </div>
 }
