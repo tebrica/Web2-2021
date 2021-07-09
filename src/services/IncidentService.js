@@ -185,6 +185,10 @@ const sortIncidents = async(payload) => {
     return results.data;
 }
 
+const markNotificationsRead = async(payload) => {
+    axiosClient.put(ENDPOINTS.NOTIFICATIONS,payload);
+}
+
 const incidentService = {
     getIncidents,
     getWorkRequests,
@@ -207,6 +211,7 @@ const incidentService = {
     getNotificationType,
     addNotification,
     sortIncidents,
+    markNotificationsRead,
 }
 
 export default incidentService;

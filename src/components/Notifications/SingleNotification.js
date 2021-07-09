@@ -1,6 +1,10 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { markNotificationAsRead } from '../../store/actions';
 
 const SingleNotification = ({ notification }) => {
+
+    const dispatch = useDispatch();
 
     const getNotificationColor = () => {
         switch(notification.Tip) {
@@ -22,7 +26,7 @@ const SingleNotification = ({ notification }) => {
         }
     }
 
-    return <div className={`ui ${getNotificationColor()} raised container segment`} style={{ width: 600, marginBottom: 15, overflow: 'hidden' }}>
+    return <div className={`ui ${getNotificationColor()} raised container segment`} style={{ width: 600, marginBottom: 15, overflow: 'hidden' }} onClick={() => dispatch(markNotificationAsRead([notification.IdPoruke]))}>
         <div style={{ float: 'left' }}>
             {getNotificationIcon()}
         </div>
