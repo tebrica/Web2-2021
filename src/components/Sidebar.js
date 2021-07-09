@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { LogoutUser } from '../store/actions';
-import { tokenSelector } from '../store/selectors/AuthSelector';
+import { tokenSelector, loggedUserSelector } from '../store/selectors/AuthSelector';
 import { Link } from 'react-router-dom'
 
 const SideBar = () => {
@@ -10,10 +10,24 @@ const SideBar = () => {
   const { push } = useHistory();
   const dispatch = useDispatch();
   const hideShowSidebar = useSelector(tokenSelector)
+  const user = useSelector(loggedUserSelector)
 
   const onLogoutClick = () => {
     dispatch(LogoutUser()); 
     push('/');
+  }
+
+  const renderCrew = () => {
+    if (user && user.VrsteKorisnika === "ADMINISTRATOR") {
+      return (<Link className="ui black button" to="/crews" style={{width: 150, height: 40}}>
+        <p> Crews 
+          <i className="user icon" style={{marginLeft: 45}}></i>
+        </p>
+      </Link>)
+    }
+    else {
+      return <div></div>
+    }
   }
 
   const conditionalReturn = () => {
@@ -54,11 +68,7 @@ const SideBar = () => {
           </p>
         </Link>
 
-        <Link className="ui black button" to="/" style={{width: 150, height: 40}}>
-          <p> Torba 
-          <i className="briefcase icon" style={{marginLeft: 45}}></i>
-          </p>
-        </Link>
+        {renderCrew()}
 
         <Link className="ui black button" to="/map" style={{width: 150, height: 40}}>
           <p> Maps

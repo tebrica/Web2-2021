@@ -12,6 +12,7 @@ import Settings from './components/settings/Settings';
 import CallsComponent from './components/calls/CallsComponent';
 import NotificationsComponent from './components/Notifications/NotificationsComponent';
 import DocumentsComponent from './components/dashboard/DocumentsComponent';
+import CrewComponent from './components/crew/CrewComponent';
 
 const Routes = () => (
     <Switch>
@@ -27,6 +28,7 @@ const Routes = () => (
         <Route exact path="/settings" component={Settings} />
         <Route exact path="/calls" component={CallsComponent} />
         <Route exact path="/notifications" component={NotificationsComponent} />
+        <Route exact path="/crews" component={CrewComponent} />
     </Switch>
 )
 
