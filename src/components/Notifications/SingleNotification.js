@@ -27,8 +27,12 @@ const SingleNotification = ({ notification }) => {
             {getNotificationIcon()}
         </div>
 
-        <div style={{ marginLeft: 45 }}>
+        <div style={{ marginLeft: 45, float: 'left', marginRight: 150 }}>
             {notification.Sadrzaj}
+        </div>
+
+        <div>
+            {notification.Timestamp.substring(0,10)}
         </div>
         
     </div>

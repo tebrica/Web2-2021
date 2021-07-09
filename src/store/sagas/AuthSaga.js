@@ -3,6 +3,8 @@ import { REGISTER, LOGIN, LOGOUT, REFRESH_TOKEN, GET_UNAPPROVED_USERS, APPROVE_U
 import UserNumberToRole from "../../constants/EnumFunctions";
 import authService from "../../services/AuthService";
 import { RemoveCurrentlyLogged, SaveCurrentlyLogged, SaveToken, SaveUnapprovedUsers } from "../actions";
+import makeid from '../../constants/RandomGenerator';
+import incidentService from "../../services/IncidentService";
 
 function* registerUser({payload}) {
     const data = { Email: payload.email, Password: payload.pass, ConfirmPassword: payload.pass2 }
@@ -16,6 +18,8 @@ function* loginUser({payload}) {
 
     const response = yield call (authService.fetchAdditionalUserData,payload.data.username)
     if (response === undefined) {
+        const notification = { IdPoruke: 'NOT_' + makeid(6), IdKorisnika: payload.data.username, Sadrzaj: payload.data.username + '  User failed to log in!', Tip: 0, Procitana : false, Timestamp: '2021-07-22T00:00:00'}
+        yield call(incidentService.addNotification,notification);
         return;
     }
     response.VrsteKorisnika = UserNumberToRole(response.VrsteKorisnika);
@@ -63,13 +67,12 @@ function* updateLoggedInUser({ payload }) {
     yield call(authService.updateLoggedInUser,payload)
     const response = yield call (authService.fetchAdditionalUserData,payload.Username)
     if (response === undefined) {
-        // localStorage.removeItem('token')
-        // yield put(SaveToken(''))
-        // yield put(RemoveCurrentlyLogged())
         return;
     }
     response.VrsteKorisnika = UserNumberToRole(response.VrsteKorisnika);
     yield put(SaveCurrentlyLogged(response));
+    const notification = { IdPoruke: 'NOT_' + makeid(6), IdKorisnika: payload.data.username, Sadrzaj: payload.data.username + '  User information updated!', Tip: 3, Procitana : false, Timestamp: '2021-07-22T00:00:00'}
+    yield call(incidentService.addNotification,notification);
 }
 
 export default function* authSaga() {

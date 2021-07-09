@@ -3,6 +3,7 @@ import { ADD_CALL, ADD_DEVICE, ADD_INCIDENT, ADD_NOTIFICATION, ADD_RESOLUTION, G
 import incidentService from '../../services/IncidentService';
 import { SaveCalls, SaveCurrentIncidentToRedux, SaveDevices, SaveIncidentsToBase, SaveNotifications, SaveResolution, SaveWorkRequests } from "../actions";
 import { loggedUserSelector } from "../selectors/AuthSelector";
+import makeid from '../../constants/RandomGenerator';
 
 function* getIncidents({payload}) {
     let response;
@@ -35,6 +36,8 @@ function* GetCalls({incident}) {
 function* AddIncident(payload) {
     if (payload.addupd === "ADD") {
         yield call(incidentService.addNewIncident,payload.payload);
+        const notification = { IdPoruke: 'NOT_' + makeid(6), IdKorisnika: 'admin@app.com', Sadrzaj: 'A new incident has been added to the system', Tip: 2, Procitana : false, Timestamp: '2021-07-22T00:00:00'}
+        yield call(incidentService.addNotification,notification);
     }
     else {
         yield call(incidentService.updateIncident,payload.payload);
