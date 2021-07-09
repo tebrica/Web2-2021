@@ -42,7 +42,7 @@ const SideBar = () => {
           </p>
         </Link>
 
-        <Link className="ui black button" to="/dashboard/work-requests" style={{width: 150, height: 40}}>
+        <Link className="ui black button" to="/dashboard/documents" style={{width: 150, height: 40}}>
           <p> Documents 
           <i className="file icon" style={{marginLeft: 10}}></i>
           </p>
