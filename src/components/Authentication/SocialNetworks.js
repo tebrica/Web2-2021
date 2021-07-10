@@ -45,7 +45,7 @@ class App extends Component {
                     <GoogleLogin
                         clientId="647369311564-muhu77078797c8sn2pd4n5m591na28ks.apps.googleusercontent.com"
                         buttonText="Login"
-                        onSuccess={this.googleResponse}
+                        onSuccess={this.googleResponse}//odi dedi sedi
                         onFailure={this.googleResponse}
                     />
                 </div>
