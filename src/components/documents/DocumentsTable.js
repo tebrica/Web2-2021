@@ -15,7 +15,7 @@ const DocumentsTable = ({ docType }) => {
     const [postsPerPage,setPostsPerPage] = useState(5);
 
     useEffect(() => {
-        dispatch(GetWorkRequests(docType));
+        dispatch(GetWorkRequests(docType)); // eslint-disable-next-line
     },[docType])
 
     // Get current incidents..

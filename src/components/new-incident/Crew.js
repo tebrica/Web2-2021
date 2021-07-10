@@ -13,7 +13,7 @@ const Crew = ({ setCurrentPage, incidentId, headerPosted }) => {
 
     useEffect(() => {
         dispatch(GetCrewForIncident(incidentId));
-        dispatch(GetCrews())
+        dispatch(GetCrews())    // eslint-disable-next-line
     },[])
 
     const onCrewAssign = () => {

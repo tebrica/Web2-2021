@@ -45,6 +45,8 @@ const Resolution = ({ setCurrentPage, headerPosted, incidentId }) => {
     
     return <div className="ui green segment" style={{marginLeft: 50, width: 500, paddingLeft: 70}}>
 
+        <h3 style={{ marginBottom: 40 }}> Add resolution to incident </h3>
+
         <Formik onSubmit={onFormSubmit}
             initialValues={{ Cause: '', SubCause: '', Construction: '', Material: '' }}
             validationSchema={validationSheme}>
