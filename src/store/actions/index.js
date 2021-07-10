@@ -32,14 +32,6 @@ export const AddNewIncident = (payload, addupd) => {
     return { type: ADD_INCIDENT, payload: payload, addupd: addupd }
 }
 
-export const GetWorkRequests = () => {
-    return { type: GET_WORK_REQUESTS }
-}
-
-export const SaveWorkRequests = (payload) => {
-    return { type: SAVE_WORK_REQUESTS, payload: payload }
-}
-
 export const SaveCurrentlyLogged = (payload) => {
     return { type: SAVE_CURRENT_LOGGED, payload: payload }
 }
@@ -162,4 +154,12 @@ export const SaveCurrentCrew = (payload) => {
 
 export const AssignCrew = (payload) => {
     return { type: ASSIGN_CREW, payload: payload }
+}
+
+export const GetWorkRequests = (payload) => {
+    return { type: GET_WORK_REQUESTS, payload: payload }
+}
+
+export const SaveWorkRequests = (payload) => {
+    return { type: SAVE_WORK_REQUESTS, payload: payload }
 }

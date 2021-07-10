@@ -2,7 +2,7 @@ import { DELETE_EDIT_INCIDENT, SAVE_CALLS, SAVE_CREWS, SAVE_CURRENT_CREW, SAVE_D
 
 const initialState = {
     incidents : [],
-    workRequests: [],
+    Documents: [],
     calls: [],
     devices: [],
     editIncident: null,
@@ -18,7 +18,7 @@ export default function incident(state = initialState, action) {
             return { ...state, incidents: action.payload };
         }
         case SAVE_WORK_REQUESTS: {
-            return { ...state, workRequests: action.payload };
+            return { ...state, Documents : action.payload };
         }
         case SAVE_CALLS: {
             return { ...state, calls: action.payload };

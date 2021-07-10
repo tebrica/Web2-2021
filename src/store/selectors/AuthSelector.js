@@ -21,3 +21,5 @@ export const NotificationSelector = (state) => state.incident.Notifications
 export const CrewSelector = (state) => state.incident.Crews;
 
 export const CurrentCrewSelector = (state) => state.incident.CurrentCrew;
+
+export const DocumentsSelector = (state) => state.incident.Documents;
