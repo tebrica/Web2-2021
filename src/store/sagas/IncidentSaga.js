@@ -17,8 +17,17 @@ function* getIncidents({payload}) {
     yield put(SaveIncidentsToBase(response))
 }
 
-function* GetWorkRequests() {
-    const response = yield call(incidentService.getWorkRequests);
+function* GetWorkRequests({ payload }) {
+    let response;
+    if (payload === 'Work requests') {
+        response = yield call(incidentService.getWorkRequests);
+    }
+    else if (payload === 'Work plans') {
+        response = yield call(incidentService.getWorkPlans);
+    }
+    else {
+        response = yield call(incidentService.getSafetyDocuments);
+    }
     yield put(SaveWorkRequests(response))
 }
 

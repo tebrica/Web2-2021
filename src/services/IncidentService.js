@@ -3,14 +3,16 @@ import axiosClient from "./BaseApiService";
 
 const ENDPOINTS = {
     INCIDENTS: '/Incidenti',
-    WORK_REQUESTS: '/PlanoviRada',
+    WORK_REQUESTS: '/NaloziRadaSort',
     CALLS: '/Pozivi',
     EQUIPMENT : '/Oprema',
     RESOLUTIONS: '/Resolutions',
     ONE_INCIDENT: '/SingleIncident',
     NOTIFICATIONS: '/Poruka',
     INCIDENTI_SORT: '/IncidentiSort',
-    CREWS: '/Crew'
+    CREWS: '/Crew',
+    SAFETY_DOCS: '/SafetyDocumentsSort',
+    WORK_PLANS: '/PlanoviRadaSort',
 }
 
 const getIncidents = async () => {
@@ -53,6 +55,28 @@ const addNewIncident = async(payload) => {
 const getWorkRequests = async () => {
     try {
         const response = await axiosClient.get(ENDPOINTS.WORK_REQUESTS);
+        return response.data;
+    }
+    catch(error) {
+        alert('Fetch error! Please try again!')
+        return undefined
+    }
+}
+
+const getSafetyDocuments = async () => {
+    try {
+        const response = await axiosClient.get(ENDPOINTS.SAFETY_DOCS);
+        return response.data;
+    }
+    catch(error) {
+        alert('Fetch error! Please try again!')
+        return undefined
+    }
+}
+
+const getWorkPlans = async () => {
+    try {
+        const response = await axiosClient.get(ENDPOINTS.WORK_PLANS);
         return response.data;
     }
     catch(error) {
@@ -240,6 +264,8 @@ const incidentService = {
     getCrews,
     getCrewForIncident,
     assignCrewToIncident,
+    getWorkPlans,
+    getSafetyDocuments,
 }
 
 export default incidentService;
