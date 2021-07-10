@@ -1,4 +1,4 @@
-import { DELETE_EDIT_INCIDENT, SAVE_CALLS, SAVE_CREWS, SAVE_DETAILS, SAVE_DEVICES, SAVE_INCIDENTS, SAVE_NOTIFICATIONS, SAVE_RESOLUTION_FOR_INCIDENT, SAVE_WORK_REQUESTS } from "../../constants/action-types"
+import { DELETE_EDIT_INCIDENT, SAVE_CALLS, SAVE_CREWS, SAVE_CURRENT_CREW, SAVE_DETAILS, SAVE_DEVICES, SAVE_INCIDENTS, SAVE_NOTIFICATIONS, SAVE_RESOLUTION_FOR_INCIDENT, SAVE_WORK_REQUESTS } from "../../constants/action-types"
 
 const initialState = {
     incidents : [],
@@ -9,6 +9,7 @@ const initialState = {
     currentResolution: null,
     Notifications: [],
     Crews: [],
+    CurrentCrew: null,
 }
 
 export default function incident(state = initialState, action) {
@@ -39,6 +40,9 @@ export default function incident(state = initialState, action) {
         }
         case SAVE_CREWS: {
             return { ...state, Crews: action.payload }
+        }
+        case SAVE_CURRENT_CREW: {
+            return { ...state, CurrentCrew: action.payload }
         }
         default: {
             return {...state}

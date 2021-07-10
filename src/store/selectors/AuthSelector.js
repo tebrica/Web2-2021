@@ -19,3 +19,5 @@ export const editResolutionSelector = (state) => state.incident.currentResolutio
 export const NotificationSelector = (state) => state.incident.Notifications
 
 export const CrewSelector = (state) => state.incident.Crews;
+
+export const CurrentCrewSelector = (state) => state.incident.CurrentCrew;

@@ -4,6 +4,7 @@ import BasicInformation from '../new-incident/BasicInformation';
 import Calls from '../new-incident/Calls';
 import Crew from '../new-incident/Crew';
 import Devices from '../new-incident/Devices';
+import MultimediaAttachments from '../new-incident/MultimediaAttachments';
 import NewCall from '../new-incident/NewCall';
 import NewDeviceComponent from '../new-incident/NewDeviceComponent';
 import Resolution from '../new-incident/Resolution';
@@ -42,7 +43,11 @@ const NewIncidentComponent = () => {
             </div>)
 
             case 4: return (<div style={{float: 'left', position: 'fixed', top: 110,left: 410}}>
-                <Crew setCurrentPage={setCurrentPage} incidentId={incidentId}/>
+                <Crew setCurrentPage={setCurrentPage} incidentId={incidentId} headerPosted={headerPosted}/>
+            </div>)
+
+            case 5: return (<div style={{float: 'left', position: 'fixed', top: 110,left: 410}}>
+                <MultimediaAttachments/>
             </div>)
 
             case 7: return (<div style={{float: 'left', position: 'fixed', top: 115,left: 410}}>

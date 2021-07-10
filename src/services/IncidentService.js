@@ -170,7 +170,7 @@ const getUnreadNotifications = async() => {
     return response.data;
 }
 
-const getNotificationType = async(type) => {
+const getNotificationType = async (type) => {
     let response;
     switch(type){
         case 'Error' : response = await axiosClient.get(ENDPOINTS.NOTIFICATIONS + '?tip=0'); break;
@@ -182,17 +182,36 @@ const getNotificationType = async(type) => {
     return response.data;
 }
 
-const addNotification = async(payload) => {
+const addNotification = async (payload) => {
     await axiosClient.post(ENDPOINTS.NOTIFICATIONS,payload);
 }
 
-const sortIncidents = async(payload) => {
+const sortIncidents = async (payload) => {
     const results = await axiosClient.get(ENDPOINTS.INCIDENTI_SORT + `?columnName=${payload}`)
     return results.data;
 }
 
-const markNotificationsRead = async(payload) => {
+const markNotificationsRead = async (payload) => {
     axiosClient.put(ENDPOINTS.NOTIFICATIONS,payload);
+}
+
+const getCrewForIncident = async (payload) => {
+    try {
+        const response = await axiosClient.get(ENDPOINTS.CREWS + `?incId=${payload}`);
+        return response.data;
+    }
+    catch(error) {
+        return null;
+    }
+}
+
+const assignCrewToIncident = (payload) => {
+    try {
+        axiosClient.post(ENDPOINTS.CREWS,payload);
+    }
+    catch(error) {
+        return null;
+    }
 }
 
 const incidentService = {
@@ -219,6 +238,8 @@ const incidentService = {
     sortIncidents,
     markNotificationsRead,
     getCrews,
+    getCrewForIncident,
+    assignCrewToIncident,
 }
 
 export default incidentService;
