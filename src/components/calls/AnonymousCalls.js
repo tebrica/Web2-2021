@@ -4,6 +4,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { editIncidentSelector, loggedUserSelector } from '../../store/selectors/AuthSelector';
 import { AddCall } from '../../store/actions';
+import { Link } from 'react-router-dom';
 
 const validationSheme = yup.object().shape({
     Razlog : yup.string().min(5,'Too short').max(22,'Too long').required('Required'),
@@ -11,31 +12,24 @@ const validationSheme = yup.object().shape({
     Kvar : yup.string().min(5,'Too short').max(22,'Too long').required('Required'),
 })
 
-const NewCall = ({ setCurrentPage, incidentId, headerPosted }) => {
+const AnonymousCalls = () => {
 
     const dispatch = useDispatch();
-    const user = useSelector(loggedUserSelector);
-    const editIncident = useSelector(editIncidentSelector);
 
     const onFormSubmit = (values,{resetForm}) => {
         resetForm();
-        if (editIncident === null) {
-            if (!headerPosted) {
-                alert('You have to enter basic information first!');
-                setCurrentPage(0);
-            }
-        }
         const vals = values;
-        vals.IncidentId = editIncident === null ? incidentId : editIncident.ID;
-        vals.UsernameKor = user.Username;
+        vals.IncidentId = '';
+        vals.UsernameKor = '';
         dispatch(AddCall(vals))
-        setCurrentPage(3)
     };
 
-    return <div className="ui green segment">
 
-        <h3 style={{ marginLeft: 180, marginBottom: 30 }}> Add calls to incident </h3>
+    return <div className="ui container segment" style={{ marginTop: 80, height: 500 }}>
+        <Link to="/" className="ui green inverted button" style={{ marginLeft: 180 }}> Return to login screen </Link>
+        <h1 style={{ marginLeft: 400 }}> Register anonymous call </h1>
 
+        <div className="ui green segment" style={{ width: 700, marginLeft: 170, marginTop: 50 }}> 
         <Formik
             onSubmit={onFormSubmit}
             initialValues={{Razlog: '', Komentar: '', Kvar: ''}}
@@ -92,6 +86,8 @@ const NewCall = ({ setCurrentPage, incidentId, headerPosted }) => {
             </Form>
         </Formik>
     </div>
+
+    </div>
 }
 
-export default NewCall;
+export default AnonymousCalls;

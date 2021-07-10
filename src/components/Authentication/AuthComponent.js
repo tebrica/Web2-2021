@@ -3,6 +3,7 @@ import LogInComponent from './LogInComponent';
 import RegisterComponent from './RegisterComponent';
 import SocialNetworks from './SocialNetworks';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom'
 
 const AuthComponent = () => {
 
@@ -32,7 +33,7 @@ const AuthComponent = () => {
                                 <p>  - Nikola Tesla, 19. vek </p>
                             </div>
                             <br/>
-                            <button className="ui button green"> <i className="phone icon"></i> Report a problem </button>
+                            <Link className="ui button green" to="/anonymous-calls"> <i className="phone icon"></i> Report a problem </Link>
                         </div>
                     </td>
 

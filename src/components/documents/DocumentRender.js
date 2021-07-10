@@ -3,6 +3,7 @@ export default function RenderDocuments(docType, document) {
         case 'Work requests' : return renderWorkRequests(document);
         case 'Work plans' : return renderWorkPlans(document);
         case 'Safety documents' : return renderSafetyDocuments(document);
+        default: return <div></div>
     }
 }
 
