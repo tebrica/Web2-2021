@@ -2,66 +2,66 @@ import React, { Component } from 'react';
 import FacebookLogin from 'react-facebook-login';
 import { GoogleLogin } from 'react-google-login';
 
-class App extends Component {
+// class App extends Component {
 
-    constructor() {
-        super();
-        this.state = { isAuthenticated: false, user: null, token: ''};
-    }
+//     constructor() {
+//         super();
+//         this.state = { isAuthenticated: false, user: null, token: ''};
+//     }
 
-    logout = () => {
-        this.setState({isAuthenticated: false, token: '', user: null})
-    };
+//     logout = () => {
+//         this.setState({isAuthenticated: false, token: '', user: null})
+//     };
     
-    facebookResponse = (e) => {};
+//     facebookResponse = (e) => {};
 
-    googleResponse = (e) => {};    
-    onFailure = (error) => {
-      alert(error);
-    }    
-    render() {
-        let content = !!this.state.isAuthenticated ?
-            (
-                <div>
-                    <p>Authenticated</p>
-                    <div>
-                        {this.state.user.email}
-                    </div>
-                    <div>
-                        <button onClick={this.logout} className="button">
-                            Log out
-                        </button>
-                    </div>
-                </div>
-            ) :
-            (
-                <div>
-                    <FacebookLogin
-                        appId="502546801013232"
-                        autoLoad={false}
-                        fields="name,email,picture"
-                        callback={this.facebookResponse} />
-                    <GoogleLogin
-                        clientId="647369311564-muhu77078797c8sn2pd4n5m591na28ks.apps.googleusercontent.com"
-                        buttonText="Login"
-                        onSuccess={this.googleResponse}//odi dedi sedi
-                        onFailure={this.googleResponse}
-                    />
-                </div>
-            );
+//     googleResponse = (e) => {};    
+//     onFailure = (error) => {
+//       alert(error);
+//     }    
 
-        return (
-            <div className="App">
-                {content}
-            </div>
-        );
-    }
-}
+//     render() {
+//         let content = !!this.state.isAuthenticated ?
+//             (
+//                 <div>
+//                     <p>Authenticated</p>
+//                     <div>
+//                         {this.state.user.email}
+//                     </div>
+//                     <div>
+//                         <button onClick={this.logout} className="button">
+//                             Log out
+//                         </button>
+//                     </div>
+//                 </div>
+//             ) :
+//             (
+//                 <div>
+//                     <FacebookLogin
+//                         appId="502546801013232"
+//                         autoLoad={false}
+//                         fields="name,email,picture"
+//                         callback={this.facebookResponse} />
+//                     <GoogleLogin
+//                         clientId="647369311564-muhu77078797c8sn2pd4n5m591na28ks.apps.googleusercontent.com"
+//                         buttonText="Login"
+//                         onSuccess={this.googleResponse}//odi dedi sedi
+//                         onFailure={this.googleResponse}
+//                     />
+//                 </div>
+//             );
 
-export default App;
+//         return (
+//             <div className="App">
+//                 {content}
+//             </div>
+//         );
+//     }
+// }
 
-//#region sn
-/*
+// export default App;
+
+
 const SocialNetworks = () => {
     return (
         <div style={{ float: 'left', marginLeft: 0}}>
@@ -115,5 +115,5 @@ const SocialNetworks = () => {
     );
 }
 
-export default SocialNetworks;*/
+export default SocialNetworks
 //#endregion
