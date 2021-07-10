@@ -22,6 +22,7 @@ const Crew = ({ setCurrentPage, incidentId, headerPosted }) => {
             return;
         }
         dispatch(AssignCrew({ IncidentId: incidentId, CrewId: crewId }))
+        setCurrentPage(5)
     }
 
     const renderCrewOptions = Crews.map(crew => {
