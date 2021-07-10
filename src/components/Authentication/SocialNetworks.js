@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import TwitterLogin from 'react-twitter-auth';
 import FacebookLogin from 'react-facebook-login';
 import { GoogleLogin } from 'react-google-login';
 
