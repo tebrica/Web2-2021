@@ -11,6 +11,8 @@ export const SAVE_UNAPPROVED_USERS = 'SAVE_UNAPPROVED_USERS';
 export const APPROVE_USER = 'APPROVE_USER';
 export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
 export const UPDATE_USER = 'UPDATE_USER';
+export const GET_CLANS = 'GET_CLANS';
+export const SAVE_CLANS = 'SAVE_CLANS';
 
 // INCIDENTS
 export const GET_INCIDENTS = 'GET_INCIDENTS';

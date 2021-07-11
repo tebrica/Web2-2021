@@ -13,6 +13,7 @@ const ENDPOINTS = {
     CREWS: '/Crew',
     SAFETY_DOCS: '/SafetyDocumentsSort',
     WORK_PLANS: '/PlanoviRadaSort',
+    CLANOVI: '/CrewMembers',
 }
 
 const getIncidents = async () => {
@@ -242,6 +243,11 @@ const deleteDevice = async (payload) => {
     await axiosClient.delete(ENDPOINTS.EQUIPMENT + `/${payload}`);
 }
 
+const getClans = async () => {
+    const result = await axiosClient.get(ENDPOINTS.CLANOVI)
+    return result.data;
+}
+
 const incidentService = {
     getIncidents,
     getWorkRequests,
@@ -271,6 +277,7 @@ const incidentService = {
     getWorkPlans,
     getSafetyDocuments,
     deleteDevice,
+    getClans,
 }
 
 export default incidentService;
