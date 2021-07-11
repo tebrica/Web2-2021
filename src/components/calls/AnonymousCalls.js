@@ -1,8 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as yup from 'yup';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { editIncidentSelector, loggedUserSelector } from '../../store/selectors/AuthSelector';
+import { useDispatch } from 'react-redux';
 import { AddCall } from '../../store/actions';
 import { Link } from 'react-router-dom';
 

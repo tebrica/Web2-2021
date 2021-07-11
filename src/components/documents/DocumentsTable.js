@@ -15,7 +15,7 @@ const DocumentsTable = ({ docType }) => {
     const [postsPerPage,setPostsPerPage] = useState(5);
 
     useEffect(() => {
-        dispatch(GetWorkRequests(docType)); // eslint-disable-next-line
+        dispatch(GetWorkRequests({ type: docType, col: 'ID' })); // eslint-disable-next-line
     },[docType])
 
     // Get current incidents..
@@ -42,23 +42,40 @@ const DocumentsTable = ({ docType }) => {
                     <tr>
                         <th>
                             Id
-                            <i className="caret down icon"></i>
+                            <button style={{ marginLeft: 15 }} onClick={() => dispatch(GetWorkRequests({ type: docType, col: 'ID' }))}>
+                                <i className="caret down icon"></i>
+                            </button>
                         </th>
                         <th>
                             Document type
-                            <i className="caret down icon"></i>
+                            <button style={{ marginLeft: 15 }} onClick={() => dispatch(GetWorkRequests({ type: docType, col: 'Tip' }))}>    
+                                <i className="caret down icon"></i>
+                            </button>
+                           
                         </th>
                         <th>
                             Create date
-                            <i className="caret down icon"></i>
+                            <button style={{ marginLeft: 15 }} onClick={() => dispatch(GetWorkRequests({ type: docType, col: 'CreatedTime' }))}>
+                                <i className="caret down icon"></i>
+                            </button>
                         </th>
-                        <th>
-                            { docType === 'Safety documents' ? 'Telefonski broj' : 'Start date'}
-                            <i className="caret down icon"></i>
+                        <th>    
+                            {docType === 'Safety documents' ? 'Telefonski broj' : 'Start date'}
+                            
+                            {docType === 'Safety documents' 
+                                ? <button style={{ marginLeft: 15 }} onClick={() => dispatch(GetWorkRequests({ type: docType, col: 'PhoneNumber' }))}>
+                                    <i className="caret down icon"></i>
+                                </button>
+                                : <button style={{ marginLeft: 15 }} onClick={() => dispatch(GetWorkRequests({ type: docType, col: 'StartDate' }))}>
+                                    <i className="caret down icon"></i>
+                                </button>
+                            }
                         </th>
                         <th>
                             End date
-                            <i className="caret down icon"></i>
+                            <button style={{ marginLeft: 15 }} onClick={() => dispatch(GetWorkRequests({ type: docType, col: 'ID' }))}>
+                                <i className="caret down icon"></i>
+                            </button>
                         </th>
                     </tr>
                 </thead>

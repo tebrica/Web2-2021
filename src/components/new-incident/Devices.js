@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { GetDevices } from '../../store/actions';
+import { DeleteDevice, GetDevices } from '../../store/actions';
 import { devicesSelector, editIncidentSelector } from '../../store/selectors/AuthSelector';
 import Paginator from '../Paginator';
 
@@ -33,6 +33,11 @@ const Devices = ({ setCurrentPage, incidentId }) => {
             <td>{device.OpremaType}</td>
             <td>{device.CoordinateX} <br/> {device.CoordinateY} </td>
             <td>{device.Address}</td>
+            <td>
+                <button className="ui tiny inverted red button" style={{ width: 46 }} onClick={() => dispatch(DeleteDevice({ device: device.IdOprema, incident: editIncident === null ? incidentId : editIncident.ID }))}>
+                    <i className="x icon"></i>
+                </button>
+            </td>
         </tr>);
     })
 

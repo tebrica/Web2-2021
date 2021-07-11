@@ -52,9 +52,9 @@ const addNewIncident = async(payload) => {
     }
 }
 
-const getWorkRequests = async () => {
+const getWorkRequests = async (payload) => {
     try {
-        const response = await axiosClient.get(ENDPOINTS.WORK_REQUESTS);
+        const response = await axiosClient.get(ENDPOINTS.WORK_REQUESTS + `?columnName=${payload}`);
         return response.data;
     }
     catch(error) {
@@ -63,9 +63,9 @@ const getWorkRequests = async () => {
     }
 }
 
-const getSafetyDocuments = async () => {
+const getSafetyDocuments = async (payload) => {
     try {
-        const response = await axiosClient.get(ENDPOINTS.SAFETY_DOCS);
+        const response = await axiosClient.get(ENDPOINTS.SAFETY_DOCS + `?columnName=${payload}`);
         return response.data;
     }
     catch(error) {
@@ -74,9 +74,9 @@ const getSafetyDocuments = async () => {
     }
 }
 
-const getWorkPlans = async () => {
+const getWorkPlans = async (payload) => {
     try {
-        const response = await axiosClient.get(ENDPOINTS.WORK_PLANS);
+        const response = await axiosClient.get(ENDPOINTS.WORK_PLANS  + `?columnName=${payload}`);
         return response.data;
     }
     catch(error) {
@@ -169,7 +169,7 @@ const getResolutionForIncident = async(incidentId) => {
     }
 } 
 
-const getCrews = async() => {
+const getCrews = async () => {
     const response = await axiosClient.get(ENDPOINTS.CREWS)
     return response.data;
 }
@@ -229,13 +229,17 @@ const getCrewForIncident = async (payload) => {
     }
 }
 
-const assignCrewToIncident = (payload) => {
+const assignCrewToIncident = async (payload) => {
     try {
-        axiosClient.post(ENDPOINTS.CREWS,payload);
+        await axiosClient.post(ENDPOINTS.CREWS,payload);
     }
     catch(error) {
         return null;
     }
+}
+
+const deleteDevice = async (payload) => {
+    await axiosClient.delete(ENDPOINTS.EQUIPMENT + `/${payload}`);
 }
 
 const incidentService = {
@@ -266,6 +270,7 @@ const incidentService = {
     assignCrewToIncident,
     getWorkPlans,
     getSafetyDocuments,
+    deleteDevice,
 }
 
 export default incidentService;
