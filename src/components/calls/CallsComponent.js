@@ -1,16 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { GetCalls } from '../../store/actions';
 import { callSelector } from '../../store/selectors/AuthSelector';
 import Paginator from '../Paginator';
+import { useHistory } from 'react-router';
+import { useSelector } from 'react-redux';
+import { loggedUserSelector } from '../../store/selectors/AuthSelector';
 
 const CallsComponent = () => {
 
     const dispatch = useDispatch();
     const calls = useSelector(callSelector);
 
+    const { push } = useHistory();
+
+    const user = useSelector(loggedUserSelector);
+
     const [currentPage,setCurrentPage] = useState(1);   // eslint-disable-next-line
     const [postsPerPage,setPostsPerPage] = useState(5);
+
+    if (user === undefined || user === null) {
+        push('/Unauthorized')
+    }
 
     useEffect(() => {
         dispatch(GetCalls('Razlog'));  // eslint-disable-next-line

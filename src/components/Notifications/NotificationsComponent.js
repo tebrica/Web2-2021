@@ -1,9 +1,20 @@
 import React, { useState } from 'react';
 import NotificationList from './NotificationList';
+import { useHistory } from 'react-router';
+import { useSelector } from 'react-redux';
+import { loggedUserSelector } from '../../store/selectors/AuthSelector';
 
 const NotificationsComponent = () => {
 
     const [currentForm,setCurrentForm] = useState(0);
+
+    const { push } = useHistory();
+
+    const user = useSelector(loggedUserSelector);
+    
+    if (user === undefined || user === null) {
+        push('/Unauthorized')
+    }
 
     const renderNotificationFilter = () => {
         switch(currentForm)

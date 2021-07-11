@@ -14,6 +14,7 @@ import NotificationsComponent from './components/Notifications/NotificationsComp
 import DocumentsComponent from './components/dashboard/DocumentsComponent';
 import CrewComponent from './components/crew/CrewComponent';
 import AnonymousCalls from './components/calls/AnonymousCalls';
+import Unauthorized from './components/Unauthorized';
 
 const Routes = () => (
     <Switch>
@@ -31,6 +32,7 @@ const Routes = () => (
         <Route exact path="/notifications" component={NotificationsComponent} />
         <Route exact path="/crews" component={CrewComponent} />
         <Route exact path="/anonymous-calls" component={AnonymousCalls} />
+        <Route exact path="/Unauthorized" component={Unauthorized}/>
     </Switch>
 )
 

@@ -4,13 +4,14 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router'
 import { DeleteEditIncident, GetIncidents, RefreshToken, SaveEditIncident, SortIncidents } from '../../store/actions';
-import { incidentSelector } from '../../store/selectors/AuthSelector';
+import { incidentSelector, loggedUserSelector } from '../../store/selectors/AuthSelector';
 import Paginator from '../Paginator';
 
 const IncidentBrowserComponent = () => {
 
     const dispatch = useDispatch();
     const incidents = useSelector(incidentSelector);
+    const user = useSelector(loggedUserSelector);
     const { push } = useHistory();
 
     const [currentPage,setCurrentPage] = useState(1);   // eslint-disable-next-line
@@ -19,6 +20,10 @@ const IncidentBrowserComponent = () => {
     const onIdClicked = (incidentId) => {
         dispatch(SaveEditIncident(incidentId));
         push('/dashboard/new-incident')
+    }
+
+    if (user === undefined || user === null) {
+        push('/Unauthorized')
     }
     
     useEffect(() => {
