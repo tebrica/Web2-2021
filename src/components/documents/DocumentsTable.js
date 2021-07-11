@@ -23,7 +23,7 @@ const DocumentsTable = ({ docType }) => {
     const indexOfFirstIncident = indexOfLastIncident - postsPerPage;
     const currentIncidents = documents.slice(indexOfFirstIncident, indexOfLastIncident); 
 
-    const renderedDocuments = currentIncidents.map(doc => {
+    const renderedDocuments = currentIncidents.map(doc => {// eslint-disable-next-line
         return RenderDocuments(docType,doc)
     })
 

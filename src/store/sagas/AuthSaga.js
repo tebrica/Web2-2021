@@ -1,8 +1,8 @@
 import { put, call, takeLatest } from "redux-saga/effects";
-import { REGISTER, LOGIN, LOGOUT, REFRESH_TOKEN, GET_UNAPPROVED_USERS, APPROVE_USER, CHANGE_PASSWORD, UPDATE_USER } from "../../constants/action-types";
+import { REGISTER, LOGIN, LOGOUT, REFRESH_TOKEN, GET_UNAPPROVED_USERS, APPROVE_USER, CHANGE_PASSWORD, UPDATE_USER, GET_CLANS } from "../../constants/action-types";
 import UserNumberToRole from "../../constants/EnumFunctions";
 import authService from "../../services/AuthService";
-import { RemoveCurrentlyLogged, SaveCurrentlyLogged, SaveToken, SaveUnapprovedUsers } from "../actions";
+import { RemoveCurrentlyLogged, SaveClans, SaveCurrentlyLogged, SaveToken, SaveUnapprovedUsers } from "../actions";
 import makeid from '../../constants/RandomGenerator';
 import incidentService from "../../services/IncidentService";
 
@@ -75,6 +75,11 @@ function* updateLoggedInUser({ payload }) {
     yield call(incidentService.addNotification,notification);
 }
 
+function* getClans() {
+    const response = yield call(incidentService.getClans);
+    yield put(SaveClans(response));
+}
+
 export default function* authSaga() {
     yield takeLatest(REGISTER, registerUser)
     yield takeLatest(LOGIN, loginUser)
@@ -84,4 +89,5 @@ export default function* authSaga() {
     yield takeLatest(APPROVE_USER, approveUser)
     yield takeLatest(CHANGE_PASSWORD, changePassword)
     yield takeLatest(UPDATE_USER, updateLoggedInUser)
+    yield takeLatest(GET_CLANS, getClans)
 }

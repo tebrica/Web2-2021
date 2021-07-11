@@ -23,7 +23,8 @@ const MapG = () => {
     }
 
     const devicesPinsRendered = devices.map(device => {
-        return <Placemark key={makeid(10)} geometry={[device.CoordinateX, device.CoordinateY]} onClick={() => loadIncidentInfo(device.IncidentId)} />
+        return <Placemark key={makeid(10)} geometry={[device.CoordinateX, device.CoordinateY]} onClick={() => loadIncidentInfo(device.IncidentId)}/>
+            
     })
       
     return (
