@@ -40,6 +40,7 @@ export const ADD_DEVICE = 'ADD_DEVICE';
 export const GET_DEVICES = 'GET_DEVICES';
 export const GET_ALL_DEVICES = 'GET_ALL_DEVICES';
 export const SAVE_DEVICES = 'SAVE_DEVICES';
+export const DELETE_DEVICE = 'DELETE_DEVICE';
 
 // YANDEX MAPS
 export const GET_COORDINATES = 'GET_COORDINATES';

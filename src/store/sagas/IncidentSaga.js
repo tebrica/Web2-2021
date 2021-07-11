@@ -1,5 +1,5 @@
 import { call, put, select, takeLatest } from "redux-saga/effects";
-import { ADD_CALL, ADD_DEVICE, ADD_INCIDENT, ADD_NOTIFICATION, ADD_RESOLUTION, ASSIGN_CREW, GET_ALL_DEVICES, GET_CALLS, GET_CREWS, GET_CURRENT_CREW, GET_DEVICES, GET_INCIDENTS, GET_NOTIFICATIONS, GET_RESOLUTION_FOR_INCIDENT, GET_WORK_REQUESTS, MARK_NOTIFICATIONS_READ, SAVE_EDIT_INCIDENT, SORT_INCIDENTS } from "../../constants/action-types";
+import { ADD_CALL, ADD_DEVICE, ADD_INCIDENT, ADD_NOTIFICATION, ADD_RESOLUTION, ASSIGN_CREW, DELETE_DEVICE, GET_ALL_DEVICES, GET_CALLS, GET_CREWS, GET_CURRENT_CREW, GET_DEVICES, GET_INCIDENTS, GET_NOTIFICATIONS, GET_RESOLUTION_FOR_INCIDENT, GET_WORK_REQUESTS, MARK_NOTIFICATIONS_READ, SAVE_EDIT_INCIDENT, SORT_INCIDENTS } from "../../constants/action-types";
 import incidentService from '../../services/IncidentService';
 import { SaveCalls, SaveCrews, SaveCurrentCrew, SaveCurrentIncidentToRedux, SaveDevices, SaveIncidentsToBase, SaveNotifications, SaveResolution, SaveWorkRequests } from "../actions";
 import { loggedUserSelector } from "../selectors/AuthSelector";
@@ -141,6 +141,12 @@ function* assignCrewToIncident({ payload }) {
     yield put(SaveCurrentCrew(response));
 }
 
+function* deleteDevice({ payload }) {
+    yield call(incidentService.deleteDevice,payload.device)
+    const response = yield call(incidentService.getOprema,payload.incident)
+    yield put(SaveDevices(response))
+}
+
 export default function* incidentSaga() {
     yield takeLatest(GET_INCIDENTS,getIncidents)
     yield takeLatest(GET_WORK_REQUESTS,GetWorkRequests)
@@ -160,4 +166,5 @@ export default function* incidentSaga() {
     yield takeLatest(GET_CREWS, getCrews)
     yield takeLatest(GET_CURRENT_CREW, getCurrentCrew)
     yield takeLatest(ASSIGN_CREW, assignCrewToIncident)
+    yield takeLatest(DELETE_DEVICE, deleteDevice)
 }

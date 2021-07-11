@@ -169,7 +169,7 @@ const getResolutionForIncident = async(incidentId) => {
     }
 } 
 
-const getCrews = async() => {
+const getCrews = async () => {
     const response = await axiosClient.get(ENDPOINTS.CREWS)
     return response.data;
 }
@@ -229,13 +229,17 @@ const getCrewForIncident = async (payload) => {
     }
 }
 
-const assignCrewToIncident = (payload) => {
+const assignCrewToIncident = async (payload) => {
     try {
-        axiosClient.post(ENDPOINTS.CREWS,payload);
+        await axiosClient.post(ENDPOINTS.CREWS,payload);
     }
     catch(error) {
         return null;
     }
+}
+
+const deleteDevice = async (payload) => {
+    await axiosClient.delete(ENDPOINTS.EQUIPMENT + `/${payload}`);
 }
 
 const incidentService = {
@@ -266,6 +270,7 @@ const incidentService = {
     assignCrewToIncident,
     getWorkPlans,
     getSafetyDocuments,
+    deleteDevice,
 }
 
 export default incidentService;

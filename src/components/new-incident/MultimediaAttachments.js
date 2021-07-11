@@ -4,7 +4,7 @@ const MultimediaAttachments = () => {
     return <div>
         <h3> Add additional multimedia attachments </h3>
 
-        <div style={{ marginLeft: 30 }} className="ui raised container segment" style={{ width : 500, marginTop: 90 }}>
+        <div className="ui raised container segment" style={{ width : 500, marginTop: 90,  marginLeft: 30 }}>
             <label htmlFor="file"> Additional files: </label>
             <input type="file" name="file" style={{ marginLeft: 60 }}/>
             <br/>
