@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { DeleteEditIncident, GetIncidents, RefreshToken, SortIncidents } from '../../store/actions';
+import { useHistory } from 'react-router'
+import { DeleteEditIncident, GetIncidents, RefreshToken, SaveEditIncident, SortIncidents } from '../../store/actions';
 import { incidentSelector } from '../../store/selectors/AuthSelector';
 import Paginator from '../Paginator';
 
@@ -10,11 +11,15 @@ const IncidentBrowserComponent = () => {
 
     const dispatch = useDispatch();
     const incidents = useSelector(incidentSelector);
+    const { push } = useHistory();
 
     const [currentPage,setCurrentPage] = useState(1);   // eslint-disable-next-line
     const [postsPerPage,setPostsPerPage] = useState(5);
 
-    console.log(incidents)
+    const onIdClicked = (incidentId) => {
+        dispatch(SaveEditIncident(incidentId));
+        push('/dashboard/new-incident')
+    }
     
     useEffect(() => {
         dispatch(DeleteEditIncident());
@@ -29,7 +34,7 @@ const IncidentBrowserComponent = () => {
 
     const renderedIncidents = currentIncidents.map((incident) => {
         return <tr key={incident.ID}>
-            <td> {incident.ID} </td>
+            <td><div onClick={() => onIdClicked(incident.ID)}>{incident.ID} </div> </td>
             <td> {incident.VremeRada.slice(0,10)} </td>
             <td> {incident.IncidentType === 0 ? 'Planirani incident' : 'Neplanirani incident'} </td>
             <td> {incident.Voltage} kW </td>
