@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { AssignUserToCrew, GetClans, GetCrews } from '../../store/actions';
 import { ClanoviSelector, CrewSelector } from '../../store/selectors/AuthSelector';
+import { useHistory } from 'react-router';
+import { useSelector } from 'react-redux';
+import { loggedUserSelector } from '../../store/selectors/AuthSelector';
 
 const CrewComponent = () => {
 
@@ -11,6 +14,14 @@ const CrewComponent = () => {
 
     const [selectedCrew,setSelectedCrew] = useState(1);
     const [selectedClan,setSelectedClan] = useState(1);
+
+    const { push } = useHistory();
+
+    const user = useSelector(loggedUserSelector);
+    
+    if (user === undefined || user === null) {
+        push('/Unauthorized')
+    }
 
     const onAssignCrew = () => {
         if (selectedClan === 1) {
@@ -37,23 +48,48 @@ const CrewComponent = () => {
     })
 
     return <div style={{marginLeft: 150, height: 550}}>
-        <div className="ui container segment" style={{paddingLeft: 20,marginTop: 80, position: 'fixed', width: 920, right: 1, left: 90, height: 510}}>
+        <div className="ui white container segment" style={{paddingLeft: 20,marginTop: 80, position: 'fixed', width: 920, right: 1, left: 90, height: 510}}>
 
             <h3 style={{ marginLeft: 200 }} > Select crew and crew member to add to this crew. </h3>
 
+            <table className="ui green segment" width="740" style={{ marginLeft: 50, marginTop: 60 }}>
+                <tr>
+                    <td>
+                        <h4 style={{ marginLeft: 50 }}> Crews </h4>
+                        <div className="ui vertical pointing menu" style={{ width: 125, float: 'left' }}>
+                            {renderedCrews}
+                        </div>
+                    </td>
+
+                    <tr>
+                        <i class="angle huge double right icon" style={{ marginTop: 100, height: 120, width: 80 }}></i>
+                    </tr>
+                    
+                    <td>
+                    <h4> Crew members without a crew </h4>
+                        <div className="ui vertical pointing menu" name="usi" style={{ width: 125, float: 'left', marginLeft: 50, marginTop: 30 }}>
+                            {clanovi.length > 0 ? renderedClanovi : <div> No available crew members </div>}
+                        </div>
+                    </td>
+
+                    <td>
+                        <button className="ui inverted green button" type="button" style={{ marginLeft: 50, marginTop: 70 }} onClick={() => onAssignCrew()}> Assign </button>
+                    </td>
+                </tr>
+          
+
             <div style={{ overflow: 'hidden', marginTop: 80, marginLeft: 140 }}>
-                <h4 style={{ marginLeft: 30 }}> Crews </h4>
-                <div className="ui vertical pointing menu" style={{ width: 125, float: 'left' }}>
-                    {renderedCrews}
-                </div>
+                
 
-                <div className="ui vertical pointing menu" name="usi" style={{ width: 125, float: 'left', marginLeft: 100 }}>
-                    {clanovi.length > 0 ? renderedClanovi : <div> No available crew members </div>}
-                </div>
+                
 
-                <button className="ui inverted green button" type="button" style={{ marginLeft: 110, marginTop: 80 }} onClick={() => onAssignCrew()}> Assign </button>
+                
+
+                
 
             </div>
+
+            </table>
 
             
 

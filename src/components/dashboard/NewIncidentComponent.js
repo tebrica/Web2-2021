@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import makeid from '../../constants/RandomGenerator';
+import { loggedUserSelector } from '../../store/selectors/AuthSelector';
 import BasicInformation from '../new-incident/BasicInformation';
 import Calls from '../new-incident/Calls';
 import Crew from '../new-incident/Crew';
@@ -9,6 +11,7 @@ import NewCall from '../new-incident/NewCall';
 import NewDeviceComponent from '../new-incident/NewDeviceComponent';
 import Resolution from '../new-incident/Resolution';
 import IncidentMenu from './IncidentMenu';
+import { useHistory } from 'react-router';
 
 const NewIncidentComponent = () => {
 
@@ -17,6 +20,14 @@ const NewIncidentComponent = () => {
     const [currentPage,setCurrentPage] = useState(0);
 
     const [headerPosted,setHeaderPosted] = useState(false);
+
+    const { push } = useHistory();
+
+    const user = useSelector(loggedUserSelector);
+    
+    if (user === undefined || user === null) {
+        push('/Unauthorized')
+    }
 
     useEffect(() => {
         setIncidentId('INC_' + makeid(6));
