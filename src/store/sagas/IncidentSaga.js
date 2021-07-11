@@ -1,7 +1,7 @@
 import { call, put, select, takeLatest } from "redux-saga/effects";
-import { ADD_CALL, ADD_DEVICE, ADD_INCIDENT, ADD_NOTIFICATION, ADD_RESOLUTION, ASSIGN_CREW, DELETE_DEVICE, GET_ALL_DEVICES, GET_CALLS, GET_CREWS, GET_CURRENT_CREW, GET_DEVICES, GET_INCIDENTS, GET_NOTIFICATIONS, GET_RESOLUTION_FOR_INCIDENT, GET_WORK_REQUESTS, MARK_NOTIFICATIONS_READ, SAVE_EDIT_INCIDENT, SORT_INCIDENTS } from "../../constants/action-types";
+import { ADD_CALL, ADD_DEVICE, ADD_INCIDENT, ADD_NOTIFICATION, ADD_RESOLUTION, ASSIGN_CREW, ASSIGN_USER_TO_CREW, DELETE_DEVICE, GET_ALL_DEVICES, GET_CALLS, GET_CREWS, GET_CURRENT_CREW, GET_DEVICES, GET_INCIDENTS, GET_NOTIFICATIONS, GET_RESOLUTION_FOR_INCIDENT, GET_WORK_REQUESTS, MARK_NOTIFICATIONS_READ, SAVE_EDIT_INCIDENT, SORT_INCIDENTS } from "../../constants/action-types";
 import incidentService from '../../services/IncidentService';
-import { SaveCalls, SaveCrews, SaveCurrentCrew, SaveCurrentIncidentToRedux, SaveDevices, SaveIncidentsToBase, SaveNotifications, SaveResolution, SaveWorkRequests } from "../actions";
+import { SaveCalls, SaveClans, SaveCrews, SaveCurrentCrew, SaveCurrentIncidentToRedux, SaveDevices, SaveIncidentsToBase, SaveNotifications, SaveResolution, SaveWorkRequests } from "../actions";
 import { loggedUserSelector } from "../selectors/AuthSelector";
 import makeid from '../../constants/RandomGenerator';
 
@@ -147,6 +147,13 @@ function* deleteDevice({ payload }) {
     yield put(SaveDevices(response))
 }
 
+function* assignUserToCrew({ payload }) {
+    yield call(incidentService.assignUserToCrew,payload)
+    const response = yield call(incidentService.getClans);
+    yield put(SaveClans(response));
+}
+
+
 export default function* incidentSaga() {
     yield takeLatest(GET_INCIDENTS,getIncidents)
     yield takeLatest(GET_WORK_REQUESTS,GetWorkRequests)
@@ -167,4 +174,5 @@ export default function* incidentSaga() {
     yield takeLatest(GET_CURRENT_CREW, getCurrentCrew)
     yield takeLatest(ASSIGN_CREW, assignCrewToIncident)
     yield takeLatest(DELETE_DEVICE, deleteDevice)
+    yield takeLatest(ASSIGN_USER_TO_CREW, assignUserToCrew)
 }

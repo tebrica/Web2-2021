@@ -248,6 +248,10 @@ const getClans = async () => {
     return result.data;
 }
 
+const assignUserToCrew = async (payload) => {
+    await axiosClient.post(ENDPOINTS.CLANOVI,payload)
+}
+
 const incidentService = {
     getIncidents,
     getWorkRequests,
@@ -278,6 +282,7 @@ const incidentService = {
     getSafetyDocuments,
     deleteDevice,
     getClans,
+    assignUserToCrew,
 }
 
 export default incidentService;

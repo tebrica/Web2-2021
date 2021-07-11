@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { GetClans, GetCrews } from '../../store/actions';
+import { AssignUserToCrew, GetClans, GetCrews } from '../../store/actions';
 import { ClanoviSelector, CrewSelector } from '../../store/selectors/AuthSelector';
 
 const CrewComponent = () => {
@@ -10,7 +10,16 @@ const CrewComponent = () => {
     const clanovi = useSelector(ClanoviSelector);
 
     const [selectedCrew,setSelectedCrew] = useState(1);
-    const [selectedClan,setSelectedClan] = useState(clanovi.length > 0 ? clanovi[0].Id : 1);
+    const [selectedClan,setSelectedClan] = useState(1);
+
+    const onAssignCrew = () => {
+        if (selectedClan === 1) {
+            alert('You have to select a Crew member!')
+            return;
+        }
+        const payload = { CrewId: selectedCrew, UserId: selectedClan }
+        dispatch(AssignUserToCrew(payload))
+    }
 
     useEffect(() => {
         dispatch(GetCrews());
@@ -39,8 +48,10 @@ const CrewComponent = () => {
                 </div>
 
                 <div className="ui vertical pointing menu" name="usi" style={{ width: 125, float: 'left', marginLeft: 100 }}>
-                    {renderedClanovi}
+                    {clanovi.length > 0 ? renderedClanovi : <div> No available crew members </div>}
                 </div>
+
+                <button className="ui inverted green button" type="button" style={{ marginLeft: 110, marginTop: 80 }} onClick={() => onAssignCrew()}> Assign </button>
 
             </div>
 
