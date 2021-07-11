@@ -1,6 +1,10 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 
 const MultimediaAttachments = () => {
+
+    const { push } = useHistory();
+
     return <div>
         <h3> Add additional multimedia attachments </h3>
 
@@ -8,7 +12,7 @@ const MultimediaAttachments = () => {
             <label htmlFor="file"> Additional files: </label>
             <input type="file" name="file" style={{ marginLeft: 60 }}/>
             <br/>
-            <button type="button" className="ui green inverted button" style={{ marginTop: 30 }}> Save attachments </button>
+            <button type="button" className="ui green inverted button" style={{ marginTop: 30 }} onClick={() => push('/dashboard/incidentbrowser')}> Save attachments </button>
         </div>
     </div>
 }

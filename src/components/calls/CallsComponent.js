@@ -13,7 +13,7 @@ const CallsComponent = () => {
     const [postsPerPage,setPostsPerPage] = useState(5);
 
     useEffect(() => {
-        dispatch(GetCalls('all'));  // eslint-disable-next-line
+        dispatch(GetCalls('Razlog'));  // eslint-disable-next-line
     },[])
 
     // Get current incidents..
@@ -40,23 +40,33 @@ const CallsComponent = () => {
                         <tr>
                             <th>
                                 Razlog
-                                <i className="caret down icon"></i>
+                                <button type="button" style={{ marginLeft: 10, width: 32 }} onClick={() => dispatch(GetCalls('Razlog'))}>
+                                    <i className="caret down icon"></i>
+                                </button>
                             </th>
                             <th>
                                 Kvar
-                                <i className="caret down icon"></i>
+                                <button type="button" style={{ marginLeft: 10, width: 32 }} onClick={() => dispatch(GetCalls('Kvar'))}>
+                                    <i className="caret down icon"></i>
+                                </button>
                             </th>
                             <th>
                                 Username korisnika
-                                <i className="caret down icon"></i>
+                                <button type="button" style={{ marginLeft: 10, width: 32 }} onClick={() => dispatch(GetCalls('UsernameKor'))}>
+                                    <i className="caret down icon"></i>
+                                </button>
                             </th>
                             <th>
                                 Komentar
-                                <i className="caret down icon"></i>
+                                <button type="button" style={{ marginLeft: 10, width: 32 }} onClick={() => dispatch(GetCalls('Kvar'))}>
+                                    <i className="caret down icon"></i>
+                                </button>
                             </th>
                             <th>
                                 Incident Id
-                                <i className="caret down icon"></i>
+                                <button type="button" style={{ marginLeft: 10, width: 32 }} onClick={() => dispatch(GetCalls('IncidentId'))}>
+                                    <i className="caret down icon"></i>
+                                </button>
                             </th>
                         </tr>
                     </thead>
