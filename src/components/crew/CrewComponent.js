@@ -18,7 +18,7 @@ const CrewComponent = () => {
             return;
         }
         const payload = { CrewId: selectedCrew, UserId: selectedClan }
-        dispatch(AssignUserToCrew(payload))
+        dispatch(AssignUserToCrew(payload)); // eslint-disable-next-line
     }
 
     useEffect(() => {
