@@ -19,14 +19,14 @@ function* getIncidents({payload}) {
 
 function* GetWorkRequests({ payload }) {
     let response;
-    if (payload === 'Work requests') {
-        response = yield call(incidentService.getWorkRequests);
+    if (payload.type === 'Work requests') {
+        response = yield call(incidentService.getWorkRequests,payload.col);
     }
-    else if (payload === 'Work plans') {
-        response = yield call(incidentService.getWorkPlans);
+    else if (payload.type === 'Work plans') {
+        response = yield call(incidentService.getWorkPlans,payload.col);
     }
     else {
-        response = yield call(incidentService.getSafetyDocuments);
+        response = yield call(incidentService.getSafetyDocuments,payload.col);
     }
     yield put(SaveWorkRequests(response))
 }
