@@ -1,6 +1,7 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { LogoutUser } from '../../store/actions';
 import { loggedUserSelector } from '../../store/selectors/AuthSelector';
 import DashBoardHomeItem from './DashboardHomeItem';
 import Chart from "react-google-charts";
@@ -20,6 +21,14 @@ const DashBoardHome = () => {
         push('/')
     }
     
+    const { push } = useHistory();
+
+    useEffect(() => {
+        if (user === null || user === undefined) {
+            push('/')
+        }
+    },[])
+
     return (<div style={{marginLeft: 150, height: 550}}>
         
         <table style={{marginLeft: 120, marginTop: 100, position: 'fixed'}}>

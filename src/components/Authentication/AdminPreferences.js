@@ -1,14 +1,24 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ApproveUser, GetUnapprovedUsers } from '../../store/actions';
-import { unapprovedUsersSelector } from '../../store/selectors/AuthSelector';
+import { loggedUserSelector, unapprovedUsersSelector } from '../../store/selectors/AuthSelector';
 import UserNumberToRole from '../../constants/EnumFunctions'
 import pictureMapper from '../../constants/PictureHandler';
+import { useHistory } from 'react-router';
 
 const AdminPreferences = () => {
 
     const dispatch = useDispatch();
     const users = useSelector(unapprovedUsersSelector);
+
+    const { push } = useHistory();
+
+    const user = useSelector(loggedUserSelector);
+    
+    if (user === undefined || user === null || user.VrsteKorisnika !== 'ADMINISTRATOR') {
+        push('/Unauthorized')
+    }
+    
 
     useEffect(() => {
         dispatch(GetUnapprovedUsers()) // eslint-disable-next-line

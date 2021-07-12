@@ -33,8 +33,8 @@ function* GetWorkRequests({ payload }) {
 
 function* GetCalls({incident}) {
     let response;
-    if (incident === 'all') {
-        response = yield call(incidentService.getPozivi);
+    if (incident === 'Razlog' || incident === 'Kvar' || incident === 'UsernameKor' || incident === 'IncidentId') {
+        response = yield call(incidentService.getPozivi,incident);
     }
     else {
         response = yield call(incidentService.getPoziviForIncident,incident);

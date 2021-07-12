@@ -5,6 +5,7 @@ const ENDPOINTS = {
     INCIDENTS: '/Incidenti',
     WORK_REQUESTS: '/NaloziRadaSort',
     CALLS: '/Pozivi',
+    CALLS_SORT: '/PoziviSort',
     EQUIPMENT : '/Oprema',
     RESOLUTIONS: '/Resolutions',
     ONE_INCIDENT: '/SingleIncident',
@@ -86,9 +87,9 @@ const getWorkPlans = async (payload) => {
     }
 }
 
-const getPozivi = async () => {
+const getPozivi = async (payload) => {
     try {
-        const response = await axiosClient.get(ENDPOINTS.CALLS);
+        const response = await axiosClient.get(ENDPOINTS.CALLS_SORT + '?columnName=' + payload);
         return response.data
     }
     catch(error) {

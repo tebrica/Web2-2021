@@ -4,13 +4,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loggedUserSelector } from '../../store/selectors/AuthSelector';
 import pictureMapper from '../../constants/PictureHandler';
 import { UpdateUser } from '../../store/actions';
+import { useHistory } from 'react-router';
 
 const UserInfoComponent = () => {
 
     const dispatch = useDispatch();
     const user = useSelector(loggedUserSelector);
 
-    console.log(user)
+    const { push } = useHistory();
+    
+    if (user === undefined || user === null) {
+        push('/Unauthorized')
+    }
 
     const onFormSubmit = (values, {resetForm}) => {
         resetForm();

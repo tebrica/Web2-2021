@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import FacebookLogin from 'react-facebook-login';
+import {FacebookLogin, FacebookLogout } from 'react-facebook-login';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import axios from 'axios'
 import { object } from 'yup';
@@ -51,7 +51,8 @@ function App() {
           onFailure={handleLogoutFailure}
         />
         
-      </div> :
+      </div>
+       :
         <GoogleLogin
           clientId={clientId}
           buttonText={loading}
@@ -60,7 +61,10 @@ function App() {
           onRequest={handleRequest}
           onAutoLoadFinished={handleAutoLoadFinished}
           isSignedIn={true}
-        />}
+        /> }
+        <div>
+            
+        </div>
     </div>
   );
 }
