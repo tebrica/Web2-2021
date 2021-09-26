@@ -2,7 +2,7 @@ import React from 'react';
 
 const IncidentMenu = ({setCurrentForm,currentForm}) => {
     return (
-        <div className="ui vertical pointing menu" style={{width: 150}}>
+        <div className="ui vertical pointing menu" style={{ width: 150, marginLeft: 5, marginTop: 20 }}>
         <button className={`ui green button item ${currentForm === 0 ? 'active' : ''}`} style={{width: '100%'}}  onClick={() => setCurrentForm(0)}>
           Basic Information
         </button>

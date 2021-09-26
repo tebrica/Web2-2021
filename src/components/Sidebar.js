@@ -36,7 +36,7 @@ const SideBar = () => {
     }
     else {
       return (<div id="sidebar">
-      <div style={{width: 145,top: 60, position: 'fixed', paddingTop: 10}} className="ui visible inverted left vertical sidebar menu">
+      <div style={{width: 145,top: 70, position: 'fixed', paddingTop: 10}} className="ui visible inverted left vertical sidebar menu">
         
         <Link to="/" className="ui black button" style={{width: 150, height: 40}}>
           <p> Search

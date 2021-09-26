@@ -32,7 +32,7 @@ const NotificationsComponent = () => {
     return (
     <div style={{marginLeft: 150, height: 550, overflow: 'hidden'}}>
 
-        <div className="ui container segment" style={{paddingLeft: 20,marginTop: 80, position: 'fixed', width: 920, right: 1, left: 50, height: 490, float: 'left'}} >
+        <div className="ui container segment" style={{paddingLeft: 20,marginTop: 100, position: 'fixed', width: 1000, right: 1, left: 70, height: 490, float: 'left'}} >
             <div className="ui vertical pointing menu" style={{width: 165}}>
             <button className={`ui green button item ${currentForm === 0 ? 'active' : ''}`} style={{width: '100%'}}  onClick={() => setCurrentForm(0)}>
             All Notifications
@@ -58,7 +58,7 @@ const NotificationsComponent = () => {
             </button>
         </div>
 
-        <div style={{ position: 'fixed', top: 95, left: 450 }}>
+        <div style={{ position: 'fixed', top: 95, left: 500 }}>
             {renderNotificationFilter()}
         </div>
         </div>

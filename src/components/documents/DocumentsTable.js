@@ -27,8 +27,8 @@ const DocumentsTable = ({ docType }) => {
         return RenderDocuments(docType,doc)
     })
 
-    return <div style={{marginLeft: 150, height: 550}}>
-        <div style={{paddingLeft: 20, position: 'fixed', width: 930, right: 1, left: 200, height: 410}} >
+    return <div style={{marginLeft: 200, height: 550}}>
+        <div style={{paddingLeft: 20, position: 'fixed', width: 1050, right: 1, left: 220, height: 410}} >
         
             {/* HEADER TABELE  */}
             <div style={{overflow: 'hidden'}}>

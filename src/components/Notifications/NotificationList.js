@@ -35,10 +35,10 @@ const NotificationList = ({ notificationMode }) => {
         } // eslint-disable-next-line
     },[notificationMode])
 
-    return <div>
+    return <div style={{ marginTop: 30 }}>
         <h3 style={{ fontSize: 22 }}> {notificationMode} </h3> 
         <div style={{ marginTop: 20, overflow: 'scroll', height: 350 }}>
-            {renderedNotifications}
+            {renderedNotifications.length > 0 ? renderedNotifications : <div> No notifications. </div>}
         </div>
         {notificationMode === "Unread notifications" ?
             <button className="ui primary button small" style={{ marginLeft: 500, marginTop: 15 }} onClick={() => markAllNotificationRead()}> Mark all read </button> 

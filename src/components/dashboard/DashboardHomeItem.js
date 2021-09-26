@@ -1,9 +1,9 @@
 import React from 'react'
 
 const DashBoardHomeItem = ({name,num}) => {
-    return (<div className="ui raised container segment" style={{height: 190, width: 220, overflow: 'hidden'}}>
+    return (<div className="ui raised container segment" style={{height: 200, width: 260, overflow: 'hidden'}}>
         
-        <h3 style={{float: 'left', marginRight: 30}}> {name} </h3>
+        <h3 style={{float: 'left', marginRight: 70}}> {name} </h3>
         {name === "My Incidents" ? <i className="bolt icon"></i> : <i className="file image icon"></i>}
         <p style={{float: 'left'}}> {num} </p>
 

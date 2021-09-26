@@ -30,7 +30,7 @@ const MapG = () => {
     return (
         <div>
             <YMaps>
-                <Map defaultState={{ center: [45.24732342138606, 19.832377209934805], zoom: 12.5 }} style={{ height: 480, width: 990 }} >
+                <Map defaultState={{ center: [45.24732342138606, 19.832377209934805], zoom: 12.5 }} style={{ height: 560, width: 1210 }} >
                     <Clusterer options={{
                         preset: "islands#invertedVioletClusterIcons",
                         groupByCoordinates: false,

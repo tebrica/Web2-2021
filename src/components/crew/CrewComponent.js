@@ -34,7 +34,7 @@ const CrewComponent = () => {
 
     useEffect(() => {
         dispatch(GetCrews());
-        dispatch(GetClans());
+        dispatch(GetClans());   // eslint-disable-next-line
     },[])
 
     const renderedCrews = crews.map(c => {
@@ -48,11 +48,14 @@ const CrewComponent = () => {
     })
 
     return <div style={{marginLeft: 150, height: 550}}>
-        <div className="ui white container segment" style={{paddingLeft: 20,marginTop: 80, position: 'fixed', width: 920, right: 1, left: 90, height: 510}}>
+        <div className="ui white container" style={{ marginTop: 120, position: 'fixed', width: 920, right: 1, left: 90, height: 510}}>
 
-            <h3 style={{ marginLeft: 200 }} > Select crew and crew member to add to this crew. </h3>
+            <div className="ui center aligned header">
+                <h2> Select crew and crew member to add to this crew </h2>
+            </div>
+            
 
-            <table className="ui green segment" width="740" style={{ marginLeft: 50, marginTop: 60 }}>
+            <table className="ui raised green segment" style={{ marginLeft: 50, marginTop: 60, width: 850 }}>
                 <tr>
                     <td>
                         <h4 style={{ marginLeft: 50 }}> Crews </h4>
@@ -78,20 +81,11 @@ const CrewComponent = () => {
                 </tr>
           
 
-            <div style={{ overflow: 'hidden', marginTop: 80, marginLeft: 140 }}>
+                <div style={{ overflow: 'hidden', marginTop: 80, marginLeft: 140 }}>
                 
-
-                
-
-                
-
-                
-
-            </div>
+                </div>
 
             </table>
-
-            
 
         </div>
     </div>

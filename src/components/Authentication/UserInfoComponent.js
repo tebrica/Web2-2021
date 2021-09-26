@@ -23,8 +23,8 @@ const UserInfoComponent = () => {
         dispatch(UpdateUser(vals));
     }
 
-    return (<div className="ui container segment" style={{ position: 'fixed', top: 70, left: 180, width: 1000 }} >
-        <h3 className="ui top attached header"> User account information </h3>
+    return (<div className="ui raised padded container segment" style={{ position: 'fixed', top: 80, left: 200, width: 1140 }} >
+        <h3 className="ui top attached ui center aligned header header" style={{ background: 'lightgreen' }}> User account information </h3>
 
         <Formik onSubmit={onFormSubmit}
                 initialValues={{ email: user.Username, DatumRodjenja: '', Ime: '', Prezime: '', UserType: '' }}>
@@ -32,7 +32,7 @@ const UserInfoComponent = () => {
             {({setFieldValue}) => (
 
             <Form>
-                <table className="ui table" style={{ marginTop: 30 }}>
+                <table className="ui table" style={{ marginTop: 30, padding: 10 }}>
                     <thead></thead>
                     <tbody>
                         <tr>
@@ -66,18 +66,21 @@ const UserInfoComponent = () => {
                         </tr>
 
                         <tr>
-                            <select className="ui dropdown" onChange={(e) => setFieldValue("UserType",e.target.value)}>
-                                <option value="CLANEKIPE"> Clan ekipe </option>
-                                <option value="DISPECER"> Dispecer </option>
-                                <option value="RADNIK"> Radnik </option>
-                                <option value="POTROSAC"> Potrosac </option>
-                                <option value="ADMINISTRATOR"> Administrator </option>
-                            </select>
+                            <td> Account type (User role): </td>
+                            <td>
+                                <select className="ui dropdown" onChange={(e) => setFieldValue("UserType",e.target.value)}>
+                                    <option value="CLANEKIPE"> Clan ekipe </option>
+                                    <option value="DISPECER"> Dispecer </option>
+                                    <option value="RADNIK"> Radnik </option>
+                                    <option value="POTROSAC"> Potrosac </option>
+                                    <option value="ADMINISTRATOR"> Administrator </option>
+                                </select>
+                            </td>
                         </tr>
 
                         <tr>
                             <td>
-                               <img src={pictureMapper(user.NazivProfilneSlike)} alt="Nema slike" style={{ height: 180, width: 180 }}/>
+                               <img src={pictureMapper(user.NazivProfilneSlike)} alt="Nema slike" style={{ height: 180, width: 180, marginTop: 10 }}/>
                             </td>
                             <td>
                                 <div className="ui raised container segment" style={{ width: 220, backgroundColor: 'lightgreen' }}>

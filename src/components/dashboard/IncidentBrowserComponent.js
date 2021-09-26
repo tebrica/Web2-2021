@@ -51,17 +51,17 @@ const IncidentBrowserComponent = () => {
 
     return (
         <div style={{marginLeft: 150, height: 550}}>
-            <div className="ui container segment" style={{paddingLeft: 20,marginTop: 100, position: 'fixed', width: 920, right: 1, left: 70, height: 490}}>
+            <div className="ui container segment" style={{paddingLeft: 20,marginTop: 100, position: 'fixed', width: 1160, right: 1, left: 140, height: 490}}>
                 
                 {/* HEADER TABELE  */}
                 <div style={{overflow: 'hidden'}}>
                     <Link to="/dashboard/new-incident" className="ui primary button" style={{float: 'left', marginLeft: 20, marginTop: 15}}> + New </Link>
-                    <div className="ui buttons" style={{marginTop : 15, marginLeft: 70}}>
+                    <div className="ui buttons" style={{marginTop : 15, marginLeft: 180}}>
                         <button className="ui button" onClick={() => dispatch(GetIncidents('all'))}>All incidents</button>
                         <div className="or"></div>
                         <button className="ui positive button" onClick={() => dispatch(GetIncidents('my'))}>My Incidents</button>
                     </div>
-                    <button className="ui black button" style={{marginLeft: 200}}> Filter </button>
+                    <button className="ui black button" style={{marginLeft: 270}}> Filter </button>
                 </div>
 
                 {/* TABELA */}

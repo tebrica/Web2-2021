@@ -1,9 +1,6 @@
-import React, { Component, useState } from 'react';
-import {FacebookLogin, FacebookLogout } from 'react-facebook-login';
+import React, { useState } from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import axios from 'axios'
-import { object } from 'yup';
-import { writeFile } from 'fs';
  
 const clientId = "647369311564-muhu77078797c8sn2pd4n5m591na28ks.apps.googleusercontent.com";
  
@@ -13,10 +10,9 @@ function App() {
   const [user, setUser] = useState(null);
   
   const handleLoginSuccess = (response) => {
-    //throw response;
     const resp = axios.post("http://localhost:8000/api/Account/AddExternalLogin", response);
-    console.log("Login Success ", response);
-    setUser(response.profileObj);
+    console.log("Login Success ", resp);
+    setUser(resp.profileObj);
     setLoading();
   }
  
