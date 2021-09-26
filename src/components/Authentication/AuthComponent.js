@@ -17,7 +17,7 @@ const AuthComponent = () => {
     },[])
 
     return (
-        <div className="ui raised container segment" style={{textAlign: 'center', top: 60}}>
+        <div className="ui raised container segment" style={{textAlign: 'center', top: 80, width: 1200, height: 610}}>
             <h1 className="ui center small header" style={{margin: 'auto', fontSize: 20}}> Electricity for future! </h1>
             <hr/>
 
@@ -27,8 +27,8 @@ const AuthComponent = () => {
                     <tr>
                     <td>
                         <div style={{float: 'left',marginTop: 10, marginLeft: 65}}>
-                            <img src="https://www.glas-javnosti.rs/uploads/images/0/2020_06_11/Nikola-Tesla-WIKI.png" style={{width: 250, height: 200}} alt="NoPic"/>
-                            <div className="ui blue segment tiny" style={{width: '250px',marginTop: '5px'}}>
+                            <img src="https://www.glas-javnosti.rs/uploads/images/0/2020_06_11/Nikola-Tesla-WIKI.png" style={{width: 280, height: 240}} alt="NoPic"/>
+                            <div className="ui blue segment tiny" style={{width: '280px',marginTop: '5px'}}>
                                 <p> "Ako stavite viljušku u šteker, udariće vas struja" </p>
                                 <p>  - Nikola Tesla, 19. vek </p>
                             </div>
@@ -38,18 +38,22 @@ const AuthComponent = () => {
                     </td>
 
                     <td>
-                        <div style={{float: 'left', backgroundColor: 'springgreen', height:450, width: 380, marginLeft: 170, marginTop: 0}}>
+                        <div style={{ marginLeft: 100, width: 200 }}>
+                            <SocialNetworks/>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div style={{float: 'left', backgroundColor: 'springgreen', height: 500, width: 420, marginLeft: 80, marginTop: 0}}>
                         <div style={{overflow: 'hidden'}}>
-                            <button className="ui inverted green button" style={{width: '48%'}} onClick={() => setAuthForm('login')}> Log In </button>
-                            <button className="ui inverted green button" style={{width: '48%'}} onClick={() => setAuthForm('register')}> Register </button>
+                            <button className="ui inverted green button" style={{width: '48%', height: 40}} onClick={() => setAuthForm('login')}> Log In </button>
+                            <button className="ui inverted green button" style={{width: '48%', height: 40}} onClick={() => setAuthForm('register')}> Register </button>
                         </div>
                             {authForm === 'login' ? <LogInComponent/> : <RegisterComponent showLogin={setAuthForm}/>}
                         </div>
                     </td>
 
-                    <td>
-                        <SocialNetworks/>
-                    </td>
+              
                     </tr>
                 </tbody>
             </table>

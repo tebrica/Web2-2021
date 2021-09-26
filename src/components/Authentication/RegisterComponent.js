@@ -46,7 +46,7 @@ const RegisterComponent = ({showLogin}) => {
                                 <div className="field" style={{ overflow: "hidden",marginTop: 0 }}>
                                     <label htmlFor="email"> Username: </label>
                                     <div style={{ float: "left" }}>
-                                        <Field type="text"name="email" placeholder="Email address.." style={{ width: 150, marginLeft: 20 }}/>
+                                        <Field type="text"name="email" placeholder="Email address.." style={{ width: 150, marginLeft: 30 }}/>
                                     </div>
 
                                     <div style={{ float: "left" }}>
@@ -66,10 +66,10 @@ const RegisterComponent = ({showLogin}) => {
                         </tr>
                         <tr>
                             <td>
-                                <div className="field" style={{ overflow: "hidden" }}>
+                                <div className="field" style={{ overflow: "hidden", marginTop: 15 }}>
                                     <label htmlFor="ime"> Ime: </label>
                                     <div style={{ float: "left" }}>
-                                        <Field type="text"name="ime" placeholder="Ime.." style={{ width: 150, marginLeft: 20 }}/>
+                                        <Field type="text"name="ime" placeholder="Ime.." style={{ width: 150, marginLeft: 30 }}/>
                                     </div>
 
                                     <div style={{ float: "left", marginLeft: 35 }}>
@@ -84,7 +84,7 @@ const RegisterComponent = ({showLogin}) => {
                                 <div className="field" style={{ overflow: "hidden" }}>
                                     <label htmlFor="prz"> Prezime: </label>
                                     <div style={{ float: "left" }}>
-                                        <Field type="text"name="prz" placeholder="Prezime.." style={{ width: 150, marginLeft: 0 }}/>
+                                        <Field type="text"name="prz" placeholder="Prezime.." style={{ width: 150, marginLeft: 30 }}/>
                                     </div>
 
                                     <div style={{ float: "left", marginLeft: 35 }}>
@@ -97,10 +97,10 @@ const RegisterComponent = ({showLogin}) => {
                         </tr>
                         <tr>
                             <td>
-                                <div className="field" style={{ overflow: "hidden" }}>
+                                <div className="field" style={{ overflow: "hidden", marginTop: 15 }}>
                                     <label htmlFor="pass"> Password: </label>
                                     <div style={{ float: "left" }}>
-                                        <Field type="password" name="pass" placeholder="Password.." style={{ width: 150, marginLeft: 20 }}/>
+                                        <Field type="password" name="pass" placeholder="Password.." style={{ width: 150, marginLeft: 30 }}/>
                                     </div>
                 
                                     <div style={{ float: "left", marginLeft: 35 }}>
@@ -115,7 +115,7 @@ const RegisterComponent = ({showLogin}) => {
                                 <div className="field" style={{ overflow: "hidden" }}>
                                     <label htmlFor="pass2"> Repeat Password: </label>
                                     <div style={{ float: "left" }}>
-                                        <Field type="password" name="pass2" placeholder="Password.." style={{ width: 150, marginLeft: 0 }}/>
+                                        <Field type="password" name="pass2" placeholder="Password.." style={{ width: 150, marginLeft: 30 }}/>
                                     </div>
                     
                                     <div style={{ float: "left", marginLeft: 35 }}>
@@ -133,7 +133,7 @@ const RegisterComponent = ({showLogin}) => {
                         </tr>
                         <tr>
                             <td colSpan="2">
-                                <select className="ui dropdown" name="cause" style={{width: 160, marginLeft: 100, marginTop: 5, marginBottom: 5}} onChange={(e) => setFieldValue('role',e.target.value) }>
+                                <select className="ui dropdown" name="cause" style={{width: 160, marginLeft: 120, marginTop: 15, marginBottom: 5}} onChange={(e) => setFieldValue('role',e.target.value) }>
                                     <option value="CLANEKIPE"> Clan ekipe </option>
                                     <option value="DISPECER"> Dispecer </option>
                                     <option value="RADNIK"> Radnik </option>
@@ -145,7 +145,7 @@ const RegisterComponent = ({showLogin}) => {
                     </tbody>
                 </table>
                     
-                <button type="submit" className="ui small blue button"> {" "} Register user {" "} </button>
+                <button type="submit" className="ui small blue button" style={{ marginTop: 10 }}> {" "} Register user {" "} </button>
             </Form>
             )}
         </Formik>

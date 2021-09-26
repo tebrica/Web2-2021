@@ -22,7 +22,7 @@ const DocumentsComponent = () => {
                 <a className={`item ${selected === 2 ? 'active' : ''}`} onClick={() => setSelected(2)}> Safety documents </a> 
             </div>
 
-            <div style={{ marginTop: 10, marginLeft: 50 }}>
+            <div style={{ marginTop: 10 }}>
                 {renderDocumentTable()}
             </div>
             

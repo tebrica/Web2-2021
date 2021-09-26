@@ -36,38 +36,38 @@ const NewIncidentComponent = () => {
     const renderedPage = () => {
         switch(currentPage)
         {
-            case 0: return (<div style={{float: 'left', position: 'fixed', top: 120,left: 450}}>
+            case 0: return (<div style={{float: 'left', position: 'fixed', top: 120,left: 520}}>
                 <h2 className="ui header" style={{ marginLeft: 150 }}> Basic information about incident </h2>
                 <BasicInformation incidentId={incidentId} setHeaderPosted={setHeaderPosted} setCurrentPage={setCurrentPage} setIncidentId={setIncidentId} />
             </div>)
 
-            case 1: return (<div style={{float: 'left', position: 'fixed', top: 120,left: 450}}>
+            case 1: return (<div style={{float: 'left', position: 'fixed', top: 120,left: 520}}>
                 <h2 className="ui header" style={{ marginLeft: 190 }}> Affected Devices </h2>
                 <Devices setCurrentPage={setCurrentPage} incidentId={incidentId} />
             </div>)
 
-            case 2: return (<div style={{float: 'left', position: 'fixed', top: 130,left: 420}}>
+            case 2: return (<div style={{float: 'left', position: 'fixed', top: 130,left: 520}}>
                 <Resolution setCurrentPage={setCurrentPage} headerPosted={headerPosted} incidentId={incidentId}  />
             </div>)
 
-            case 3: return (<div style={{float: 'left', position: 'fixed', top: 130,left: 450}}>
+            case 3: return (<div style={{float: 'left', position: 'fixed', top: 130,left: 520}}>
                 <h2 className="ui header" style={{ marginLeft: 190 }}> Calls for this incident </h2>
                 <Calls setCurrentPage={setCurrentPage} incidentId={incidentId}/>
             </div>)
 
-            case 4: return (<div style={{float: 'left', position: 'fixed', top: 110,left: 450}}>
+            case 4: return (<div style={{float: 'left', position: 'fixed', top: 130,left: 520}}>
                 <Crew setCurrentPage={setCurrentPage} incidentId={incidentId} headerPosted={headerPosted}/>
             </div>)
 
-            case 5: return (<div style={{float: 'left', position: 'fixed', top: 110,left: 450}}>
+            case 5: return (<div style={{float: 'left', position: 'fixed', top: 130,left: 520}}>
                 <MultimediaAttachments/>
             </div>)
 
-            case 7: return (<div style={{float: 'left', position: 'fixed', top: 115,left: 450}}>
+            case 7: return (<div style={{float: 'left', position: 'fixed', top: 130,left: 520}}>
                 <NewCall setCurrentPage={setCurrentPage} incidentId={incidentId} headerPosted={headerPosted}/>
             </div>)
 
-            case 8: return (<div style={{float: 'left', position: 'fixed', top: 115,left: 410}}>
+            case 8: return (<div style={{float: 'left', position: 'fixed', top: 130,left: 520}}>
                 <NewDeviceComponent setCurrentPage={setCurrentPage} incidentId={incidentId} headerPosted={headerPosted}  />                
             </div>)
 

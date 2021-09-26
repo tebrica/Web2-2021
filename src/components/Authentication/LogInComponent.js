@@ -30,10 +30,10 @@ const LogInComponent = () => {
                     initialValues={{ email: '', pass: '' }}>
                 <Form className="ui form">
 
-                    <div className="field" style={{ overflow: "hidden",marginTop: 40 }}>
+                    <div className="field" style={{ overflow: "hidden",marginTop: 50 }}>
                         <label htmlFor="email"> Username: </label>
                         <div style={{ float: "left" }}>
-                            <Field type="text"name="email" placeholder="Email address.." style={{ width: 260, marginLeft: 60 }}/>
+                            <Field type="text"name="email" placeholder="Email address.." style={{ width: 260, marginLeft: 80 }}/>
                         </div>
 
                         <div style={{ float: "left", marginLeft: 35 }}>
@@ -43,10 +43,10 @@ const LogInComponent = () => {
                         </div>
                     </div>
 
-                    <div className="field" style={{ overflow: "hidden" }}>
+                    <div className="field" style={{ overflow: "hidden", marginTop: 30 }}>
                         <label htmlFor="pass"> Password: </label>
                         <div style={{ float: "left" }}>
-                            <Field type="password" name="pass" placeholder="Password.." style={{ width: 260, marginLeft: 60 }}/>
+                            <Field type="password" name="pass" placeholder="Password.." style={{ width: 260, marginLeft: 80 }}/>
                         </div>
             
                         <div style={{ float: "left", marginLeft: 35 }}>
@@ -56,7 +56,7 @@ const LogInComponent = () => {
                         </div>
                     </div>
                     <br/>
-                    <button type="submit" className="ui small blue button"> {" "} Log In {" "} </button>
+                    <button type="submit" className="ui large blue button" style={{ marginTop: 10 }}> {" "} Log In {" "} </button>
                 </Form>
             </Formik>
         </div>
