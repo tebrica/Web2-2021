@@ -29,39 +29,46 @@ const NotificationsComponent = () => {
         }
     }
 
-    return (
-    <div style={{marginLeft: 150, height: 550, overflow: 'hidden'}}>
+    return (<div style={{ backgroundColor: 'grey', height: 720 }}> 
+    <div style={{marginLeft: 150, height: 560, overflow: 'hidden'}}>
 
-        <div className="ui container segment" style={{paddingLeft: 20,marginTop: 100, position: 'fixed', width: 1000, right: 1, left: 70, height: 490, float: 'left'}} >
-            <div className="ui vertical pointing menu" style={{width: 165}}>
-            <button className={`ui green button item ${currentForm === 0 ? 'active' : ''}`} style={{width: '100%'}}  onClick={() => setCurrentForm(0)}>
-            All Notifications
-            </button>
-            <button className={`ui green button item ${currentForm === 1 ? 'active' : ''}`} style={{width: '100%'}} onClick={() => setCurrentForm(1)}>
-            Unread Notifications
-            </button>
-            <button className={`ui green button item ${currentForm === 2 ? 'active' : ''}`} style={{width: '100%'}} onClick={() => setCurrentForm(2)}>
-            Errors
-            <i className="x icon" style={{ color: 'red' }}></i>
-            </button>
-            <button className={`ui green button item ${currentForm === 3 ? 'active' : ''}`} style={{width: '100%'}}  onClick={() => setCurrentForm(3)}>
-            <i className="info circle icon" style={{ color: 'blue' }}></i>
-            Information
-            </button>
-            <button className={`ui green button item ${currentForm === 4 ? 'active' : ''}`} style={{width: '100%'}}  onClick={() => setCurrentForm(4)}>
-            Success
-            <i className="check icon" style={{ color: 'green' }}></i>
-            </button>
-            <button className={`ui green button item ${currentForm === 5 ? 'active' : ''}`} style={{width: '100%'}}  onClick={() => setCurrentForm(5)}>
-            <i className="exclamation icon" style={{ color: 'gold' }}></i>
-            Warning
-            </button>
-        </div>
+        <div className="ui container segment" style={{paddingLeft: 20,marginTop: 110, position: 'fixed', width: 1180, right: 1, left: 120, height: 530, float: 'left'}} >
+            
+            <div className="ui vertical pointing menu" style={{ width: 165, marginTop: 50, marginLeft: 15 }}>
+                <button className={`ui green button item ${currentForm === 0 ? 'active' : ''}`} style={{width: '100%'}}  onClick={() => setCurrentForm(0)}>
+                    All Notifications
+                </button>
 
-        <div style={{ position: 'fixed', top: 95, left: 500 }}>
-            {renderNotificationFilter()}
+                <button className={`ui green button item ${currentForm === 1 ? 'active' : ''}`} style={{width: '100%'}} onClick={() => setCurrentForm(1)}>
+                    Unread Notifications
+                </button>
+
+                <button className={`ui green button item ${currentForm === 2 ? 'active' : ''}`} style={{width: '100%'}} onClick={() => setCurrentForm(2)}>
+                    Errors
+                    <i className="x icon" style={{ color: 'red' }}></i>
+                </button>
+
+                <button className={`ui green button item ${currentForm === 3 ? 'active' : ''}`} style={{width: '100%'}}  onClick={() => setCurrentForm(3)}>
+                    <i className="info circle icon" style={{ color: 'blue' }}></i>
+                    Information
+                </button>
+
+                <button className={`ui green button item ${currentForm === 4 ? 'active' : ''}`} style={{width: '100%'}}  onClick={() => setCurrentForm(4)}>
+                    Success
+                    <i className="check icon" style={{ color: 'green' }}></i>
+                </button>
+
+                <button className={`ui green button item ${currentForm === 5 ? 'active' : ''}`} style={{width: '100%'}}  onClick={() => setCurrentForm(5)}>
+                    <i className="exclamation icon" style={{ color: 'gold' }}></i>
+                    Warning
+                </button>
+            </div>
+
+            <div style={{ position: 'fixed', top: 95, left: 560 }}>
+                {renderNotificationFilter()}
+            </div>
         </div>
-        </div>
+    </div>
     </div>)
 }
 

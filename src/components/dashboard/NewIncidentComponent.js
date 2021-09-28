@@ -37,33 +37,37 @@ const NewIncidentComponent = () => {
         switch(currentPage)
         {
             case 0: return (<div style={{float: 'left', position: 'fixed', top: 120,left: 520}}>
-                <h2 className="ui header" style={{ marginLeft: 150 }}> Basic information about incident </h2>
+                <h2 className="ui header" style={{ marginLeft: 150, marginBottom: 30 }}> Basic information about incident </h2>
                 <BasicInformation incidentId={incidentId} setHeaderPosted={setHeaderPosted} setCurrentPage={setCurrentPage} setIncidentId={setIncidentId} />
             </div>)
 
-            case 1: return (<div style={{float: 'left', position: 'fixed', top: 120,left: 520}}>
+            case 1: return (<div style={{float: 'left', position: 'fixed', top: 140,left: 520}}>
                 <h2 className="ui header" style={{ marginLeft: 190 }}> Affected Devices </h2>
                 <Devices setCurrentPage={setCurrentPage} incidentId={incidentId} />
             </div>)
 
             case 2: return (<div style={{float: 'left', position: 'fixed', top: 130,left: 520}}>
+                <h2 className="ui header" style={{ marginLeft: 150, marginBottom: 30 }}> Resolution for Incident </h2>
                 <Resolution setCurrentPage={setCurrentPage} headerPosted={headerPosted} incidentId={incidentId}  />
             </div>)
 
             case 3: return (<div style={{float: 'left', position: 'fixed', top: 130,left: 520}}>
-                <h2 className="ui header" style={{ marginLeft: 190 }}> Calls for this incident </h2>
+                <h2 className="ui header" style={{ marginLeft: 190 }}> Calls for this Incident </h2>
                 <Calls setCurrentPage={setCurrentPage} incidentId={incidentId}/>
             </div>)
 
             case 4: return (<div style={{float: 'left', position: 'fixed', top: 130,left: 520}}>
+                <h2 className="ui header" style={{ marginLeft: 150, marginBottom: 60 }}> Assign a crew for Incident </h2>
                 <Crew setCurrentPage={setCurrentPage} incidentId={incidentId} headerPosted={headerPosted}/>
             </div>)
 
             case 5: return (<div style={{float: 'left', position: 'fixed', top: 130,left: 520}}>
+                <h2 className="ui header" style={{ marginLeft: 150, marginBottom: 60 }}> Add multimedia attachments for Incident </h2>
                 <MultimediaAttachments/>
             </div>)
 
             case 7: return (<div style={{float: 'left', position: 'fixed', top: 130,left: 520}}>
+                <h2 className="ui header" style={{ marginLeft: 150, marginBottom: 60 }}> Add a call for Incident </h2>
                 <NewCall setCurrentPage={setCurrentPage} incidentId={incidentId} headerPosted={headerPosted}/>
             </div>)
 
@@ -75,14 +79,15 @@ const NewIncidentComponent = () => {
         }
     }
 
-    return (
+    return (<div style={{ backgroundColor: 'grey', height: 720 }}>
         <div style={{marginLeft: 150, height: 600, overflow: 'hidden', marginTop: 15}}>
-            <div className="ui container segment" style={{paddingLeft: 20,marginTop: 80, position: 'fixed', width: 1160, right: 1, left: 160, height: 520, float: 'left'}}>
+            <div className="ui container segment" style={{paddingLeft: 20,marginTop: 80, position: 'fixed', width: 1200, right: 1, left: 160, height: 580, float: 'left'}}>
                 <IncidentMenu setCurrentForm={setCurrentPage} currentForm={currentPage}/>
                 {renderedPage()}
             </div>
 
         </div>
+    </div>
     );
 }
 

@@ -20,7 +20,12 @@ const Resolution = ({ setCurrentPage, headerPosted, incidentId }) => {
     const editIncident = useSelector(editIncidentSelector);
 
     useEffect(() => {
-        dispatch(GetResolution(incidentId))  // eslint-disable-next-line
+        if (editIncident !== null && editIncident !== undefined) {
+            dispatch(GetResolution(editIncident.ID))
+        }
+        else {
+            dispatch(GetResolution(incidentId))  // eslint-disable-next-line
+        }
     },[])
 
     if (editResolution === null) {
@@ -43,9 +48,7 @@ const Resolution = ({ setCurrentPage, headerPosted, incidentId }) => {
         setCurrentPage(3);
     }
     
-    return <div className="ui green segment" style={{marginLeft: 50, width: 500, paddingLeft: 70}}>
-
-        <h3 style={{ marginBottom: 40 }}> Add resolution to incident </h3>
+    return <div className="ui very padded green segment" style={{marginLeft: 50, width: 500, paddingLeft: 70}}>
 
         <Formik onSubmit={onFormSubmit}
             initialValues={{ Cause: '', SubCause: '', Construction: '', Material: '' }}

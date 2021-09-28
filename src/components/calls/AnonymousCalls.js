@@ -24,7 +24,8 @@ const AnonymousCalls = () => {
     };
 
 
-    return <div className="ui container segment" style={{ marginTop: 80, height: 500 }}>
+    return <div style={{ backgroundColor: 'grey', height: 720 }}>  
+    <div className="ui container segment" style={{ marginTop: 70, height: 500 }}>
         <Link to="/" className="ui green inverted button" style={{ marginLeft: 180 }}> Return to login screen </Link>
         <h1 style={{ marginLeft: 400 }}> Register anonymous call </h1>
 
@@ -86,6 +87,7 @@ const AnonymousCalls = () => {
         </Formik>
     </div>
 
+    </div>
     </div>
 }
 

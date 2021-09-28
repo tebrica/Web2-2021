@@ -29,15 +29,12 @@ const Crew = ({ setCurrentPage, incidentId, headerPosted }) => {
         return <option value={crew.Id} key={crew.Id}> {crew.NazivEkipe} </option>
     })
 
-    return <div>
-        <h3> Assign a crew to resolve this Incident </h3>
-
-        <select className="ui dropdown" defaultValue={CurrentCrew === null ? 1 : CurrentCrew.Id} onChange={(e) => setCrewId(e.target.value)} style={{ width: 200, marginTop: 30 }}>
+    return <div className="ui raised very padded segment" style={{ marginLeft: 150, width: 480 }}>
+        <select className="ui dropdown" defaultValue={CurrentCrew === null ? 1 : CurrentCrew.Id} onChange={(e) => setCrewId(e.target.value)} style={{ width: 200, marginLeft: 22 }}>
             {renderCrewOptions}
         </select>
 
         <button className="ui primary inverted button" type="button" style={{ marginLeft: 30 }} onClick={() => onCrewAssign()}> Save crew </button>
-
     </div>
 }
 

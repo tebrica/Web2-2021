@@ -27,13 +27,12 @@ const DocumentsTable = ({ docType }) => {
         return RenderDocuments(docType,doc)
     })
 
-    return <div style={{marginLeft: 250, height: 550}}>
-        <div style={{paddingLeft: 20, position: 'fixed', width: 1050, right: 1, left: 220, height: 410}} >
+    return <div style={{marginLeft: 250, height: 590}}>
+        <div style={{paddingLeft: 20, position: 'fixed', width: 1150, right: 1, left: 240, height: 520}} >
         
             {/* HEADER TABELE  */}
             <div style={{overflow: 'hidden'}}>
                 <Link to="/dashboard/new-work-request" className="ui primary button" style={{float: 'left', marginLeft: 20, marginTop: 15}}> + New </Link>
-                <button className="ui black button" style={{marginLeft: 700, marginTop: 15}}> Filter </button>
             </div>
 
             {/* TABELA */}

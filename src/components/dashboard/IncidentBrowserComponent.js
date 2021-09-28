@@ -49,9 +49,9 @@ const IncidentBrowserComponent = () => {
         </tr>
     });
 
-    return (
+    return (<div style={{ backgroundColor: 'grey', height: 720 }}>
         <div style={{marginLeft: 150, height: 600}}>
-            <div className="ui container segment" style={{paddingLeft: 20, marginTop: 110, position: 'fixed', width: 1160, right: 1, left: 110, height: 520}}>
+            <div className="ui container segment" style={{paddingLeft: 20, marginTop: 110, position: 'fixed', width: 1300, right: 1, left: 140, height: 550}}>
                 
                 {/* HEADER TABELE  */}
                 <div style={{overflow: 'hidden'}}>
@@ -118,6 +118,7 @@ const IncidentBrowserComponent = () => {
                 </div>
             
             </div>
+        </div>
         </div>
     );
 

@@ -42,8 +42,9 @@ const CallsComponent = () => {
         </tr>
     })
 
-    return (<div style={{marginLeft: 150, height: 550}}>
-        <div className="ui raised container segment" style={{paddingLeft: 20,marginTop: 100, position: 'fixed', width: 1150, right: 1, left: 150, height: 490}} >
+    return (<div style={{ backgroundColor: 'grey', height: 720 }}> 
+        <div style={{marginLeft: 150, height: 550}}>
+        <div className="ui raised container segment" style={{paddingLeft: 20,marginTop: 100, position: 'fixed', width: 1280, right: 1, left: 150, height: 520}} >
             {/* TABELA */}
             <h2 className="ui header" style={{ marginLeft: 5 }}> All Calls </h2>
             <table className="ui sortable celled green table" style={{marginTop: 12}}>
@@ -90,6 +91,7 @@ const CallsComponent = () => {
                     <Paginator incidentsPerPage={postsPerPage} totalIncidents={calls.length} changePage={(num) => setCurrentPage(num)} />
                 </div>
         </div>
+    </div>
     </div>);
 }
 

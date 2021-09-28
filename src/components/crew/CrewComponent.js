@@ -47,15 +47,19 @@ const CrewComponent = () => {
         return <button key={clan.Id} className={`ui green button item ${word}`} onClick={() => setSelectedClan(clan.Id)}> {clan.Username} </button>
     })
 
-    return <div style={{marginLeft: 150, height: 550}}>
-        <div className="ui white container" style={{ marginTop: 120, position: 'fixed', width: 920, right: 1, left: 90, height: 510}}>
-
-            <div className="ui center aligned header">
-                <h2> Select crew and crew member to add to this crew </h2>
-            </div>
-            
+    return <div style={{ backgroundColor: 'grey', height: 720 }}> 
+        <div style={{marginLeft: 150, height: 550}}>
+        <div className="ui white container" style={{ marginTop: 70, position: 'fixed', width: 1000, right: 1, left: 90, height: 510}}>
 
             <table className="ui raised green segment" style={{ marginLeft: 50, marginTop: 60, width: 850 }}>
+                
+                <tr>
+                    <td colSpan="4">
+                        <div className="ui center aligned header" style={{ marginBottom: 40 }}>
+                            <h2> Select crew and crew member to add to this crew </h2>
+                        </div>
+                    </td>
+                </tr>
                 <tr>
                     <td>
                         <h4 style={{ marginLeft: 50 }}> Crews </h4>
@@ -88,6 +92,7 @@ const CrewComponent = () => {
             </table>
 
         </div>
+    </div>
     </div>
 }
 

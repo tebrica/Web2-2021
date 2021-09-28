@@ -14,9 +14,11 @@ const Settings = () => {
         push('/Unauthorized')
     }
 
-    return <div className="ui raised container segment" style={{width: 1000, top: 66, left: 70, height: 500}}>
-        <ChangePasswordComponent/>
-    </div>
+    return (<div style={{ backgroundColor: 'grey', height: 720 }}> 
+        <div className="ui raised container segment" style={{width: 1200, top: 100, left: 70, height: 580}}>
+            <ChangePasswordComponent/>
+        </div>
+    </div>)
 }
 
 export default Settings;

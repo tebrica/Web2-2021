@@ -23,7 +23,8 @@ const UserInfoComponent = () => {
         dispatch(UpdateUser(vals));
     }
 
-    return (<div className="ui raised padded container segment" style={{ position: 'fixed', top: 80, left: 200, width: 1140 }} >
+    return (<div style={{ backgroundColor: 'grey', height: 720 }}> 
+        <div className="ui raised padded container segment" style={{ position: 'fixed', top: 95, left: 200, width: 1250, height: 580 }} >
         <h3 className="ui top attached ui center aligned header header" style={{ background: 'lightgreen' }}> User account information </h3>
 
         <Formik onSubmit={onFormSubmit}
@@ -80,7 +81,9 @@ const UserInfoComponent = () => {
 
                         <tr>
                             <td>
-                               <img src={pictureMapper(user.NazivProfilneSlike)} alt="Nema slike" style={{ height: 180, width: 180, marginTop: 10 }}/>
+                                <div style={{ marginTop: 22, marginLeft: 20 }}>
+                                    <img src={pictureMapper(user.NazivProfilneSlike)} alt="Nema slike" style={{ height: 180, width: 180, marginTop: 10 }}/>
+                                </div>
                             </td>
                             <td>
                                 <div className="ui raised container segment" style={{ width: 220, backgroundColor: 'lightgreen' }}>
@@ -104,6 +107,7 @@ const UserInfoComponent = () => {
             )}
         </Formik>
 
+    </div>
     </div>)
 }
 

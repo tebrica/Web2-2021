@@ -16,9 +16,9 @@ const AuthComponent = () => {
         } // eslint-disable-next-line
     },[])
 
-    return (
-        <div className="ui raised container segment" style={{textAlign: 'center', top: 80, width: 1200, height: 610}}>
-            <h1 className="ui center small header" style={{margin: 'auto', fontSize: 20}}> Electricity for future! </h1>
+    return (<div style={{ backgroundColor: 'grey', height: 720 }}>
+        <div className="ui raised container segment" style={{textAlign: 'center', top: 80, width: 1400, height: 610 }}>
+            <h1 className="ui center small header" style={{margin: 'auto', fontSize: 24}}> Electricity for future! </h1>
             <hr/>
 
             <table>
@@ -44,7 +44,7 @@ const AuthComponent = () => {
                     </td>
 
                     <td>
-                        <div style={{float: 'left', backgroundColor: 'springgreen', height: 500, width: 420, marginLeft: 80, marginTop: 0}}>
+                        <div style={{float: 'left', backgroundColor: 'springgreen', height: 500, width: 420, marginLeft: 210, marginTop: 20}}>
                         <div style={{overflow: 'hidden'}}>
                             <button className="ui inverted green button" style={{width: '48%', height: 40}} onClick={() => setAuthForm('login')}> Log In </button>
                             <button className="ui inverted green button" style={{width: '48%', height: 40}} onClick={() => setAuthForm('register')}> Register </button>
@@ -57,6 +57,7 @@ const AuthComponent = () => {
                     </tr>
                 </tbody>
             </table>
+        </div>
         </div>
     );
 }

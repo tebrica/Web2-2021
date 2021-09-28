@@ -32,9 +32,7 @@ const NewCall = ({ setCurrentPage, incidentId, headerPosted }) => {
         setCurrentPage(3)
     };
 
-    return <div className="ui green segment">
-
-        <h3 style={{ marginLeft: 180, marginBottom: 30 }}> Add calls to incident </h3>
+    return <div className="ui green segment" style={{ marginLeft: 30 }}>
 
         <Formik
             onSubmit={onFormSubmit}

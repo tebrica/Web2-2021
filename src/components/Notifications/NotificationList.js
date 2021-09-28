@@ -41,7 +41,7 @@ const NotificationList = ({ notificationMode }) => {
             {renderedNotifications.length > 0 ? renderedNotifications : <div> No notifications. </div>}
         </div>
         {notificationMode === "Unread notifications" ?
-            <button className="ui primary button small" style={{ marginLeft: 500, marginTop: 15 }} onClick={() => markAllNotificationRead()}> Mark all read </button> 
+            <button className="ui primary button small" style={{ marginLeft: 480, marginTop: 30 }} onClick={() => markAllNotificationRead()}> Mark all read </button> 
             : <div></div>
         }
     </div>

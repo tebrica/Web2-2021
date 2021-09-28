@@ -2,7 +2,7 @@ import React from 'react';
 
 const WorkRequestMenu = ({setCurrentForm,currentForm}) => {
     
-    return (<div className="ui vertical pointing menu" style={{width: 150}}>
+    return (<div className="ui vertical pointing menu" style={{ width: 150, marginTop: 50 }}>
 
         <button className={`ui green button item ${currentForm === 0 ? 'active' : ''}`} style={{width: '100%'}}  onClick={() => setCurrentForm(0)}>
           Basic Information

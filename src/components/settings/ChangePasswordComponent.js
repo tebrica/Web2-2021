@@ -26,7 +26,7 @@ const ChangePasswordComponent = () => {
         dispatch(ChangePassword(values));
     }
 
-    return <div className="ui green segment" style={{ width: 350 }}>
+    return <div className="ui raised green segment" style={{ width: 350, marginLeft: 30, marginTop: 10 }}>
 
         <h4> Change password for User: {user.Username} </h4>
         <hr/>
