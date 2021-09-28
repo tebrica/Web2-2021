@@ -39,7 +39,7 @@ const IncidentBrowserComponent = () => {
 
     const renderedIncidents = currentIncidents.map((incident) => {
         return <tr key={incident.ID}>
-            <td><div onClick={() => onIdClicked(incident.ID)}>{incident.ID} </div> </td>
+            <td> <button onClick={() => onIdClicked(incident.ID)} className="ui small inverted green button"> {incident.ID} </button> </td>
             <td> {incident.VremeRada.slice(0,10)} </td>
             <td> {incident.IncidentType === 0 ? 'Planirani incident' : 'Neplanirani incident'} </td>
             <td> {incident.Voltage} kW </td>
@@ -50,22 +50,21 @@ const IncidentBrowserComponent = () => {
     });
 
     return (
-        <div style={{marginLeft: 150, height: 550}}>
-            <div className="ui container segment" style={{paddingLeft: 20,marginTop: 100, position: 'fixed', width: 1160, right: 1, left: 140, height: 490}}>
+        <div style={{marginLeft: 150, height: 600}}>
+            <div className="ui container segment" style={{paddingLeft: 20, marginTop: 110, position: 'fixed', width: 1160, right: 1, left: 110, height: 520}}>
                 
                 {/* HEADER TABELE  */}
                 <div style={{overflow: 'hidden'}}>
                     <Link to="/dashboard/new-incident" className="ui primary button" style={{float: 'left', marginLeft: 20, marginTop: 15}}> + New </Link>
-                    <div className="ui buttons" style={{marginTop : 15, marginLeft: 180}}>
+                    <div className="ui buttons" style={{marginTop : 15, marginLeft: 270}}>
                         <button className="ui button" onClick={() => dispatch(GetIncidents('all'))}>All incidents</button>
                         <div className="or"></div>
                         <button className="ui positive button" onClick={() => dispatch(GetIncidents('my'))}>My Incidents</button>
                     </div>
-                    <button className="ui black button" style={{marginLeft: 270}}> Filter </button>
                 </div>
 
                 {/* TABELA */}
-                <table className="ui green table" style={{marginTop: 30}}>
+                <table className="ui green table" style={{marginTop: 50}}>
                     <thead>
                         <tr>
                             <th>

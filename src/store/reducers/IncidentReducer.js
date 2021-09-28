@@ -28,6 +28,9 @@ export default function incident(state = initialState, action) {
             return { ...state, devices: action.payload };
         }
         case SAVE_DETAILS: {
+            console.log('REDUCER')
+            console.log(action)
+            console.log('REDUCER')
             return { ...state, editIncident: action.payload };
         }
         case DELETE_EDIT_INCIDENT: {

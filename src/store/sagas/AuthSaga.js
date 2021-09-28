@@ -37,7 +37,7 @@ function* loginUser({payload}) {
 
 function* logoutUser() {
     console.log('User logged out!')
-    localStorage.removeItem('token')
+    localStorage.setItem('token','')
     yield put(SaveToken(''))
     yield put(RemoveCurrentlyLogged())
 }

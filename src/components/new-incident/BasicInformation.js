@@ -3,7 +3,7 @@ import { Formik, Form, ErrorMessage, Field } from 'formik';
 import * as yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux';
 import { editIncidentSelector, loggedUserSelector } from '../../store/selectors/AuthSelector';
-import { AddNewIncident, SaveEditIncident } from '../../store/actions';
+import { AddNewIncident, SaveBasicInfo, SaveEditIncident } from '../../store/actions';
 
 const validationSheme = yup.object().shape({
     AffectedPeople : yup.number().required('Required!').min(0,'Must be > 0'),
@@ -19,6 +19,8 @@ const BasicInformation = ({ incidentId, setHeaderPosted, setCurrentPage, setInci
     const editIncident = useSelector(editIncidentSelector);
     const dispatch = useDispatch();
 
+    console.log(editIncident)
+
     useEffect(() => {
         if (editIncident !== null) {
             dispatch(SaveEditIncident(editIncident.ID));
@@ -27,10 +29,11 @@ const BasicInformation = ({ incidentId, setHeaderPosted, setCurrentPage, setInci
         }   // eslint-disable-next-line
     },[])
   
-    if (editIncident === null) {
+    if (editIncident === null || editIncident === undefined) {
         initValues = { AffectedPeople: 0, IncidentType: '', ATA: '', Prioritet: 0, ETR: '', Confirmed: false, Pozivi: 0, ETA: '', Voltage: 0, Description: '', IdKorisnika: '' }
     }
     else {
+        setHeaderPosted(true);
         initValues = { AffectedPeople: editIncident.AffectedPeople, IncidentType: editIncident.IncidentType, ATA: editIncident.ATA, 
         Prioritet: editIncident.Prioritet, ETR: editIncident.ETR, Confirmed: false, Pozivi: editIncident.Pozivi, ETA: editIncident.ETA, 
         Voltage: editIncident.Voltage, Description: editIncident.Description, IdKorisnika: editIncident.IdKorisnika }
@@ -54,8 +57,9 @@ const BasicInformation = ({ incidentId, setHeaderPosted, setCurrentPage, setInci
             dispatch(AddNewIncident(vals,'UPDATE'))
         }
         
+        dispatch(SaveBasicInfo(vals));
         setHeaderPosted(true);
-        setCurrentPage(1)
+        setCurrentPage(1);
     };
 
     return (<div className="ui green segment">
@@ -75,7 +79,7 @@ const BasicInformation = ({ incidentId, setHeaderPosted, setCurrentPage, setInci
                             
                             <tr>
                                 <td> <p style={{marginRight: 35}}> Incident ID: </p> </td>
-                                <td> <p style={{marginRight: 120}} onChange={(e) => setFieldValue(e.target.value)}> { editIncident === null ? incidentId : editIncident.ID} </p>  </td>
+                                <td> <p style={{marginRight: 120}} onChange={(e) => setFieldValue(e.target.value)}> { editIncident === null || editIncident === undefined ? incidentId : editIncident.ID} </p>  </td>
                                 <td> Affected customers: </td>
                                 <td>
                                     <div style={{ float: "left" }}>

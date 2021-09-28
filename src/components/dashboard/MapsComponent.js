@@ -17,7 +17,7 @@ const MapsComponent = () => {
     return (
         <div style={{marginLeft: 150, height: 550}}>
             <div className="ui container segment" 
-                style={{paddingLeft: 20, marginTop: 70, position: 'fixed', width: 1250, right: 1, left: 140, height: 600, background: 'lightgreen'}} >
+                style={{paddingLeft: 20, marginTop: 100, position: 'fixed', width: 1250, right: 1, left: 140, height: 600, background: 'lightgreen'}} >
                 <MapG/>
             </div>
         </div>

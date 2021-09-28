@@ -1,5 +1,5 @@
 import { call, put, select, takeLatest } from "redux-saga/effects";
-import { ADD_CALL, ADD_DEVICE, ADD_INCIDENT, ADD_NOTIFICATION, ADD_RESOLUTION, ASSIGN_CREW, ASSIGN_USER_TO_CREW, DELETE_DEVICE, GET_ALL_DEVICES, GET_CALLS, GET_CREWS, GET_CURRENT_CREW, GET_DEVICES, GET_INCIDENTS, GET_NOTIFICATIONS, GET_RESOLUTION_FOR_INCIDENT, GET_WORK_REQUESTS, MARK_NOTIFICATIONS_READ, SAVE_EDIT_INCIDENT, SORT_INCIDENTS } from "../../constants/action-types";
+import { ADD_CALL, ADD_DEVICE, ADD_INCIDENT, ADD_NOTIFICATION, ADD_RESOLUTION, ASSIGN_CREW, ASSIGN_USER_TO_CREW, DELETE_DEVICE, GET_ALL_DEVICES, GET_CALLS, GET_CREWS, GET_CURRENT_CREW, GET_DEVICES, GET_INCIDENTS, GET_NOTIFICATIONS, GET_RESOLUTION_FOR_INCIDENT, GET_WORK_REQUESTS, MARK_NOTIFICATIONS_READ, SAVE_BASIC_INFO, SAVE_EDIT_INCIDENT, SORT_INCIDENTS } from "../../constants/action-types";
 import incidentService from '../../services/IncidentService';
 import { SaveCalls, SaveClans, SaveCrews, SaveCurrentCrew, SaveCurrentIncidentToRedux, SaveDevices, SaveIncidentsToBase, SaveNotifications, SaveResolution, SaveWorkRequests } from "../actions";
 import { loggedUserSelector } from "../selectors/AuthSelector";
@@ -59,12 +59,17 @@ function* getDevices({payload}) {
 }
 
 function* addDevice({payload}) {
-    const address = { address: payload.Address, number: payload.Number }
-    const coords = yield call(incidentService.getCoordinatesByAddress,address)
-    const data = { IdOprema: payload.IdOprema, Name: payload.Name, OpremaType: payload.OpremaType, CoordinateX: coords.lat, CoordinateY: coords.lng, IncidentId: payload.IncidentId, Address: payload.Address + " " + payload.Number }
-    yield call(incidentService.postOprema,data)
-    const response = yield call(incidentService.getOprema,payload.IncidentId)
-    yield put(SaveDevices(response))
+    try {
+        const address = { address: payload.Address, number: payload.Number }
+        const coords = yield call(incidentService.getCoordinatesByAddress,address)
+        const data = { IdOprema: payload.IdOprema, Name: payload.Name, OpremaType: payload.OpremaType, CoordinateX: coords.lat, CoordinateY: coords.lng, IncidentId: payload.IncidentId, Address: payload.Address + " " + payload.Number }
+        yield call(incidentService.postOprema,data)
+        const response = yield call(incidentService.getOprema,payload.IncidentId)
+        yield put(SaveDevices(response))
+    }
+    catch(error) {
+        alert("Couldn't find address" + payload.Address + " " + payload.Number)
+    }
 }
 
 function* addResolution(payload) {
@@ -93,8 +98,11 @@ function* getIncidentById({payload}) {
 }
 
 function* getResolution({payload}) {
-    const result = yield call(incidentService.getResolutionForIncident,payload)
-    yield put(SaveResolution(result));
+    try {
+        const result = yield call(incidentService.getResolutionForIncident,payload)
+        yield put(SaveResolution(result));
+    }
+    catch(error) {  }
 }
 
 function* getNotifications({ payload }) {
@@ -153,6 +161,13 @@ function* assignUserToCrew({ payload }) {
     yield put(SaveClans(response));
 }
 
+function* saveIncidentBasicInfo({ payload }) {
+    console.log('SAGA')
+    console.log(payload)
+    console.log('SAGA')
+    yield put(SaveCurrentIncidentToRedux(payload));
+}
+
 
 export default function* incidentSaga() {
     yield takeLatest(GET_INCIDENTS,getIncidents)
@@ -175,4 +190,5 @@ export default function* incidentSaga() {
     yield takeLatest(ASSIGN_CREW, assignCrewToIncident)
     yield takeLatest(DELETE_DEVICE, deleteDevice)
     yield takeLatest(ASSIGN_USER_TO_CREW, assignUserToCrew)
+    yield takeLatest(SAVE_BASIC_INFO, saveIncidentBasicInfo)
 }

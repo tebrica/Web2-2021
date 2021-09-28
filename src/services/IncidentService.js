@@ -40,8 +40,14 @@ const getMyIncidents = async (username) => {
 }
 
 const getIncidentById = async (incidentId) => {
-    const response = await axiosClient.get(ENDPOINTS.ONE_INCIDENT + `?incidentId=${incidentId}`)
-    return response.data
+    try {
+        const response = await axiosClient.get(ENDPOINTS.INCIDENTS + `?incidentId=${incidentId}`)
+        return response.data
+    }
+    catch(error) {
+
+    }
+    
 }
 
 const addNewIncident = async(payload) => {

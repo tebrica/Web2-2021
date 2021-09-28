@@ -10,12 +10,13 @@ import { tokenSelector } from './store/selectors/AuthSelector';
 const App = () => {
 
     const hideShowSidebar = useSelector(tokenSelector)
+    const token = localStorage.getItem('token');
 
     return (
         <div>
             <Router>
                 <Header/>
-                {hideShowSidebar === '' ? <div></div> : <SideBar/>}
+                {hideShowSidebar === '' || token === '' ? <div></div> : <SideBar/>}
                 <Routes/>
                 <Footer/>
             </Router>
