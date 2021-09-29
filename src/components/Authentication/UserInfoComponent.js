@@ -10,11 +10,15 @@ const UserInfoComponent = () => {
 
     const dispatch = useDispatch();
     const user = useSelector(loggedUserSelector);
+    let initialValues = { email: '', DatumRodjenja: '', Ime: '', Prezime: '', UserType: '' }
 
     const { push } = useHistory();
     
     if (user === undefined || user === null) {
         push('/Unauthorized')
+    }
+    else {
+        initialValues = { email: user.Username, DatumRodjenja: user.DatumRodjenja, Ime: user.Ime, Prezime: user.Prezime, UserType: user.VrsteKorisnika }
     }
 
     const onFormSubmit = (values, {resetForm}) => {
@@ -28,7 +32,7 @@ const UserInfoComponent = () => {
         <h3 className="ui top attached ui center aligned header header" style={{ background: 'lightgreen' }}> User account information </h3>
 
         <Formik onSubmit={onFormSubmit}
-                initialValues={{ email: user.Username, DatumRodjenja: '', Ime: '', Prezime: '', UserType: '' }}>
+                initialValues={initialValues}>
 
             {({setFieldValue}) => (
 
@@ -69,7 +73,7 @@ const UserInfoComponent = () => {
                         <tr>
                             <td> Account type (User role): </td>
                             <td>
-                                <select className="ui dropdown" onChange={(e) => setFieldValue("UserType",e.target.value)}>
+                                <select className="ui dropdown" style={{ width: 180 }} onChange={(e) => setFieldValue("UserType",e.target.value)}>
                                     <option value="CLANEKIPE"> Clan ekipe </option>
                                     <option value="DISPECER"> Dispecer </option>
                                     <option value="RADNIK"> Radnik </option>

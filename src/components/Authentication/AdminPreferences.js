@@ -27,7 +27,7 @@ const AdminPreferences = () => {
     const userDetailsRendered = users.map((user) => {
         return (<div className="card" key={user.Username}>
             <div className="content">
-                <img className="right floated mini ui image" src={pictureMapper(user.NazivProfilneSlike)} alt="Nema slike"/>
+                <img className="right floated medium ui image" src={pictureMapper(user.NazivProfilneSlike)} alt="Nema slike"/>
                 <div className="header">
                     {user.Username}
                 </div>
@@ -48,7 +48,7 @@ const AdminPreferences = () => {
     )})
 
     return <div>
-        <div className="ui cards" style={{marginTop: 70, marginLeft: 180, position: 'fixed'}}>
+        <div className="ui cards" style={{marginTop: 90, marginLeft: 210, position: 'fixed'}}>
             {users.length === 0 ? <h1 style={{ marginTop: 20, marginLeft: 30 }}> No users to approve. </h1> : userDetailsRendered}
         </div>
     </div>

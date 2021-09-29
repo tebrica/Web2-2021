@@ -21,6 +21,7 @@ const AnonymousCalls = () => {
         vals.IncidentId = '';
         vals.UsernameKor = '';
         dispatch(AddCall(vals))
+        alert('Anonymous call registered!')
     };
 
 

@@ -1,8 +1,8 @@
 import { put, call, takeLatest } from "redux-saga/effects";
-import { REGISTER, LOGIN, LOGOUT, REFRESH_TOKEN, GET_UNAPPROVED_USERS, APPROVE_USER, CHANGE_PASSWORD, UPDATE_USER, GET_CLANS } from "../../constants/action-types";
+import { REGISTER, LOGIN, LOGOUT, REFRESH_TOKEN, GET_UNAPPROVED_USERS, APPROVE_USER, CHANGE_PASSWORD, UPDATE_USER, GET_CLANS, GET_USER_INFO } from "../../constants/action-types";
 import UserNumberToRole from "../../constants/EnumFunctions";
 import authService from "../../services/AuthService";
-import { RemoveCurrentlyLogged, SaveClans, SaveCurrentlyLogged, SaveToken, SaveUnapprovedUsers } from "../actions";
+import { getUserInfo, RemoveCurrentlyLogged, SaveClans, SaveCurrentlyLogged, SaveToken, SaveUnapprovedUsers } from "../actions";
 import makeid from '../../constants/RandomGenerator';
 import incidentService from "../../services/IncidentService";
 
@@ -10,7 +10,7 @@ function* registerUser({payload}) {
     const data = { Email: payload.email, Password: payload.pass, ConfirmPassword: payload.pass2 }
     yield call(authService.registerNewUser,data)
 
-    const dataInfo = { Username: payload.email, VrsteKorisnika: payload.role, NazivProfilneSlike: payload.file.name, DatumRodjenja: payload.date, Adresa: 'Gogoljeva 34' };
+    const dataInfo = { Username: payload.email, VrsteKorisnika: payload.role, NazivProfilneSlike: payload.file.name, DatumRodjenja: payload.date, Adresa: 'Gogoljeva 34', Ime: payload.ime, Prezime: payload.prz };
     yield call(authService.registerUserInfo,dataInfo)
 }
 

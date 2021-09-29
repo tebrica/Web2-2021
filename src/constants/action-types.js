@@ -13,6 +13,7 @@ export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
 export const UPDATE_USER = 'UPDATE_USER';
 export const GET_CLANS = 'GET_CLANS';
 export const SAVE_CLANS = 'SAVE_CLANS';
+export const GET_USER_INFO = 'GET_USER_INFO';
 
 // INCIDENTS
 export const GET_INCIDENTS = 'GET_INCIDENTS';

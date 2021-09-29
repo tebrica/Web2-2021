@@ -28,22 +28,19 @@ const MapG = () => {
     })
       
     return (
-        <div>
-            <YMaps>
-                <Map defaultState={{ center: [45.24732342138606, 19.832377209934805], zoom: 12.5 }} style={{ height: 590, width: 1310 }} >
-                    <Clusterer options={{
-                        preset: "islands#invertedVioletClusterIcons",
-                        groupByCoordinates: false,
-                        clusterDisableClickZoom: true,
-                        clusterHideIconOnBalloonOpen: false,
-                        geoObjectHideIconOnBalloonOpen: false
-                    }}>
-                        { devicesPinsRendered } 
-                    </Clusterer>
-                    
-                </Map>
-            </YMaps>
-        </div>
+        <YMaps>
+            <Map defaultState={{ center: [45.24732342138606, 19.832377209934805], zoom: 12.5 }} style={{ height: 590, width: 1310 }} >
+                <Clusterer options={{
+                    preset: "islands#invertedVioletClusterIcons",
+                    groupByCoordinates: false,
+                    clusterDisableClickZoom: true,
+                    clusterHideIconOnBalloonOpen: false,
+                    geoObjectHideIconOnBalloonOpen: false
+                }}>
+                    { devicesPinsRendered } 
+                </Clusterer>    
+            </Map>
+        </YMaps> 
     )
 }
 
